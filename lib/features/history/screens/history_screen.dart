@@ -18,6 +18,16 @@ class HistoryScreen extends StatelessWidget {
         builder: (context, state) {
           HistoryCubit cubit = HistoryCubit.get(context);
           return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back_ios),
+                onPressed: (){
+                  context.pop();
+                },
+              ),
+              title: const Text('History'),
+              centerTitle: true,
+            ),
             body: SafeArea(
               child: Padding(
                 padding: EdgeInsetsDirectional.symmetric(

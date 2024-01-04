@@ -21,7 +21,7 @@ class MonthlyAnalysisScreen extends StatelessWidget {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                MonthlyAnalysisChart(dataSource: cubit.chartData),
+                Expanded(child: MonthlyAnalysisChart(dataSource: cubit.chartData)),
                 const BuildChartMap(),
                 SizedBox(
                   height: context.deviceHeight * 0.04,
