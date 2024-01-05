@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:siri_wave/siri_wave.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/speech/controller/speech_cubit.dart';
+import 'package:speech_emotion_recognition_project/features/speech/screens/analysis_result_screen.dart';
 
 import '../widgets/drawer_of_speech.dart';
 import '../widgets/not_recording_widget.dart';
@@ -62,4 +63,17 @@ class SpeechScreen extends StatelessWidget {
       ),
     );
   }
+
+}
+showResultBottomSheet(context){
+  showModalBottomSheet(
+
+
+      context: context, builder: (_){
+    return const AnalysisResultScreen();
+  },
+
+      isScrollControlled:true,
+  // useSafeArea: true
+  );
 }

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/features/history/screens/history_screen.dart';
 
 import 'features/settings/screens/settings_screen.dart';
+import 'features/speech/screens/analysis_result_screen.dart';
 import 'features/speech/screens/speech_screen.dart';
 
 void main() {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       },
       //  child: const HistoryScreen(),
      child: SpeechScreen(),
-    //  child: SettingsScreen(),
+      //child: AnalysisResultScreen(),
     );
   }
 }

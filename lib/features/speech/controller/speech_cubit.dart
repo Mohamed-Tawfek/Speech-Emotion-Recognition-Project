@@ -1,10 +1,12 @@
 import 'dart:io';
-import 'dart:math';
+ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
+
+import '../screens/speech_screen.dart';
 part 'speech_state.dart';
 
 class SpeechCubit extends Cubit<SpeechState> {
@@ -35,12 +37,13 @@ class SpeechCubit extends Cubit<SpeechState> {
     emit(StartRecordingState());
   }
 
-  doneRecording() async {
+  doneRecording(context ) async {
     recording = false;
 
     await record.stop();
 
     emit(StopRecordingState());
+    showResultBottomSheet(context);
     play();
   }
 

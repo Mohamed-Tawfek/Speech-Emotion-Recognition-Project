@@ -14,7 +14,7 @@ class RecordingWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         SpeechCustomBtn(
-          onTap: () => _doneBtn(cubit),
+          onTap: () => _doneBtn(cubit,context),
           child: const Icon(
             Icons.done,
             size: 60,
@@ -36,7 +36,7 @@ class RecordingWidget extends StatelessWidget {
     cubit.cancelRecording();
   }
 
-  void _doneBtn(SpeechCubit cubit) async {
-    cubit.doneRecording();
+  void _doneBtn(SpeechCubit cubit,context) async {
+    cubit.doneRecording(context);
   }
 }
