@@ -9,7 +9,6 @@ import '../widgets/drawer_of_speech.dart';
 import '../widgets/not_recording_widget.dart';
 import '../widgets/recording_widget.dart';
 
-
 class SpeechScreen extends StatelessWidget {
   SpeechScreen({super.key});
 
@@ -63,17 +62,16 @@ class SpeechScreen extends StatelessWidget {
       ),
     );
   }
-
 }
-showResultBottomSheet(context){
-  showModalBottomSheet(
 
-
-      context: context, builder: (_){
-    return const AnalysisResultScreen();
-  },
-
-      isScrollControlled:true,
-  // useSafeArea: true
-  );
+showResultBottomSheet(context) {
+  showModalBottomSheet
+    (
+      context: context,
+      builder: (_) {
+        return const AnalysisResultScreen();
+      },
+      isScrollControlled: true,
+      barrierColor: const Color(0xffCA4B7F),
+      useSafeArea: true);
 }

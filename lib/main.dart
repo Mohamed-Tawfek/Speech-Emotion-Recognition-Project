@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:speech_emotion_recognition_project/features/history/screens/history_screen.dart';
+import 'package:speech_emotion_recognition_project/features/suggestion/screens/suggestion_screen.dart';
 
-import 'features/settings/screens/settings_screen.dart';
-import 'features/speech/screens/analysis_result_screen.dart';
 import 'features/speech/screens/speech_screen.dart';
 
 void main() {
@@ -30,13 +28,13 @@ class MyApp extends StatelessWidget {
           title: 'SER',
           theme: ThemeData(
               scaffoldBackgroundColor: Colors.white,
-              appBarTheme: AppBarTheme(color: Colors.white)),
+              appBarTheme: const AppBarTheme(color: Colors.white)),
           home: child,
         );
       },
       //  child: const HistoryScreen(),
-     child: SpeechScreen(),
-      //child: AnalysisResultScreen(),
+      child: SpeechScreen(),
+    //  child: SuggestionScreen(),
     );
   }
 }

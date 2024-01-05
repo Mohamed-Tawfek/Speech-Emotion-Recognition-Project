@@ -24,7 +24,7 @@ class NotRecordingWidget extends StatelessWidget {
         SpeechCustomBtn(
           onTap: ()=>_importBtn(cubit),
           child: Image.asset(
-            'assets/icons/import.png',
+            'assets/icons/up-loading.png',
             height: 60,
             width: 60,
           ),
