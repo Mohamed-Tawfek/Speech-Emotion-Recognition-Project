@@ -1,10 +1,11 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/history/screens/history_screen.dart';
 import 'package:speech_emotion_recognition_project/features/speech/widgets/switch_mode_widget.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/suggestion_screen.dart';
 
+import '../../about_us/screens/about_us_screen.dart';
 import '../../settings/screens/settings_screen.dart';
 import 'drawer_components.dart';
 
@@ -67,22 +68,36 @@ class DrawerSpeechScreen extends StatelessWidget {
             SizedBox(
               height: context.deviceHeight * 0.05,
             ),
-            DrawerOption(icon: Icons.account_circle, name: 'Account', onTap: () {
+            DrawerOption(
+                icon: Icons.account_circle,
+                name: 'Account',
+                onTap: () {
+                  Scaffold.of(context).closeDrawer();
 
-              context.push(const SettingsScreen());
-            }),
+                  context.push(const SettingsScreen());
+                }),
             SizedBox(
               height: context.deviceHeight * 0.05,
             ),
             DrawerOption(
-                icon: Icons.lightbulb, name: 'Suggestion',
+                icon: Icons.lightbulb,
+                name: 'Suggestion',
                 onTap: () {
+                  Scaffold.of(context).closeDrawer();
+
                   context.push(const SuggestionScreen());
                 }),
             SizedBox(
               height: context.deviceHeight * 0.05,
             ),
-            DrawerOption(icon: Icons.groups, name: 'About us', onTap: () {}),
+            DrawerOption(
+                icon: Icons.groups,
+                name: 'About us',
+                onTap: () {
+                  Scaffold.of(context).closeDrawer();
+
+                  context.push(const AboutUsScreen());
+                }),
             SizedBox(
               height: context.deviceHeight * 0.05,
             ),
@@ -95,19 +110,16 @@ class DrawerSpeechScreen extends StatelessWidget {
 
   BoxDecoration drawerDecoration() {
     return const BoxDecoration(
-      // gradient: LinearGradient(
-      //   begin: Alignment(-7.43, 0.0),
-      //   end: Alignment(0.0, 0.0),
-      //   colors: [
-      //     Color.fromRGBO(229, 66, 108, 0),
-      //     Color.fromRGBO(229, 66, 108, 0.75),
-      //     Color.fromRGBO(156, 63, 125, 0.75),
-      //   ],
-      //   stops: [-0.0743, 0.4169, 0.9876],
-      // ),
-      color: Color(0xffCA4B7F)
-    );
+        // gradient: LinearGradient(
+        //   begin: Alignment(-7.43, 0.0),
+        //   end: Alignment(0.0, 0.0),
+        //   colors: [
+        //     Color.fromRGBO(229, 66, 108, 0),
+        //     Color.fromRGBO(229, 66, 108, 0.75),
+        //     Color.fromRGBO(156, 63, 125, 0.75),
+        //   ],
+        //   stops: [-0.0743, 0.4169, 0.9876],
+        // ),
+        color: Color(0xffCA4B7F));
   }
 }
-
-
