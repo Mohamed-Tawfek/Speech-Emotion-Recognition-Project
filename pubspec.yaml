@@ -49,6 +49,8 @@ dependencies:
   path_provider: ^2.1.1
   file_picker: ^6.1.1
   lottie: ^2.7.0
+  slide_countdown: ^1.5.0
+  custom_timer: ^0.2.3
 
 
 

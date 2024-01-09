@@ -5,10 +5,15 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 
 class DrawerOption extends StatelessWidget {
   const DrawerOption(
-      {super.key, required this.icon, required this.onTap, required this.name});
+      {super.key,
+      required this.icon,
+      required this.onTap,
+      required this.name,
+      required this.color});
   final String name;
   final Function()? onTap;
   final IconData icon;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,16 +25,18 @@ class DrawerOption extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           // mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon),
+            Icon(
+              icon,
+              color: color,
+              size: 23.sp,
+            ),
             SizedBox(
               width: context.deviceWidth * 0.05,
             ),
             Text(
               name,
               style: TextStyle(
-                  fontSize: 20.sp,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500),
+                  fontSize: 20.sp, color: color, fontWeight: FontWeight.w500),
             )
           ],
         ),
@@ -39,22 +46,38 @@ class DrawerOption extends StatelessWidget {
 }
 
 class BuildDrawerImage extends StatelessWidget {
-  const BuildDrawerImage({super.key, required this.url});
+  const BuildDrawerImage(
+      {super.key, required this.url, this.color = Colors.white});
   final String url;
+  final color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          shape: BoxShape.circle),
+      padding: const EdgeInsetsDirectional.all(2),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: color),
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: CachedNetworkImage(
-        height: context.deviceHeight * 0.15,
-        width: context.deviceWidth * 0.3,
-        imageUrl: url,
-        placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
+      child: CircleAvatar(
+        backgroundImage: NetworkImage(
+          url,
+        ),
+        radius: context.deviceWidth * 0.15,
       ),
     );
+    // return Container(
+    //   decoration: const BoxDecoration(shape: BoxShape.circle),
+    //   clipBehavior: Clip.antiAliasWithSaveLayer,
+    //   child: Center(
+    //     child: CachedNetworkImage(
+    //       height: context.deviceHeight * 0.15,
+    //       width: context.deviceWidth * 0.3,
+    //       fit: BoxFit.cover,
+    //       imageUrl: url,
+    //       placeholder: (context, url) =>
+    //           const Center(child: CircularProgressIndicator()),
+    //       errorWidget: (context, url, error) => const Icon(Icons.error),
+    //     ),
+    //   ),
+    // );
   }
 }
