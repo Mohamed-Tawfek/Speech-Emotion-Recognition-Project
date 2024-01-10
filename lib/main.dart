@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/suggestion_screen.dart';
 
 import 'features/about_us/screens/about_us_screen.dart';
+import 'features/onboarding/screens/onboarding_screen.dart';
 import 'features/speech/screens/speech_screen.dart';
 
 void main() {
@@ -34,8 +35,8 @@ class MyApp extends StatelessWidget {
         );
       },
       //  child: const HistoryScreen(),
-      child: SpeechScreen(),
-     // child: AboutUsScreen(),
+     // child: SpeechScreen(),
+     child: OnBoardingScreen(),
     );
   }
 }

@@ -6,14 +6,10 @@
 #background_image_dark_android: "assets/icons/app_icon.png"
 flutter_native_splash:
   color: "#CA4B7F"
-  image: assets/icons/app_icon.png
+  background_image: assets/icons/app_icon.png
   color_dark: "#121212"
-  image_dark: assets/icons/app_icon.png
 
   android_12:
-    image: assets/icons/app_icon.png
-    icon_background_color: "#CA4B7F"
+    background_image: "#CA4B7F"
     image_dark: assets/icons/app_icon.png
-    icon_background_color_dark: "#CA4B7F"
-
-  web: false
+    background_image_dark: "#CA4B7F"

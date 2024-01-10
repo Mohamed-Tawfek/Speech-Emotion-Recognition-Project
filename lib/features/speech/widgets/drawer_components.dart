@@ -61,7 +61,7 @@ class BuildDrawerImage extends StatelessWidget {
         backgroundImage: NetworkImage(
           url,
         ),
-        radius: context.deviceWidth * 0.15,
+        radius: context.deviceWidth * 0.12,
       ),
     );
     // return Container(

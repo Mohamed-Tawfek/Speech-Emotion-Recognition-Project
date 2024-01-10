@@ -1,41 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-class SwitchLanguageWidget extends StatefulWidget {
-  const SwitchLanguageWidget({super.key});
+import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
+class SwitchLanguageWidget extends StatelessWidget {
+  const SwitchLanguageWidget({super.key,required this.color});
+  final  Color color;
 
   @override
-  State<SwitchLanguageWidget> createState() => _SwitchLanguageWidgetState();
-}
+     Widget build(BuildContext context) {
+      return Padding(
+        padding:  EdgeInsetsDirectional.symmetric(
+            horizontal: context.deviceWidth * 0.01
+        ),      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          leading: Icon(
+            Icons.language,
+            size: 23.sp,
+          ),
+          iconColor: color,
+          collapsedIconColor: color,
 
-class _SwitchLanguageWidgetState extends State<SwitchLanguageWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-      child: ExpansionTile(
-        leading: Icon(
-          Icons.language,
-          size: 23.sp,
+          title: Text(
+            'Language',
+            style: TextStyle(color: color, fontSize: 20.sp),
+          ),
+          children:   <Widget>[
+            LanguagesRadios(color: color),
+          ],
         ),
-        iconColor: Colors.black,
-        collapsedIconColor: Colors.black,
-        title: Text(
-          'Language',
-          style: TextStyle(color: Colors.black, fontSize: 20.sp),
-        ),
-        children: const <Widget>[
-          LanguagesRadios(),
-        ],
       ),
-    );
-  }
+      );
+    }
+
 }
+
+
 
 enum Languages { English, Arabic }
 
 class LanguagesRadios extends StatefulWidget {
-  const LanguagesRadios({super.key});
+  const LanguagesRadios({super.key,required this.color});
+  final  Color color;
 
   @override
   State<LanguagesRadios> createState() => _RadioListTileState();
@@ -50,9 +55,9 @@ class _RadioListTileState extends State<LanguagesRadios> {
     return Column(
       children: <Widget>[
         Theme(
-          data: Theme.of(context).copyWith(dividerColor: Colors.black),
+          data: Theme.of(context).copyWith(dividerColor: widget.color),
           child: RadioListTile<Languages>(
-            activeColor: Colors.black,
+            activeColor: widget.color,
             title: Text(
               'English',
               style: TextStyle(fontSize: textRadiosSize),
@@ -67,7 +72,7 @@ class _RadioListTileState extends State<LanguagesRadios> {
           ),
         ),
         RadioListTile<Languages>(
-          activeColor: Colors.black,
+          activeColor: widget.color,
           title: Text(
             'العربية',
             style: TextStyle(fontSize: textRadiosSize),

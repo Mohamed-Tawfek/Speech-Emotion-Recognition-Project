@@ -14,9 +14,11 @@ class DrawerSpeechScreen extends StatelessWidget {
   const DrawerSpeechScreen({
     super.key,
   });
-  static Color drawerItemsColor = Colors.black;
   @override
   Widget build(BuildContext context) {
+      Color drawerItemsColor = const Color(0xff303030);
+    //  Color drawerItemsColor = Color(0xffcbe9e9);
+
     return Container(
       decoration: drawerDecoration(),
       padding: EdgeInsetsDirectional.only(
@@ -38,15 +40,15 @@ class DrawerSpeechScreen extends StatelessWidget {
             Center(
               child: Text(
                 'Mohamed Tawfek',
-                style: TextStyle(fontSize: 20.sp, color: drawerItemsColor),
+                style: TextStyle(fontSize: 18.sp, color: drawerItemsColor),
               ),
             ),
             SizedBox(
               height: context.deviceHeight * 0.02,
             ),
-            const SwitchModeWidget(),
+              SwitchModeWidget(color:drawerItemsColor ),
             BuildDrawerDivider(drawerItemsColor: drawerItemsColor),
-            const SwitchLanguageWidget(),
+              SwitchLanguageWidget(color:drawerItemsColor),
             BuildDrawerDivider(drawerItemsColor: drawerItemsColor),
             DrawerOption(
                 color: drawerItemsColor,
@@ -59,7 +61,7 @@ class DrawerSpeechScreen extends StatelessWidget {
             BuildDrawerDivider(drawerItemsColor: drawerItemsColor),
             DrawerOption(
                 color: drawerItemsColor,
-                icon: Icons.account_circle,
+                icon: Icons.account_circle_outlined,
                 name: 'Account',
                 onTap: () {
                   Scaffold.of(context).closeDrawer();
@@ -69,7 +71,7 @@ class DrawerSpeechScreen extends StatelessWidget {
             BuildDrawerDivider(drawerItemsColor: drawerItemsColor),
             DrawerOption(
                 color: drawerItemsColor,
-                icon: Icons.lightbulb,
+                icon: Icons.lightbulb_outline,
                 name: 'Suggestion',
                 onTap: () {
                   Scaffold.of(context).closeDrawer();
@@ -111,7 +113,11 @@ class DrawerSpeechScreen extends StatelessWidget {
         //   ],
         //   stops: [-0.0743, 0.4169, 0.9876],
         // ),
-        color: Color(0xffCA4B7F));
+        //color: Color(0xffCA4B7F)
+        color: Colors.white
+      //color: Color(0xff0e1621)
+
+    );
   }
 }
 
@@ -134,7 +140,7 @@ class BuildDrawerDivider extends StatelessWidget {
           padding:
               EdgeInsetsDirectional.only(start: context.deviceWidth * 0.12),
           child: Container(
-            height: 1,
+            height: 0.5,
             color: drawerItemsColor.withOpacity(0.4),
             width: double.infinity,
           ),

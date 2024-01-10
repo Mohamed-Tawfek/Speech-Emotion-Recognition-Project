@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
 class SwitchModeWidget extends StatelessWidget {
-  const SwitchModeWidget({super.key});
+  const SwitchModeWidget({super.key,required this.color});
+final  Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-      child: ExpansionTile(
-        iconColor: Colors.black,
-        collapsedIconColor: Colors.black,
-        leading: Icon(
-          Icons.change_circle,
-          size: 23.sp,
+    return Padding(
+      padding:  EdgeInsetsDirectional.symmetric(
+          horizontal: context.deviceWidth * 0.01
+      ),
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          iconColor: color,
+          collapsedIconColor:color,
+          leading: Icon(
+            Icons.change_circle,
+            size: 23.sp,
+          ),
+          title: Text(
+            'Mode',
+            style: TextStyle(color: color, fontSize: 20.sp),
+          ),
+          children: const <Widget>[
+            ModesRadios(),
+          ],
         ),
-        title: Text(
-          'Mode',
-          style: TextStyle(color: Colors.black, fontSize: 20.sp),
-        ),
-        children: const <Widget>[
-          ModesRadios(),
-        ],
       ),
     );
   }
