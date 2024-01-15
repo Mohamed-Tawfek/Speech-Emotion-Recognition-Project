@@ -1,31 +1,31 @@
-
 import 'package:flutter/material.dart';
 
 class DarkColors {
-  static const primary = Colors.green;
-  static const statusBar = Color(0xff121b22);
-  static const appBar = Color(0xff121b22);
-  static const scaffoldBackground = Color(0xff121b22);
-  static const chatIcon = Color(0xff121b22);
-  static   const chatMsg  = Color(0xff121b22);
+  static const primary = Color(0xffCA4B7F);
 
-  static const btnNavSelectedItem = Colors.green;
-  static const appBarIcon = Colors.green;
-  static const cancelColor = Colors.red;
-  static const searchBarColor = Colors.white;
-  static const textField = Colors.white;
-  static const buttonChild = Colors.white;
-  static const button = Colors.green;
-  static const sendIcon = Colors.green;
-  static   Color? text  = Colors.grey[600];
+  static const appBar = Color(0xff0e1621);
+  static const buttonNavBackgroundColor = Color(0xff0e1621);
+  static const buttonNavColor = Color(0xff1f2936);
+  static const appBarItems = Color(0xffe9e9e9);
 
-  static   Color? listTileChildren  = Colors.white;
+  static const scaffoldColor = Color(0xff0e1621);
 
-  static   Color? ExpansionTileChildrenBackground  = Color(0xff1f2c34);
-  static   Color? ExpansionTileChildren  = Colors.white;
+  static const drawerColor = Color(0xff17212b);
 
-  static  const dangerousBtn  = Colors.red;
+  static const textColor = Color(0xffe9e9e9);
 
-  static   const sendChatBubble  = Colors.green;
-  static     Color? receiveChatBubble  = Colors.grey[200];
+  static Color subtitleColor = Color(0xff708499);
+
+  static Color textFieldColor = Color(0xff242f3d);
+  static Color hintColor = Colors.grey[100]!;
+
+  static Color suffixAndPrefixColor = Colors.grey[100]!;
+
+  static Color textFieldFocusedBorderColor = Colors.grey[100]!;
+  static const textFieldEnabledBorderColor = Colors.transparent;
+  static const textFieldErrorBorderColor = Colors.red;
+  static Color textInFieldColor = Colors.grey[100]!;
+
+  static const onBoardingTitleColor = Color(0xffe9e9e9);
+  static const onBoardingBodyColor =   Color(0xff708499);
 }

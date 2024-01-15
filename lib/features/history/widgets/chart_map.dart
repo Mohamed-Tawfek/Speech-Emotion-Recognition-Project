@@ -1,6 +1,10 @@
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
+
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
 
 class BuildChartMap extends StatelessWidget {
   const BuildChartMap({super.key});
@@ -9,25 +13,25 @@ class BuildChartMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: context.deviceWidth,
-      child: const Center(
+      child:   Center(
         child: Wrap(
           children: [
-            MapItem(text: 'Angery', color: Colors.red),
+            MapItem(text: 'Angery'.tr(), color: Colors.red),
             SizedBox(
               width: 10,
               height: 20,
             ),
-            MapItem(text: 'Happy', color: Colors.yellow),
+            MapItem(text: 'Happy'.tr(), color: Colors.yellow),
             SizedBox(
               width: 10,
               height: 20,
             ),
-            MapItem(text: 'Normal', color: Colors.green),
+            MapItem(text: 'Normal'.tr(), color: Colors.green),
             SizedBox(
               width: 10,
               height: 20,
             ),
-            MapItem(text: 'Sad', color: Colors.purple),
+            MapItem(text: 'Sad'.tr(), color: Colors.purple),
           ],
         ),
       ),
@@ -42,6 +46,8 @@ class MapItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool appMode = LanguagesAndModesCubit.get(context).isDark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -59,7 +65,12 @@ class MapItem extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Text(text),
+            Text(
+              text,
+              style: TextStyle(
+                  color:
+                      appMode ? DarkColors.textColor : LightColors.textColor),
+            ),
           ],
         ),
       ],

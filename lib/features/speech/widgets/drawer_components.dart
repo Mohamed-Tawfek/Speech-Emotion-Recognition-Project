@@ -28,7 +28,7 @@ class DrawerOption extends StatelessWidget {
             Icon(
               icon,
               color: color,
-              size: 23.sp,
+              size: 18.sp,
             ),
             SizedBox(
               width: context.deviceWidth * 0.05,
@@ -36,7 +36,7 @@ class DrawerOption extends StatelessWidget {
             Text(
               name,
               style: TextStyle(
-                  fontSize: 20.sp, color: color, fontWeight: FontWeight.w500),
+                  fontSize: 15.sp, color: color),
             )
           ],
         ),
@@ -47,10 +47,10 @@ class DrawerOption extends StatelessWidget {
 
 class BuildDrawerImage extends StatelessWidget {
   const BuildDrawerImage(
-      {super.key, required this.url, this.color = Colors.white});
+      {super.key, required this.url, this.radius,this.color = Colors.white});
   final String url;
   final color;
-
+final double?radius;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,7 +61,7 @@ class BuildDrawerImage extends StatelessWidget {
         backgroundImage: NetworkImage(
           url,
         ),
-        radius: context.deviceWidth * 0.12,
+        radius:radius?? context.deviceWidth * 0.12,
       ),
     );
     // return Container(

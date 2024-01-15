@@ -1,31 +1,38 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
+import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
+import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
+import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
+import 'package:speech_emotion_recognition_project/features/speech/screens/speech_screen.dart';
+
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/components/custom_btn.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({super.key});
   List<OnBoardingModel> onBoardingItems = [
     OnBoardingModel(
-        title: 'Recognition Emotions',
+        title: 'Emotions Recognition'.tr(),
         body:
-            'It takes sound and images, analyzes them and extracts the current feeling',
+            'It takes speech and analyzes it and extracts the current emotion'.tr(),
         lottiePath: 'assets/lotties/emotions.json'),
     OnBoardingModel(
-        title: 'History',
+        title: 'History'.tr(),
         body:
-            'It creates a history of your own that contains all your feelings over time',
+            'It creates a history of your own that contains all your feelings over time'.tr(),
         lottiePath: 'assets/lotties/saving.json'),
     OnBoardingModel(
-        title: 'Analysis',
+        title: 'Analysis'.tr(),
         body:
-            'It analyzes your history and shows it to you in a simplified way',
+            'It analyzes your history and shows it to you in a simplified way'.tr(),
         lottiePath: 'assets/lotties/barchart.json'),
     OnBoardingModel(
-        title: 'Security',
-        body: 'Don\'t worry, all your data is Protected',
+        title: 'Security'.tr(),
+        body: 'Don\'t worry, all your data is Protected'.tr(),
         lottiePath: 'assets/lotties/security.json'),
   ];
   PageController _pageController = PageController();
@@ -44,8 +51,9 @@ class OnBoardingScreen extends StatelessWidget {
               Expanded(
                 child: PageView.builder(
                   onPageChanged: (int index) {
-                    if (index == onBoardingItems.length - 1) {
+                    if (index == onBoardingItems.length -1) {
                       isLast = true;
+                      print(index);
                     } else {
                       isLast = false;
                     }
@@ -59,6 +67,7 @@ class OnBoardingScreen extends StatelessWidget {
                       title: onBoardingItems[i].title),
                 ),
               ),
+
               SmoothPageIndicator(
                 controller: _pageController,
                 count: onBoardingItems.length,
@@ -69,15 +78,15 @@ class OnBoardingScreen extends StatelessWidget {
                     activeDotColor: Color(0xffCA4B7F)),
               ),
               SizedBox(
-                height: context.deviceHeight * 0.1,
+                height: context.deviceHeight * 0.07,
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: context.deviceHeight * 0.03),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    OnBoardingBtn(
-                      textChild: 'Back',
+                    CustomBtn(
+                      textChild: 'Back'.tr(),
                       onPressed: () {
                         _pageController.previousPage(
                             duration: const Duration(milliseconds: 750),
@@ -85,12 +94,19 @@ class OnBoardingScreen extends StatelessWidget {
                       },
                       hasBackground: false,
                     ),
-                    OnBoardingBtn(
-                      textChild: 'Next',
+                    CustomBtn(
+                      textChild: 'Next'.tr(),
                       onPressed: () {
-                        _pageController.nextPage(
-                            duration: const Duration(milliseconds: 750),
-                            curve: Curves.fastLinearToSlowEaseIn);
+                        if(isLast){
+                          context.push(LoginScreen());
+
+
+                        }else{
+                          _pageController.nextPage(
+                              duration: const Duration(milliseconds: 750),
+                              curve: Curves.fastLinearToSlowEaseIn);
+                        }
+
                       },
                       hasBackground: true,
                     ),
@@ -113,37 +129,6 @@ class OnBoardingModel {
       {required this.title, required this.body, required this.lottiePath});
 }
 
-class OnBoardingBtn extends StatelessWidget {
-  const OnBoardingBtn(
-      {super.key,
-      required this.hasBackground,
-      required this.onPressed,
-      required this.textChild});
-  final void Function()? onPressed;
-  final bool hasBackground;
-  final String textChild;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: context.deviceHeight * 0.08,
-      width: context.deviceWidth * 0.4,
-      decoration: BoxDecoration(
-          color: hasBackground ? const Color(0xffCA4B7F) : null,
-          borderRadius: BorderRadius.circular(30)),
-      child: MaterialButton(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onPressed: onPressed,
-        child: Text(
-          textChild,
-          style: TextStyle(
-              color: hasBackground ? Colors.white : const Color(0xff7180b7),
-              fontSize: 18.sp),
-        ),
-      ),
-    );
-  }
-}
 
 class BuildOnBoardingItems extends StatelessWidget {
   const BuildOnBoardingItems(
@@ -156,15 +141,17 @@ class BuildOnBoardingItems extends StatelessWidget {
   final String body;
   @override
   Widget build(BuildContext context) {
+    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          height: context.deviceHeight * 0.35,
-          width: context.deviceWidth * 0.7,
+          height: context.deviceHeight * 0.4,
+          width: context.deviceWidth * 0.8,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(250),
-            color: Color(0xffCA4B7F),
+            color: const Color(0xffCA4B7F),
           ),
           child: Lottie.asset(
             lottiePath,
@@ -180,7 +167,7 @@ class BuildOnBoardingItems extends StatelessWidget {
           style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,
-              color: const Color(0xff404677)),
+              color: appMode?DarkColors.onBoardingTitleColor:LightColors.onBoardingTitleColor),
         ),
         SizedBox(
           height: context.deviceHeight * 0.03,
@@ -190,7 +177,9 @@ class BuildOnBoardingItems extends StatelessWidget {
               horizontal: context.deviceWidth * 0.1),
           child: Text(
             body,
-            style: TextStyle(fontSize: 15.sp, color: const Color(0xff7180b7)),
+            style: TextStyle(fontSize: 15.sp, color:
+            appMode?DarkColors.onBoardingBodyColor:LightColors.onBoardingBodyColor
+            ),
           ),
         ),
       ],

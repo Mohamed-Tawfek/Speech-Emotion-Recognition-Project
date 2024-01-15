@@ -1,10 +1,14 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/history/controller/history_cubit/history_state.dart';
 
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
 import '../controller/history_cubit/history_cubit.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -17,6 +21,9 @@ class HistoryScreen extends StatelessWidget {
       child: BlocBuilder<HistoryCubit, HistoryState>(
         builder: (context, state) {
           HistoryCubit cubit = HistoryCubit.get(context);
+
+
+          bool appMode=LanguagesAndModesCubit.get(context).isDark;
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(
@@ -25,7 +32,7 @@ class HistoryScreen extends StatelessWidget {
                   context.pop();
                 },
               ),
-              title: const Text('History'),
+              title:   Text('History'.tr()),
               centerTitle: true,
             ),
             body: SafeArea(
@@ -37,32 +44,31 @@ class HistoryScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CurvedNavigationBar(
-                      color: Color(0xffF8EDFA),
-                      backgroundColor: Colors.white,
+                      color: appMode?DarkColors.buttonNavColor: LightColors.buttonNavColor
+                      ,
+                      backgroundColor: appMode?DarkColors.buttonNavBackgroundColor: LightColors.buttonNavBackgroundColor
+                      ,
                       items: <Widget>[
                         Text(
-                          'Day',
+                          'Day'.tr(),
                           style: TextStyle(
                               fontSize: 10.sp,
-                              color: cubit.currentIndex == 0
-                                  ? Color(0xffEF5794)
-                                  : Color(0xffAE10DF)),
+                              color: appMode?DarkColors.textColor: LightColors.textColor
+                          ),
                         ),
                         Text(
-                          'Week',
+                          'Week'.tr(),
                           style: TextStyle(
                               fontSize: 10.sp,
-                              color: cubit.currentIndex == 1
-                                  ? Color(0xffEF5794)
-                                  : Color(0xffAE10DF)),
+                              color: appMode?DarkColors.textColor: LightColors.textColor
+                          ),
                         ),
                         Text(
-                          'Month',
+                          'Month'.tr(),
                           style: TextStyle(
                               fontSize: 10.sp,
-                              color: cubit.currentIndex == 2
-                                  ? Color(0xffEF5794)
-                                  : Color(0xffAE10DF)),
+                              color: appMode?DarkColors.textColor: LightColors.textColor
+                          ),
                         ),
                       ],
                       onTap: (index) {

@@ -1,9 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
 import '../controller/week_cubit/week_cubit.dart';
-import '../model/bar_chart_data.dart';
+import '../models/bar_chart_data.dart';
 import 'chart_map.dart';
 
 class WeeklyAnalysisChart extends StatelessWidget {
@@ -11,50 +15,64 @@ class WeeklyAnalysisChart extends StatelessWidget {
   final WeekCubit cubit;
   @override
   Widget build(BuildContext context) {
+    bool appMode=LanguagesAndModesCubit.get(context).isDark;
     return Column(
       children: [
         SizedBox(
           height: context.deviceHeight * 0.7,
           child: SfCartesianChart(
               enableAxisAnimation: true,
-              primaryXAxis: const CategoryAxis(
+              primaryXAxis:   CategoryAxis(
                 labelStyle: TextStyle(fontSize: 20),
-                title: AxisTitle(text: 'Week'),
+                title: AxisTitle(text: 'Week'.tr(),  textStyle: TextStyle(
+                    color:appMode?DarkColors.textColor: LightColors.textColor
+
+                )),
                 majorGridLines: MajorGridLines(width: 2),
                 majorTickLines: MajorTickLines(width: 0),
               ),
-              primaryYAxis: const NumericAxis(
+              primaryYAxis:   NumericAxis(
                 title: AxisTitle(
-                    text: 'The number of repetitions of the emotion'),
+                    text: 'The number of repetitions of the emotion'.tr(),
+                 textStyle: TextStyle(
+                color:appMode?DarkColors.textColor: LightColors.textColor
+
+                )
+                ),
               ),
-              title: const ChartTitle(text: 'Weekly Emotions Analysis'),
+              title:   ChartTitle(text: 'Weekly Emotions Analysis'.tr(),
+                  textStyle: TextStyle(
+                      color:appMode?DarkColors.textColor: LightColors.textColor
+
+                  )
+              ),
               series: <CartesianSeries>[
                 ColumnSeries<BarChartData, String>(
                     color: Colors.yellow,
                     dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
-                        data.barTitle.toString(),
+                        data.barTitle.toString().tr(),
                     yValueMapper: (BarChartData data, _) => data.happy),
                 ColumnSeries<BarChartData, String>(
 
                     color: Colors.red,
                     dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
-                        data.barTitle.toString(),
+                        data.barTitle.toString().tr(),
                     yValueMapper: (BarChartData data, _) =>
                     data.angery),
                 ColumnSeries<BarChartData, String>(
                     color: Colors.green,
                     dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
-                        data.barTitle.toString(),
+                        data.barTitle.toString().tr(),
                     yValueMapper: (BarChartData data, _) =>
                     data.normal),
                 ColumnSeries<BarChartData, String>(
                     color: Colors.purpleAccent,
                     dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
-                        data.barTitle.toString(),
+                        data.barTitle.toString().tr(),
                     yValueMapper: (BarChartData data, _) => data.sad),
               ]),
         ),

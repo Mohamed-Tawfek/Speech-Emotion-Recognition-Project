@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../model/bar_chart_data.dart';
+import '../../models/bar_chart_data.dart';
 
 part 'month_state.dart';
 

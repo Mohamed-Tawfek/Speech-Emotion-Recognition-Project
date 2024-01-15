@@ -1,41 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speech_emotion_recognition_project/features/speech/widgets/speech_custom_btn.dart';
 
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
 import '../controller/speech_cubit.dart';
 
 class NotRecordingWidget extends StatelessWidget {
-  const NotRecordingWidget ({super.key});
+  const NotRecordingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final SpeechCubit cubit = SpeechCubit.get(context);
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        SpeechCustomBtn(
-          onTap: () => _micBtn(cubit),
-          child: Image.asset(
-            'assets/icons/mic.png',
-            height: 60,
-            width: 60,
-          ),
-        ),
-        SpeechCustomBtn(
-          onTap: ()=>_importBtn(cubit),
-          child: Image.asset(
-            'assets/icons/up-loading.png',
-            height: 60,
-            width: 60,
-          ),
-        ),
-      ],
+    return BlocBuilder<LanguagesAndModesCubit, LanguagesAndModeScubitState>(
+      builder: (context, state) {
+        final SpeechCubit cubit = SpeechCubit.get(context);
+        bool appMode = LanguagesAndModesCubit.get(context).isDark;
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SpeechCustomBtn(
+              onTap: () => _micBtn(cubit),
+              child: Icon(
+                Icons.mic,
+                size: 60,
+                color: appMode
+                    ? DarkColors.scaffoldColor
+                    : LightColors.scaffoldColor,
+              ),
+            ),
+            SpeechCustomBtn(
+              onTap: () => _importBtn(cubit, context),
+              child: Icon(
+                Icons.file_upload_rounded,
+                size: 60,
+                color: appMode
+                    ? DarkColors.scaffoldColor
+                    : LightColors.scaffoldColor,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
+
   void _micBtn(SpeechCubit cubit) async {
     cubit.startRecording();
   }
-  void _importBtn(SpeechCubit cubit) {
-    cubit.import();
+
+  void _importBtn(SpeechCubit cubit, BuildContext context) {
+    cubit.import(context);
   }
 }

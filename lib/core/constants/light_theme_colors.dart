@@ -1,29 +1,45 @@
 import 'package:flutter/material.dart';
 
 class LightColors {
-  static const primary = Colors.green;
-  static const statusBar = Colors.white;
+  static const primary = Color(0xffCA4B7F);
+
   static const appBar = Colors.white;
-  static const scaffoldBackground = Colors.white;
-  static const btnNavSelectedItem = Colors.green;
-  static const appBarIcon = Colors.green;
-  static const cancelColor = Colors.red;
-  static const textField = Colors.black;
-  static const text = Colors.black;
-  static const ExpansionTileChildren = Colors.black;
-  static   Color? ExpansionTileChildrenBackground  = Colors.grey[100];
-  static const buttonChild = Colors.white;
-  static const button = Colors.green;
-  static   Color? listTileChildren  = Colors.black;
-  static   const dangerousBtn  = Colors.red;
+  static const buttonNavBackgroundColor = Colors.white;
+  static const buttonNavColor =  Color(0xffF8EDFA);
 
-  static   const chatIcon  = Colors.white;
+  static const drawerColor = Colors.white;
 
-  static   const sendChatBubble  = Colors.green;
-  static     Color? receiveChatBubble  = Colors.grey[100];
+  static const appBarItems = Colors.black;
 
-  static   const chatMsg  = Colors.black;
-  static const sendIcon = Colors.green;
+  static const scaffoldColor = Colors.white;
+  static Color hintColor = Colors.black54;
+
+
+  static const textColor = Colors.black;
+
+  static  Color  subtitleColor = Colors.grey[600]!;
+
+  static Color textFieldColor = Colors.grey[100]!;
+
+  static const suffixAndPrefixColor = Colors.black54;
+
+  static const textFieldFocusedBorderColor = Colors.black;
+  static const textFieldEnabledBorderColor =  Colors.transparent;
+  static const textFieldErrorBorderColor = Colors.red;
+  static const textInFieldColor = Colors.black54;
+  static const onBoardingTitleColor = Color(0xff404677);
+  static const onBoardingBodyColor =   Color(0xff7180b7);
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

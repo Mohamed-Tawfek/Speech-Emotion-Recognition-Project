@@ -1,13 +1,22 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:speech_emotion_recognition_project/core/components/custom_btn.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/thanks_screen.dart';
+
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
 
 class SuggestionScreen extends StatelessWidget {
   const SuggestionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+
     return Scaffold(
       appBar: AppBar(),
       body: Container(
@@ -21,6 +30,9 @@ class SuggestionScreen extends StatelessWidget {
               child: TextFormField(
                 maxLength: 100,
                 maxLines: 10,
+                style: TextStyle(
+                  color:appMode?DarkColors.textInFieldColor: LightColors.textInFieldColor
+                ),
                 decoration:   InputDecoration(
 
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
@@ -29,27 +41,10 @@ class SuggestionScreen extends StatelessWidget {
             SizedBox(
               height: context.deviceHeight * 0.05,
             ),
-            Container(
-              margin: EdgeInsetsDirectional.only(
-                bottom: context.deviceHeight * 0.03,
-                start: context.deviceWidth * 0.1,
-                end: context.deviceWidth * 0.1,
-              ),
-              width: context.deviceWidth,
-              child: MaterialButton(
-                onPressed:()=> _sendBtn(context),
-                color: const Color(0xffCA4B7F),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.symmetric(
-                    vertical: context.deviceHeight * 0.01,
-                  ),
-                  child: Text(
-                    'Send',
-                    style: TextStyle(fontSize: 20.sp, color: Colors.white),
-                  ),
-                ),
-              ),
-            )
+
+            CustomBtn(hasBackground: true, onPressed:()=> _sendBtn(context), textChild: 'Send'.tr())
+
+
           ],
         ),
       ),
@@ -61,6 +56,7 @@ class SuggestionScreen extends StatelessWidget {
 
   }
   showThanksBottomSheet(context) {
+    Navigator.pop(context);
     showModalBottomSheet
       (
         context: context,

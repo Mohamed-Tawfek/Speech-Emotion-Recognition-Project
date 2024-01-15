@@ -1,29 +1,37 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
+
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
 
 class ThanksScreen extends StatelessWidget {
   const ThanksScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: const Text(''),
-        backgroundColor: const Color(0xffCA4B7F),
+    bool appMode=LanguagesAndModesCubit.get(context).isDark;
 
-      ),
+    return Scaffold(
+       appBar: AppBar(
+       systemOverlayStyle: SystemUiOverlayStyle(
+         statusBarColor:appMode?DarkColors.scaffoldColor: LightColors.scaffoldColor
+       ),
+       ),
       body: Padding(
-        padding: EdgeInsetsDirectional.only(top: context.deviceHeight * 0.05),
+        padding: EdgeInsetsDirectional.only(
+          top: context.deviceHeight * 0.05,
+        ),
         child: Column(
           children: [
-            Center(
-              child: Lottie.asset('assets/lotties/thank_you.json',
-                    height: context.deviceHeight * 0.4,
-                  width: context.deviceWidth * 0.8),
+            Lottie.asset(
+              'assets/lotties/thanks.json',
+              fit: BoxFit.cover,
             ),
-
             const Spacer(),
             Container(
               margin: EdgeInsetsDirectional.only(
@@ -42,8 +50,9 @@ class ThanksScreen extends StatelessWidget {
                     vertical: context.deviceHeight * 0.01,
                   ),
                   child: Text(
-                    'Done',
-                    style: TextStyle(fontSize: 20.sp, color: Colors.white),
+                    'Done'.tr(),
+                    style: TextStyle(fontSize: 20.sp,
+                        color: appMode?DarkColors.scaffoldColor: LightColors.scaffoldColor),
                   ),
                 ),
               ),
@@ -53,5 +62,4 @@ class ThanksScreen extends StatelessWidget {
       ),
     );
   }
-
 }

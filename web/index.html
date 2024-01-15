@@ -38,6 +38,28 @@
   <script src="flutter.js" defer=""></script>
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   
   
@@ -62,8 +84,7 @@
       margin: 0;
       min-height: 100%;
       background-color: #CA4B7F;
-      background-image: url("splash/img/light-background.png");
-      background-size: 100% 100%;
+          background-size: 100% 100%;
     }
 
     .center {
@@ -111,12 +132,6 @@
       bottom: 0;
       right: 0;
     }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #121212;
-          }
-    }
   </style>
   <script id="splash-screen-script">
     function removeSplashFromWeb() {
@@ -127,6 +142,18 @@
   </script>
 </head>
 <body>
+  <picture id="splash">
+      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>
+  
+  
+  
+  
+  
+  
+  
   
   
   <script>

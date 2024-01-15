@@ -1,15 +1,33 @@
 #flutter_native_splash:
 #  color: "#CA4B7F"
+#  background_image: "assets/icons/app_icon.png"
+#  background_image_dark: "assets/icons/app_icon.png"
 #  android_12:
 #   color: "#CA4B7F"
-#background_image_android: "assets/icons/app_icon.png"
-#background_image_dark_android: "assets/icons/app_icon.png"
-flutter_native_splash:
-  color: "#CA4B7F"
-  background_image: assets/icons/app_icon.png
-  color_dark: "#121212"
+#   background_image: "assets/icons/app_icon.png"
+#   background_image_dark: "assets/icons/app_icon.png"
 
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: true
+  image: assets/icons/app_icon.png
+  color: "#CA4B7F"
   android_12:
-    background_image: "#CA4B7F"
-    image_dark: assets/icons/app_icon.png
-    background_image_dark: "#CA4B7F"
+   color: "#CA4B7F"
+   background_image: assets/icons/app_icon.png
+
+#flutter_native_splash:
+#  background_image_android: assets/icons/app_icon.png
+#  background_image_dark_android: assets/icons/app_icon.png
+#  background_image_ios: assets/icons/app_icon.png
+#  background_image_dark_ios: assets/icons/app_icon.png
+#  background_image_web: assets/icons/app_icon.png
+#  background_image_dark_web: assets/icons/app_icon.png
+#  color_android: "#CA4B7F"
+#  color_dark_android: "#CA4B7F"
+#  color_ios: "#CA4B7F"
+#  color_dark_ios: "#CA4B7F"
+#  color_web: "#CA4B7F"
+#  color_dark_web: "#CA4B7F"

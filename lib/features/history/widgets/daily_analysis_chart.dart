@@ -1,17 +1,27 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../model/bar_chart_data.dart';
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
+import '../models/bar_chart_data.dart';
+
 
 class DailyAnalysisChart extends StatelessWidget {
   const DailyAnalysisChart({super.key, required this.dataSource});
   final List<PieChartData>? dataSource;
   @override
   Widget build(BuildContext context) {
-    return SfCircularChart(
-        title:   ChartTitle(text: 'Daily Emotions Analysis',
 
+    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+
+    return SfCircularChart(
+        title:   ChartTitle(text: 'Daily Emotions Analysis'.tr(),
+ textStyle: TextStyle(
+   color:appMode?DarkColors.textColor: LightColors.textColor
+
+ )
         ),
 
         series: <CircularSeries>[

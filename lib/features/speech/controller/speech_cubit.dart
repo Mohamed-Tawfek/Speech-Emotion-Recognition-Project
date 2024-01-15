@@ -64,13 +64,14 @@ class SpeechCubit extends Cubit<SpeechState> {
     path = tempDir.path;
   }
 
-  import() async {
+  import(context) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
       File file = File(result.files.single.path!);
       path = file.path;
       play();
+      showResultBottomSheet(context);
     } else {
       // User canceled the picker
     }

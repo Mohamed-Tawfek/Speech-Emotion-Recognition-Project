@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
 import '../controller/month_cubit/month_cubit.dart';
 
 class BuildSelectionBar extends StatelessWidget {
@@ -42,6 +45,8 @@ class SelectionBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+
     return InkWell(
       onTap: () {
         MonthCubit.get(context).changeSelectionInMonth(number);
@@ -49,7 +54,7 @@ class SelectionBtn extends StatelessWidget {
       child: Container(
           padding: const EdgeInsetsDirectional.all(10),
           decoration: BoxDecoration(
-              color: isChosen ? const Color(0xffEF5794) : Colors.grey[100],
+              color: isChosen ? const Color(0xffEF5794) : appMode?DarkColors.buttonNavColor: LightColors.buttonNavColor,
               borderRadius: BorderRadius.circular(5)),
           child: Text(
             number.toString(),

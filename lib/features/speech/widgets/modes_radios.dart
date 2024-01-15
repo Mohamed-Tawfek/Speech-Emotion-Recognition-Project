@@ -1,32 +1,49 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
+
 class SwitchModeWidget extends StatelessWidget {
-  const SwitchModeWidget({super.key,required this.color});
-final  Color color;
+  const SwitchModeWidget({super.key, required this.color});
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
+    bool appMode = LanguagesAndModesCubit.get(context).isDark;
+
     return Padding(
-      padding:  EdgeInsetsDirectional.symmetric(
-          horizontal: context.deviceWidth * 0.01
-      ),
+      padding: EdgeInsetsDirectional.symmetric(
+          horizontal: context.deviceWidth * 0.01),
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
+          childrenPadding: const EdgeInsetsDirectional.all(0),
+          tilePadding: EdgeInsetsDirectional.symmetric(
+              horizontal: context.deviceWidth * 0.05),
           iconColor: color,
-          collapsedIconColor:color,
+          collapsedIconColor: color,
           leading: Icon(
             Icons.change_circle,
-            size: 23.sp,
+            size: 18.sp,
+          ),
+          subtitle: Text(
+            appMode?'Dark':'Light',
+            style: TextStyle(
+                color: appMode
+                    ? DarkColors.subtitleColor
+                    : LightColors.subtitleColor,
+                fontSize: 10.sp),
           ),
           title: Text(
-            'Mode',
-            style: TextStyle(color: color, fontSize: 20.sp),
+            'Mode'.tr(),
+            style: TextStyle(color: color, fontSize: 15.sp),
           ),
           children: const <Widget>[
-            ModesRadios(),
+            ModesRadios(color: Color(0xffCA4B7F)),
           ],
         ),
       ),
@@ -37,48 +54,60 @@ final  Color color;
 enum Modes { Dark, Light }
 
 class ModesRadios extends StatefulWidget {
-  const ModesRadios({super.key});
-
+  const ModesRadios({super.key, required this.color});
+  final Color color;
   @override
   State<ModesRadios> createState() => _ModesRadiosState();
 }
 
 class _ModesRadiosState extends State<ModesRadios> {
-  Modes _character = Modes.Light;
   @override
   Widget build(BuildContext context) {
-    double textRadiosSize = 15.sp;
+    double textRadiosSize = 12.sp;
+    bool appMode = LanguagesAndModesCubit.get(context).isDark;
+    Modes character = LanguagesAndModesCubit.get(context).isDark
+        ? Modes.Dark
+        : Modes.Light;
 
     return Column(
       children: <Widget>[
         Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.black),
           child: RadioListTile<Modes>(
-            activeColor: Colors.black,
+            activeColor: widget.color,
             title: Text(
-              'Light',
-              style: TextStyle(fontSize: textRadiosSize),
+              'Light'.tr(),
+              style: TextStyle(
+                  fontSize: textRadiosSize,
+                  color:
+                      appMode ? DarkColors.textColor : LightColors.textColor),
             ),
             value: Modes.Light,
-            groupValue: _character,
+            groupValue: character,
             onChanged: (Modes? value) {
+              LanguagesAndModesCubit.get(context).changeAppMode();
+
               setState(() {
-                _character = value!;
+                character = value!;
               });
             },
           ),
         ),
         RadioListTile<Modes>(
-          activeColor: Colors.black,
+          activeColor: widget.color,
           title: Text(
-            'Dark',
-            style: TextStyle(fontSize: textRadiosSize),
+            'Dark'.tr(),
+            style: TextStyle(
+                fontSize: textRadiosSize,
+                color: appMode ? DarkColors.textColor : LightColors.textColor),
           ),
           value: Modes.Dark,
-          groupValue: _character,
+          groupValue: character,
           onChanged: (Modes? value) {
+            LanguagesAndModesCubit.get(context).changeAppMode();
+
             setState(() {
-              _character = value!;
+              character = value!;
             });
           },
         ),

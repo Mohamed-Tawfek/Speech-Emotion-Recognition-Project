@@ -5,7 +5,6 @@ import 'package:speech_emotion_recognition_project/features/history/controller/w
 import 'package:speech_emotion_recognition_project/features/history/widgets/chart_map.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../model/bar_chart_data.dart';
 import '../widgets/weekly_analysis_chart.dart';
 
 class WeeklyAnalysisScreen extends StatelessWidget {

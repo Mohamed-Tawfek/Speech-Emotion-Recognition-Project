@@ -1,25 +1,29 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
+
+import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
 
 class AboutUsScreen extends StatelessWidget {
   const AboutUsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    bool appMode = LanguagesAndModesCubit.get(context).isDark;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'About us',
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          'About us'.tr(),
         ),
         leading: IconButton(
-          onPressed: ()=>context.pop(),
-          color: Colors.white,
+          onPressed: () => context.pop(),
+
           icon: const Icon(Icons.arrow_back_ios),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xffCA4B7F),
       ),
       body: SizedBox(
         width: context.deviceWidth,
@@ -51,77 +55,151 @@ class AboutUsScreen extends StatelessWidget {
                 SizedBox(
                   height: context.deviceHeight * 0.02,
                 ),
+                if(!LanguagesAndModesCubit.get(context).isArabic)
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: context.deviceWidth * 0.04),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('Our Team',
+                    child: Text('Our Team'.tr(),
                         style: TextStyle(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black)),
+                            color: appMode
+                                ? DarkColors.textColor
+                                : LightColors.textColor)),
                   ),
                 ),
-                SizedBox(
+                if(LanguagesAndModesCubit.get(context).isArabic)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.deviceWidth * 0.04),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text('Our Team'.tr(),
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              color: appMode
+                                  ? DarkColors.textColor
+                                  : LightColors.textColor)),
+                    ),
+                  ),
+
+
+
+                  SizedBox(
                   height: context.deviceHeight * 0.03,
                 ),
-                Wrap(
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const TeamMemberWidget(
-                      name: 'Mohamed Tawfek',
+                    TeamMemberWidget(
+                      name: 'Mohamed Tawfek'.tr(),
                       imagePath: 'assets/images/tawfek.jpg',
-                      job: 'Flutter Developer',
+                      job: 'Flutter Developer'.tr(),
                     ),
                     _buildDivider(context),
-                    const TeamMemberWidget(
-                      name: 'Nourhan Gamal',
+                    TeamMemberWidget(
+                      name: 'Nourhan Gamal'.tr(),
                       imagePath: 'assets/images/woman.png',
-                      job: 'Machine Learning\n Engineer',
+                      job: 'Machine Learning\n Engineer'.tr(),
                     ),
                     _buildDivider(context),
-                    const TeamMemberWidget(
-                      name: 'Nourhan Hassan',
+                    TeamMemberWidget(
+                      name: 'Nourhan Hassan'.tr(),
                       imagePath: 'assets/images/woman.png',
-                      job: 'Machine Learning\n Engineer',
-                    ),
-                    _buildDivider(context),
-                    const TeamMemberWidget(
-                      name: 'Mohamed Ahmed',
-                      imagePath: 'assets/images/mashoour.jpg',
-                      job: 'Node js Developer',
-                    ),
-                    _buildDivider(context),
-                    const TeamMemberWidget(
-                      name: 'Somia saad',
-                      imagePath: 'assets/images/woman.png',
-                      job: 'Node js Developer',
-                    ),
-                    _buildDivider(context),
-                    const TeamMemberWidget(
-                      name: 'Shahd Bahgat',
-                      imagePath: 'assets/images/woman.png',
-                      job: 'UI Designer',
-                    ),
-                    _buildDivider(context),
-                    const TeamMemberWidget(
-                      name: 'Shahd Allam',
-                      imagePath: 'assets/images/woman.png',
-                      job: 'Documentation\n Writer',
-                    ),
-                    _buildDivider(context),
-                    const TeamMemberWidget(
-                      name: 'Mohamed Saeed',
-                      imagePath: 'assets/images/saeed.jpg',
-                      job: 'React Developer',
-                    ),
-                    _buildDivider(context),
-                    const TeamMemberWidget(
-                      name: 'Ziad Ahmed',
-                      imagePath: 'assets/images/ziad.jpg',
-                      job: 'React Developer',
+                      job: 'Machine Learning\n Engineer'.tr(),
                     ),
                   ],
+                ),
+                _buildDivider(context),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TeamMemberWidget(
+                      name: 'Mohamed Ahmed'.tr(),
+                      imagePath: 'assets/images/mashoour.jpg',
+                      job: 'Node js Developer'.tr(),
+                    ),
+                    _buildDivider(context),
+                    TeamMemberWidget(
+                      name: 'Somia saad'.tr(),
+                      imagePath: 'assets/images/woman.png',
+                      job: 'Node js Developer'.tr(),
+                    ),
+                    _buildDivider(context),
+                    TeamMemberWidget(
+                      name: 'Shahd Bahgat'.tr(),
+                      imagePath: 'assets/images/woman.png',
+                      job: 'UI Designer'.tr(),
+                    ),
+                  ],
+                ),
+                _buildDivider(context),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                      TeamMemberWidget(
+                      name: 'Shahd Allam'.tr(),
+                      imagePath: 'assets/images/woman.png',
+                      job: 'Documentation\n Writer'.tr(),
+                    ),
+                    _buildDivider(context),
+                      TeamMemberWidget(
+                      name: 'Mohamed Saeed'.tr(),
+                      imagePath: 'assets/images/saeed.jpg',
+                      job: 'React Developer'.tr(),
+                    ),
+                    _buildDivider(context),
+                      TeamMemberWidget(
+                      name: 'Ziad Ahmed'.tr(),
+                      imagePath: 'assets/images/ziad.jpg',
+                      job: 'React Developer'.tr(),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: context.deviceHeight * 0.05,
+                ),
+                if(!LanguagesAndModesCubit.get(context).isArabic)
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: context.deviceWidth * 0.03),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('About App'.tr(),
+
+                        style: TextStyle(
+                            fontSize: 20.sp,
+
+                            fontWeight: FontWeight.bold,
+                            color: appMode
+                                ? DarkColors.textColor
+                                : LightColors.textColor)),
+                  ),
+                ),
+
+
+                if(LanguagesAndModesCubit.get(context).isArabic)
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: context.deviceWidth * 0.03),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text('About App'.tr(),
+
+                        style: TextStyle(
+                            fontSize: 20.sp,
+
+                            fontWeight: FontWeight.bold,
+                            color: appMode
+                                ? DarkColors.textColor
+                                : LightColors.textColor)),
+                  ),
                 ),
                 SizedBox(
                   height: context.deviceHeight * 0.02,
@@ -131,27 +209,13 @@ class AboutUsScreen extends StatelessWidget {
                       horizontal: context.deviceWidth * 0.03),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('About App',
-                        style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black)),
-                  ),
-                ),
-                SizedBox(
-                  height: context.deviceHeight * 0.01,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: context.deviceWidth * 0.03),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
                     child: Text(
-                        'In this application, we help psychiatrists monitor the condition of their patients remotely and show them detailed statistics about their patients’ psychological condition at every moment.',
+                        'In this application, we help psychiatrists monitor the condition of their patients remotely and show them detailed statistics about their patients’ psychological condition at every moment.'.tr(),
                         style: TextStyle(
                             fontSize: 20.sp,
-
-                            color: Colors.black)),
+                            color: appMode
+                                ? DarkColors.textColor
+                                : LightColors.textColor)),
                   ),
                 ),
               ],
@@ -164,7 +228,7 @@ class AboutUsScreen extends StatelessWidget {
 
   SizedBox _buildDivider(BuildContext context) {
     return SizedBox(
-      height: context.deviceHeight * 0.21,
+      height: context.deviceHeight * 0.04,
       width: context.deviceWidth * 0.02,
     );
   }
@@ -182,6 +246,7 @@ class TeamMemberWidget extends StatelessWidget {
   final String job;
   @override
   Widget build(BuildContext context) {
+    bool appMode = LanguagesAndModesCubit.get(context).isDark;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -202,12 +267,17 @@ class TeamMemberWidget extends StatelessWidget {
         ),
         Text(
           name,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: appMode ? DarkColors.textColor : LightColors.textColor),
         ),
         Text(
           job,
           textAlign: TextAlign.center,
-          style: const TextStyle(color: Colors.grey),
+          style: TextStyle(
+              color: appMode
+                  ? DarkColors.subtitleColor
+                  : LightColors.subtitleColor),
         ),
       ],
     );

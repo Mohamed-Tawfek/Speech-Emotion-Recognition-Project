@@ -52,6 +52,9 @@ dependencies:
   slide_countdown: ^1.5.0
   custom_timer: ^0.2.3
   smooth_page_indicator: ^1.1.0
+  image_picker: ^1.0.7
+  quickalert: ^1.0.2
+  easy_localization: ^3.0.3
 
 
 
@@ -84,6 +87,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/lotties/
+    - assets/langs/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
