@@ -1,9 +1,7 @@
  import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../core/constants/dark_theme_colors.dart';
-import '../core/constants/light_theme_colors.dart';
 
 
 ThemeData getDarkTheme() {
@@ -11,7 +9,7 @@ ThemeData getDarkTheme() {
       appBarTheme: AppBarTheme(
           color: DarkColors.appBar,
           surfaceTintColor: DarkColors.scaffoldColor ,
-          systemOverlayStyle: SystemUiOverlayStyle(
+          systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: DarkColors.scaffoldColor,
               statusBarBrightness: Brightness.light,
             statusBarIconBrightness: Brightness.light,

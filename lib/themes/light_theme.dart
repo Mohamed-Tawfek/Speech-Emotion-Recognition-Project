@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:speech_emotion_recognition_project/Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
-
 import '../core/constants/light_theme_colors.dart';
 
 ThemeData getLightTheme() {
   return ThemeData(
     appBarTheme: AppBarTheme(
       color: LightColors.appBar,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: LightColors.scaffoldColor,
           statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.dark,
@@ -17,7 +15,7 @@ ThemeData getLightTheme() {
         centerTitle: true,
         surfaceTintColor: LightColors.scaffoldColor ,
 
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
         color: LightColors.appBarItems
       ),
       titleTextStyle: TextStyle(

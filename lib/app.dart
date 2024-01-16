@@ -6,28 +6,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/features/onboarding/screens/onboarding_screen.dart';
 import 'package:speech_emotion_recognition_project/themes/dark_theme.dart';
 import 'package:speech_emotion_recognition_project/themes/light_theme.dart';
-
-import 'Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
-import 'features/setup_settings/screens/setup_settings.dart';
+import 'Languages_and_modes_controller/mode_scubit_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     context.deleteSaveLocale();
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => LanguagesAndModesCubit(),
-
-
-        ),
-
-      ],
-      child: BlocBuilder<LanguagesAndModesCubit, LanguagesAndModeScubitState>(
+    return BlocProvider(
+      create: (context) => AppModeCubit(),
+      child: BlocBuilder<AppModeCubit, AppModeState>(
         builder: (context, state) {
           return ScreenUtilInit(
             designSize: const Size(360, 690),
@@ -38,9 +27,7 @@ class MyApp extends StatelessWidget {
                 DeviceOrientation.portraitUp,
               ]);
 
-              final appMode = LanguagesAndModesCubit
-                  .get(context)
-                  .isDark;
+              final appMode = AppModeCubit.get(context).isDark;
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 localizationsDelegates: context.localizationDelegates,
@@ -53,11 +40,7 @@ class MyApp extends StatelessWidget {
               );
             },
             //  child: const HistoryScreen(),
-            child: BlocBuilder<LanguagesAndModesCubit, LanguagesAndModeScubitState>(
-              builder: (context, state) {
-                return OnBoardingScreen();
-              },
-            ),
+            child: OnBoardingScreen(),
             // child: OnBoardingScreen(),
           );
         },

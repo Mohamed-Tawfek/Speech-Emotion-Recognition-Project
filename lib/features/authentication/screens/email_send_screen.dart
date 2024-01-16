@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 
@@ -16,7 +16,7 @@ class SendEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode = LanguagesAndModesCubit.get(context).isDark;
+    bool appMode = AppModeCubit.get(context).isDark;
     return Scaffold(
 
       body: SafeArea(
@@ -77,7 +77,7 @@ class SendEmailScreen extends StatelessWidget {
                     height: context.deviceHeight * 0.08,
                     width: context.deviceWidth,
                     decoration: BoxDecoration(
-                        color: const Color(0xffCA4B7F),
+                        color: appMode?DarkColors.primary:LightColors.primary,
                         borderRadius: BorderRadius.circular(30)),
                     child: MaterialButton(
                       splashColor: Colors.transparent,
@@ -111,7 +111,7 @@ class SendEmailScreen extends StatelessWidget {
                           child: Text(
                             'Resend'.tr(),
                             style: TextStyle(
-                                fontSize: 13.sp, color: Color(0xffCA4B7F)),
+                                fontSize: 13.sp, color:  appMode?DarkColors.primary:LightColors.primary),
                           ))
                     ],
                   )

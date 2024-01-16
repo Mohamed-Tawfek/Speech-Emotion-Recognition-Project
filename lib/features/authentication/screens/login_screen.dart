@@ -2,7 +2,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:speech_emotion_recognition_project/Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import 'package:speech_emotion_recognition_project/Languages_and_modes_controller/mode_scubit_cubit.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
     return Scaffold(
       // backgroundColor: Color(0xff0e1621),
       body: Padding(

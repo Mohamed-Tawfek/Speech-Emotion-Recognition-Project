@@ -6,14 +6,12 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
 import 'package:speech_emotion_recognition_project/features/history/screens/history_screen.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/suggestion_screen.dart';
-
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../../about_us/screens/about_us_screen.dart';
 import '../../account/screens/account_screen.dart';
 import 'drawer_components.dart';
-import 'languages_ratios.dart';
 import 'modes_radios.dart';
 
 class DrawerSpeechScreen extends StatelessWidget {
@@ -22,9 +20,9 @@ class DrawerSpeechScreen extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LanguagesAndModesCubit, LanguagesAndModeScubitState>(
+    return BlocBuilder<AppModeCubit, AppModeState>(
       builder: (context, state) {
-         bool appMode = LanguagesAndModesCubit.get(context).isDark;
+         bool appMode = AppModeCubit.get(context).isDark;
         // Color drawerItemsColor = const Color(0xff303030);
         // Color drawerItemsColor = const Color(0xff7180b7);
         Color drawerItemsColor =
@@ -137,7 +135,7 @@ class DrawerSpeechScreen extends StatelessWidget {
   }
 
   BoxDecoration drawerDecoration(context) {
-    bool appMode = LanguagesAndModesCubit.get(context).isDark;
+    bool appMode = AppModeCubit.get(context).isDark;
 
     return BoxDecoration(
         // gradient: LinearGradient(
@@ -152,7 +150,7 @@ class DrawerSpeechScreen extends StatelessWidget {
         // ),
         //color: Color(0xffCA4B7F)
         color: appMode ? DarkColors.drawerColor : LightColors.drawerColor,
-        borderRadius: BorderRadiusDirectional.only(
+        borderRadius: const BorderRadiusDirectional.only(
             topEnd: Radius.circular(30), bottomEnd: Radius.circular(30))
         //color: Color(0xff0e1621)
 

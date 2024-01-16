@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +7,7 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 import 'package:speech_emotion_recognition_project/features/account/controller/account_cubit.dart';
 import 'package:speech_emotion_recognition_project/features/account/screens/change_account_info.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../../speech/widgets/drawer_components.dart';
@@ -21,7 +20,7 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
     return BlocProvider(
       create: (context) => AccountCubit(),
       child: Scaffold(
@@ -57,7 +56,7 @@ color: appMode?DarkColors.textColor: Colors.white
                   children: [
                     const BuildDrawerImage(
                       url:
-                      'https://media.licdn.com/dms/image/D4D03AQHXhxY0x4KXAQ/profile-displayphoto-shrink_800_800/0/1699261753374?e=1709769600&v=beta&t=4ZTxMXQx0vyxZAoGdB6GI8hCUMTr-_yC0gvT6kpO6Eo',
+                      'https://firebasestorage.googleapis.com/v0/b/social-app-c6d04.appspot.com/o/%D9%A2%D9%A0%D9%A2%D9%A1%D9%A0%D9%A2%D9%A2%D9%A2_%D9%A1%D9%A4%D9%A2%D9%A1%D9%A4%D9%A8.jpg?alt=media&token=91863248-968c-4abe-934f-da04f3cce306',
                     )      ,              SizedBox(
                       height: context.deviceHeight * 0.01,
                     ),
@@ -104,7 +103,7 @@ class SettingsOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
 
     return Container(
       height: context.deviceHeight * 0.65,
@@ -113,7 +112,7 @@ class SettingsOptions extends StatelessWidget {
           vertical: context.deviceHeight * 0.04),
       decoration:   BoxDecoration(
         color: appMode?DarkColors.scaffoldColor: LightColors.scaffoldColor,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
       ),
       child: SingleChildScrollView(

@@ -5,7 +5,7 @@ import 'package:speech_emotion_recognition_project/core/components/custom_btn.da
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/thanks_screen.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 
@@ -15,7 +15,7 @@ class SuggestionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
 
     return Scaffold(
       appBar: AppBar(),
@@ -56,6 +56,8 @@ class SuggestionScreen extends StatelessWidget {
 
   }
   showThanksBottomSheet(context) {
+    bool appMode=AppModeCubit.get(context).isDark;
+
     Navigator.pop(context);
     showModalBottomSheet
       (
@@ -64,7 +66,7 @@ class SuggestionScreen extends StatelessWidget {
           return const ThanksScreen();
         },
         isScrollControlled: true,
-        barrierColor: const Color(0xffCA4B7F),
+        barrierColor: appMode?DarkColors.primary:LightColors.primary,
         useSafeArea: true);
   }
 

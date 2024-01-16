@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 
@@ -13,7 +13,7 @@ class SwitchModeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode = LanguagesAndModesCubit.get(context).isDark;
+    bool appMode = AppModeCubit.get(context).isDark;
 
     return Padding(
       padding: EdgeInsetsDirectional.symmetric(
@@ -31,7 +31,7 @@ class SwitchModeWidget extends StatelessWidget {
             size: 18.sp,
           ),
           subtitle: Text(
-            appMode?'Dark':'Light',
+            appMode?'Dark'.tr():'Light'.tr(),
             style: TextStyle(
                 color: appMode
                     ? DarkColors.subtitleColor
@@ -42,8 +42,8 @@ class SwitchModeWidget extends StatelessWidget {
             'Mode'.tr(),
             style: TextStyle(color: color, fontSize: 15.sp),
           ),
-          children: const <Widget>[
-            ModesRadios(color: Color(0xffCA4B7F)),
+          children:   <Widget>[
+            ModesRadios(color: appMode?DarkColors.primary:LightColors.primary,),
           ],
         ),
       ),
@@ -64,15 +64,15 @@ class _ModesRadiosState extends State<ModesRadios> {
   @override
   Widget build(BuildContext context) {
     double textRadiosSize = 12.sp;
-    bool appMode = LanguagesAndModesCubit.get(context).isDark;
-    Modes character = LanguagesAndModesCubit.get(context).isDark
+    bool appMode = AppModeCubit.get(context).isDark;
+    Modes character = AppModeCubit.get(context).isDark
         ? Modes.Dark
         : Modes.Light;
 
     return Column(
       children: <Widget>[
         Theme(
-          data: Theme.of(context).copyWith(dividerColor: Colors.black),
+          data: Theme.of(context).copyWith(dividerColor: appMode?DarkColors.dividerColor:LightColors.dividerColor),
           child: RadioListTile<Modes>(
             activeColor: widget.color,
             title: Text(
@@ -85,7 +85,7 @@ class _ModesRadiosState extends State<ModesRadios> {
             value: Modes.Light,
             groupValue: character,
             onChanged: (Modes? value) {
-              LanguagesAndModesCubit.get(context).changeAppMode();
+              AppModeCubit.get(context).changeAppMode();
 
               setState(() {
                 character = value!;
@@ -104,7 +104,7 @@ class _ModesRadiosState extends State<ModesRadios> {
           value: Modes.Dark,
           groupValue: character,
           onChanged: (Modes? value) {
-            LanguagesAndModesCubit.get(context).changeAppMode();
+            AppModeCubit.get(context).changeAppMode();
 
             setState(() {
               character = value!;

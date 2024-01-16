@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 
@@ -14,7 +14,7 @@ class ThanksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
 
     return Scaffold(
        appBar: AppBar(
@@ -44,7 +44,7 @@ class ThanksScreen extends StatelessWidget {
                 onPressed: () {
                   context.pop();
                 },
-                color: const Color(0xffCA4B7F),
+                color: appMode?DarkColors.primary:LightColors.primary,
                 child: Padding(
                   padding: EdgeInsetsDirectional.symmetric(
                     vertical: context.deviceHeight * 0.01,

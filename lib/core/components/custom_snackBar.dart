@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
+import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
+
+import '../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 
 void showCustomSnackBar(BuildContext context,String message){
+  bool appMode=AppModeCubit.get(context).isDark;
+
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message,
-    style: const TextStyle(
-        color: Colors.white
+    style:   TextStyle(
+        color: appMode?DarkColors.textColor:LightColors.textColor
     ),
   ),
-    backgroundColor: Colors.green,
+    backgroundColor:appMode?DarkColors.primary:LightColors.primary,
   ));
 
 }

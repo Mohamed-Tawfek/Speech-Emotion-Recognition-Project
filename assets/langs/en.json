@@ -55,7 +55,7 @@
 "Enter Password":"Enter Password",
 "Login to your account":"Login to your account",
 "Welcome back!":"Welcome back!",
-"user image Setup":"user image Setup",
+"User image setup":"User image setup",
 "Upload a photo":"Upload a photo",
 "Take a photo":"Take a photo",
 "Finish":"Finish",
@@ -124,5 +124,7 @@
   "Fourth":  "Fourth",
   "Change Password": "Change Password",
   "Send": "Send",
-  "Setup App Settings": "Setup App Settings"
+  "Setup App Settings": "Setup App Settings",
+  "System analyst &\n Documentation\n Writer": "System analyst &\n Documentation\n Writer",
+  "this field is required!": "this field is required!"
  }

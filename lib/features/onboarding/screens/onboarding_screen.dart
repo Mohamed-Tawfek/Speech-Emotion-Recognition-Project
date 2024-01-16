@@ -7,9 +7,8 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
-import 'package:speech_emotion_recognition_project/features/speech/screens/speech_screen.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/components/custom_btn.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -35,10 +34,12 @@ class OnBoardingScreen extends StatelessWidget {
         body: 'Don\'t worry, all your data is Protected'.tr(),
         lottiePath: 'assets/lotties/security.json'),
   ];
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   bool isLast = false;
   @override
   Widget build(BuildContext context) {
+    bool appMode=AppModeCubit.get(context).isDark;
+
     return Scaffold(
       appBar: AppBar(),
       body: SizedBox(
@@ -53,8 +54,7 @@ class OnBoardingScreen extends StatelessWidget {
                   onPageChanged: (int index) {
                     if (index == onBoardingItems.length -1) {
                       isLast = true;
-                      print(index);
-                    } else {
+                     } else {
                       isLast = false;
                     }
                   },
@@ -75,7 +75,7 @@ class OnBoardingScreen extends StatelessWidget {
                     dotColor: Colors.grey.withOpacity(0.7),
                     dotHeight: 10,
                     dotWidth: 10,
-                    activeDotColor: Color(0xffCA4B7F)),
+                    activeDotColor:appMode?DarkColors.primary:LightColors.primary),
               ),
               SizedBox(
                 height: context.deviceHeight * 0.07,
@@ -141,7 +141,7 @@ class BuildOnBoardingItems extends StatelessWidget {
   final String body;
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -151,7 +151,7 @@ class BuildOnBoardingItems extends StatelessWidget {
           width: context.deviceWidth * 0.8,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(250),
-            color: const Color(0xffCA4B7F),
+            color: appMode?DarkColors.primary:LightColors.primary,
           ),
           child: Lottie.asset(
             lottiePath,

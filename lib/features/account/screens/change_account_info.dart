@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/account/controller/account_cubit.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/components/custom_btn.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
@@ -24,7 +24,7 @@ class ChangeAccountInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor:appMode?DarkColors.scaffoldColor: LightColors.scaffoldColor,
@@ -132,7 +132,7 @@ class ChangeAccountInfo extends StatelessWidget {
   }
 
   void _editPhoto(BuildContext context,AccountCubit cubit) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
     showModalBottomSheet(
         context: context,
         builder: (c) {

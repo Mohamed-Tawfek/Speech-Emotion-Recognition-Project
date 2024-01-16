@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/components/custom_btn.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../../authentication/widgets/custom_text_field.dart';
 
 class ChangeAccountScreen extends StatelessWidget {
-  ChangeAccountScreen({super.key});
+   ChangeAccountScreen({super.key});
   final TextEditingController oldPasswordController = TextEditingController();
   final TextEditingController newPasswordController = TextEditingController();
 
@@ -18,7 +18,7 @@ class ChangeAccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
     return Scaffold(
       appBar: AppBar(),
       body: Padding(

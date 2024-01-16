@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DarkColors {
+  DarkColors._();
   static const primary = Color(0xffCA4B7F);
 
   static const appBar = Color(0xff0e1621);
@@ -13,10 +14,11 @@ class DarkColors {
   static const drawerColor = Color(0xff17212b);
 
   static const textColor = Color(0xffe9e9e9);
+  static  Color dividerColor = Colors.grey[100]!;
 
-  static Color subtitleColor = Color(0xff708499);
+  static const Color subtitleColor =  Color(0xff708499);
 
-  static Color textFieldColor = Color(0xff242f3d);
+  static const Color textFieldColor =   Color(0xff242f3d);
   static Color hintColor = Colors.grey[100]!;
 
   static Color suffixAndPrefixColor = Colors.grey[100]!;

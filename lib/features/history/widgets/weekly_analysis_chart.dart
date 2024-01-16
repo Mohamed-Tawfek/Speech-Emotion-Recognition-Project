@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../controller/week_cubit/week_cubit.dart';
@@ -15,7 +15,7 @@ class WeeklyAnalysisChart extends StatelessWidget {
   final WeekCubit cubit;
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
     return Column(
       children: [
         SizedBox(
@@ -23,13 +23,13 @@ class WeeklyAnalysisChart extends StatelessWidget {
           child: SfCartesianChart(
               enableAxisAnimation: true,
               primaryXAxis:   CategoryAxis(
-                labelStyle: TextStyle(fontSize: 20),
+                labelStyle: const TextStyle(fontSize: 20),
                 title: AxisTitle(text: 'Week'.tr(),  textStyle: TextStyle(
                     color:appMode?DarkColors.textColor: LightColors.textColor
 
                 )),
-                majorGridLines: MajorGridLines(width: 2),
-                majorTickLines: MajorTickLines(width: 0),
+                majorGridLines: const MajorGridLines(width: 2),
+                majorTickLines: const MajorTickLines(width: 0),
               ),
               primaryYAxis:   NumericAxis(
                 title: AxisTitle(

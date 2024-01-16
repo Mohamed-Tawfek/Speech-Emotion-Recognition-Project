@@ -42,8 +42,6 @@ dependencies:
   flutter_screenutil: ^5.7.0
   syncfusion_flutter_charts: ^24.1.43+1
   curved_navigation_bar: ^1.0.3
-  siri_wave: ^2.0.0+1
-  cached_network_image: ^3.3.1
   record: ^5.0.4
   audioplayers: ^5.2.1
   path_provider: ^2.1.1

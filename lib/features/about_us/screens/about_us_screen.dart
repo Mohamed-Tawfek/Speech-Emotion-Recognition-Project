@@ -1,18 +1,21 @@
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 
 class AboutUsScreen extends StatelessWidget {
-  const AboutUsScreen({super.key});
+   const AboutUsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool appMode = LanguagesAndModesCubit.get(context).isDark;
+    bool isArabic=context.locale.toString()=='ar';
+
+    bool appMode = AppModeCubit.get(context).isDark;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -34,7 +37,7 @@ class AboutUsScreen extends StatelessWidget {
                 vertical: context.deviceHeight * 0.04,
                 horizontal: context.deviceWidth * 0.02),
             child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.start,
+             // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
                   'assets/icons/app_icon.png',
@@ -50,12 +53,17 @@ class AboutUsScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w900,
-                      color: Color(0xffCA4B7F)),
+                      color: appMode
+                          ? DarkColors.primary
+                          : LightColors.primary
+
+
+                  ),
                 ),
                 SizedBox(
                   height: context.deviceHeight * 0.02,
                 ),
-                if(!LanguagesAndModesCubit.get(context).isArabic)
+               if(!isArabic)
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: context.deviceWidth * 0.04),
@@ -70,7 +78,7 @@ class AboutUsScreen extends StatelessWidget {
                                 : LightColors.textColor)),
                   ),
                 ),
-                if(LanguagesAndModesCubit.get(context).isArabic)
+                if(isArabic)
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: context.deviceWidth * 0.04),
@@ -94,6 +102,7 @@ class AboutUsScreen extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TeamMemberWidget(
                       name: 'Mohamed Tawfek'.tr(),
@@ -114,10 +123,13 @@ class AboutUsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+               // _buildDivider(context),
                 _buildDivider(context),
+
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TeamMemberWidget(
                       name: 'Mohamed Ahmed'.tr(),
@@ -142,11 +154,12 @@ class AboutUsScreen extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                       TeamMemberWidget(
                       name: 'Shahd Allam'.tr(),
                       imagePath: 'assets/images/woman.png',
-                      job: 'Documentation\n Writer'.tr(),
+                      job: 'System analyst &\n Documentation\n Writer'.tr(),
                     ),
                     _buildDivider(context),
                       TeamMemberWidget(
@@ -162,10 +175,9 @@ class AboutUsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: context.deviceHeight * 0.05,
-                ),
-                if(!LanguagesAndModesCubit.get(context).isArabic)
+                _buildDivider(context),
+
+                if(!isArabic)
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: context.deviceWidth * 0.03),
@@ -184,7 +196,7 @@ class AboutUsScreen extends StatelessWidget {
                 ),
 
 
-                if(LanguagesAndModesCubit.get(context).isArabic)
+     if(isArabic)
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: context.deviceWidth * 0.03),
@@ -229,7 +241,7 @@ class AboutUsScreen extends StatelessWidget {
   SizedBox _buildDivider(BuildContext context) {
     return SizedBox(
       height: context.deviceHeight * 0.04,
-      width: context.deviceWidth * 0.02,
+     // width: context.deviceWidth * 0.02,
     );
   }
 }
@@ -246,7 +258,7 @@ class TeamMemberWidget extends StatelessWidget {
   final String job;
   @override
   Widget build(BuildContext context) {
-    bool appMode = LanguagesAndModesCubit.get(context).isDark;
+    bool appMode = AppModeCubit.get(context).isDark;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [

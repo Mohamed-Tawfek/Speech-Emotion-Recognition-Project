@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../models/bar_chart_data.dart';
@@ -14,7 +14,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
   final List<BarChartData>? dataSource;
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
     return SizedBox(
       height: context.deviceHeight * 0.7,
       child: SfCartesianChart(
@@ -26,8 +26,8 @@ class MonthlyAnalysisChart extends StatelessWidget {
 
                 )
             ),
-            majorGridLines: MajorGridLines(width: 2),
-            majorTickLines: MajorTickLines(width: 0),
+            majorGridLines: const MajorGridLines(width: 2),
+            majorTickLines: const MajorTickLines(width: 0),
           ),
           primaryYAxis:   NumericAxis(
             title: AxisTitle(text: 'The number of repetitions of the emotion'.tr(),

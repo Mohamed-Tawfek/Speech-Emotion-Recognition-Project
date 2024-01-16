@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
+
 class SpeechCustomBtn extends StatelessWidget {
   const SpeechCustomBtn({super.key, required this.onTap, required this.child});
   final void Function()? onTap;
   final Widget child;
   @override
   Widget build(BuildContext context) {
+    bool appMode=AppModeCubit.get(context).isDark;
+
     return Center(
       child: InkWell(
         splashColor: Colors.transparent,
@@ -25,7 +31,7 @@ class SpeechCustomBtn extends StatelessWidget {
             //   ],
             //   stops: [.1, 0.4, 1.5],
             // ),
-            color: const Color(0xffCA4B7F),
+            color: appMode?DarkColors.primary:LightColors.primary,
 
           ),
           child: child,

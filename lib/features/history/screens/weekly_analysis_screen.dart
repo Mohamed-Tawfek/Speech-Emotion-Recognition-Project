@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/history/controller/week_cubit/week_cubit.dart';
-import 'package:speech_emotion_recognition_project/features/history/widgets/chart_map.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+
 
 import '../widgets/weekly_analysis_chart.dart';
 

@@ -6,14 +6,14 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 
 class AnalysisResultScreen extends StatelessWidget {
   const AnalysisResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
 
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +42,7 @@ class AnalysisResultScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: 25.sp,
               fontWeight: FontWeight.bold,
-              color: const Color(0xffCA4B7F)
+              color: appMode?DarkColors.primary:LightColors.primary
             ),
 
             ),
@@ -61,7 +61,7 @@ class AnalysisResultScreen extends StatelessWidget {
                 context.pop();
               },
 
-                color: const Color(0xffCA4B7F),
+                color: appMode?DarkColors.primary:LightColors.primary,
               child: Padding(
                  padding:EdgeInsetsDirectional.symmetric(
               vertical: context.deviceHeight*0.01,

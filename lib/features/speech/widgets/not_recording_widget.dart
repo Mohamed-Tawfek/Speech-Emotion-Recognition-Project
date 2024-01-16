@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speech_emotion_recognition_project/features/speech/widgets/speech_custom_btn.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../controller/speech_cubit.dart';
@@ -12,10 +12,10 @@ class NotRecordingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LanguagesAndModesCubit, LanguagesAndModeScubitState>(
+    return BlocBuilder<AppModeCubit, AppModeState>(
       builder: (context, state) {
         final SpeechCubit cubit = SpeechCubit.get(context);
-        bool appMode = LanguagesAndModesCubit.get(context).isDark;
+        bool appMode = AppModeCubit.get(context).isDark;
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

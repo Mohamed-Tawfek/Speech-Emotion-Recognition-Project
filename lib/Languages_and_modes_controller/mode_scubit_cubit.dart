@@ -4,38 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-part 'languages_and_mode_scubit_state.dart';
+part 'scubit_state.dart';
 
-class LanguagesAndModesCubit extends Cubit<LanguagesAndModeScubitState> {
-  LanguagesAndModesCubit() : super(LanguagesAndModeScubitInitial()){
-
-  }
- static LanguagesAndModesCubit get(context)=>BlocProvider.of(context);
+class AppModeCubit extends Cubit<AppModeState> {
+  AppModeCubit() : super(AppModeStateInitial());
+ static AppModeCubit get(context)=>BlocProvider.of(context);
 
 bool isDark=false;
-bool isArabic=false;
 
 changeAppMode(){
   isDark=!isDark;
    emit(ChangeModeState());
 
 }
-
- changeAppLanguageToAR(BuildContext context) {
-
-  isArabic = true;
-  context.setLocale( Locale('ar'));
-  print(context.locale);
-  emit(ChangeLanguagesToARState());
-}
-  changeAppLanguageToEN(BuildContext context) {
-  isArabic = false;
-  context.setLocale( Locale('en'));
-  print(context.locale);
-
-  emit(ChangeLanguagesToENState());
-}
-
 
 
 // }

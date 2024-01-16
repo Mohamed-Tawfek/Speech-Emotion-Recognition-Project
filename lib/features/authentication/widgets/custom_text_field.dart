@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 
@@ -15,6 +16,7 @@ class CustomTextField extends StatelessWidget {
       this.onPressedSuffixIcon,
       this.keyboardType,
       this.obscureText = false,
+      this.validator,
       required this.controller});
 
   final Widget? prefixIcon;
@@ -25,50 +27,43 @@ class CustomTextField extends StatelessWidget {
   final double? radius;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode = AppModeCubit.get(context).isDark;
 
     return TextFormField(
       obscureText: obscureText,
       keyboardType: keyboardType,
       style: TextStyle(
-        color:appMode?DarkColors.textInFieldColor: LightColors.textInFieldColor
-      ),
+          color: appMode
+              ? DarkColors.textInFieldColor
+              : LightColors.textInFieldColor),
       controller: controller,
-       // cursorColor: isDark ? Colors.grey[100] : Colors.black54,
+      // cursorColor: isDark ? Colors.grey[100] : Colors.black54,
       decoration: InputDecoration(
-
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon != null
-              ? IconButton(
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  icon: suffixIcon!,
-                  onPressed: onPressedSuffixIcon,
-                )
-              : null,
-          hintText: hintText,
-
-          filled: true,
-
-          // focusedBorder: OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(radius ?? 30),
-          //     borderSide:
-          //         BorderSide(color: isDark ? Colors.grey[100]! : Colors.black)),
-          //
-          // enabledBorder: OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(radius ?? 30),
-          //     borderSide: const BorderSide(color: Colors.transparent)),
-          // errorBorder: OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(radius ?? 30),
-          //     borderSide: const BorderSide(color: Colors.red)),
-          // border: OutlineInputBorder(
-          //     borderSide: const BorderSide(),
-          //     borderRadius: BorderRadius.circular(radius ?? 30))
-
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon != null
+            ? IconButton(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                icon: suffixIcon!,
+                onPressed: onPressedSuffixIcon,
+              )
+            : null,
+        hintText: hintText,
+        filled: true,
       ),
+      validator: validator ??
+          (String? value) {
+        if(value==null||value.isEmpty) {
+              return 'this field is required!'.tr();
+            }
+        return null;
+
+          },
+
     );
   }
 }

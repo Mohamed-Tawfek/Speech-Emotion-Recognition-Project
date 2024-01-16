@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
-import '../../Languages_and_modes_controller/languages_and_mode_scubit_cubit.dart';
+import '../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../constants/dark_theme_colors.dart';
 import '../constants/light_theme_colors.dart';
 
@@ -21,7 +21,7 @@ class CustomBtn extends StatelessWidget {
   final String textChild;
   @override
   Widget build(BuildContext context) {
-    bool appMode=LanguagesAndModesCubit.get(context).isDark;
+    bool appMode=AppModeCubit.get(context).isDark;
     return Container(
       height: context.deviceHeight * 0.08,
       width: context.deviceWidth * 0.4,

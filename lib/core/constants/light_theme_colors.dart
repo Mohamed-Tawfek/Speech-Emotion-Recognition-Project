@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LightColors {
+  LightColors._();
+
   static const primary = Color(0xffCA4B7F);
 
   static const appBar = Colors.white;
@@ -13,6 +15,7 @@ class LightColors {
 
   static const scaffoldColor = Colors.white;
   static Color hintColor = Colors.black54;
+  static  Color dividerColor = Colors.black;
 
 
   static const textColor = Colors.black;

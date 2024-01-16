@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -53,6 +52,7 @@ class BuildDrawerImage extends StatelessWidget {
 final double?radius;
   @override
   Widget build(BuildContext context) {
+
     return Container(
       padding: const EdgeInsetsDirectional.all(2),
       decoration: BoxDecoration(shape: BoxShape.circle, color: color),
