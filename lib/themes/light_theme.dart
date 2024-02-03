@@ -5,28 +5,21 @@ import '../core/constants/light_theme_colors.dart';
 
 ThemeData getLightTheme() {
   return ThemeData(
-    appBarTheme: AppBarTheme(
-      color: LightColors.appBar,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: LightColors.scaffoldColor,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.dark,
-        ),
-        centerTitle: true,
-        surfaceTintColor: LightColors.scaffoldColor ,
-
-        iconTheme: const IconThemeData(
-        color: LightColors.appBarItems
-      ),
-      titleTextStyle: TextStyle(
-        color: LightColors.textColor,
-        fontSize: 20.sp
-      )
-    ),
+      appBarTheme: AppBarTheme(
+          color: LightColors.appBar,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: LightColors.scaffoldColor,
+            statusBarBrightness: Brightness.dark,
+            statusBarIconBrightness: Brightness.dark,
+          ),
+          centerTitle: true,
+          surfaceTintColor: LightColors.scaffoldColor,
+          iconTheme: const IconThemeData(color: LightColors.appBarItems),
+          titleTextStyle:
+              TextStyle(color: LightColors.textColor, fontSize: 20.sp)),
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: TextStyle(color: LightColors.hintColor)  ,
+          hintStyle: TextStyle(color: LightColors.hintColor),
           filled: true,
-
           prefixIconColor: LightColors.suffixAndPrefixColor,
           suffixIconColor: LightColors.suffixAndPrefixColor,
           fillColor: LightColors.textFieldColor,

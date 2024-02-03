@@ -6,7 +6,7 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
 
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
+import '../../../modes_controller/modes_cubit.dart';
 
 class AnalysisResultScreen extends StatelessWidget {
   const AnalysisResultScreen({super.key});

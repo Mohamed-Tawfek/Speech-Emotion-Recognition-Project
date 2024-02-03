@@ -1,19 +1,19 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
 
 class AboutUsScreen extends StatelessWidget {
-   const AboutUsScreen({super.key});
+  const AboutUsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool isArabic=context.locale.toString()=='ar';
+    bool isArabic = context.locale.toString() == 'ar';
 
     bool appMode = AppModeCubit.get(context).isDark;
     return Scaffold(
@@ -23,7 +23,6 @@ class AboutUsScreen extends StatelessWidget {
         ),
         leading: IconButton(
           onPressed: () => context.pop(),
-
           icon: const Icon(Icons.arrow_back_ios),
         ),
         centerTitle: true,
@@ -37,7 +36,7 @@ class AboutUsScreen extends StatelessWidget {
                 vertical: context.deviceHeight * 0.04,
                 horizontal: context.deviceWidth * 0.02),
             child: Column(
-             // crossAxisAlignment: CrossAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
                   'assets/icons/app_icon.png',
@@ -53,32 +52,28 @@ class AboutUsScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w900,
-                      color: appMode
-                          ? DarkColors.primary
-                          : LightColors.primary
-
-
-                  ),
+                      color:
+                          appMode ? DarkColors.primary : LightColors.primary),
                 ),
                 SizedBox(
                   height: context.deviceHeight * 0.02,
                 ),
-               if(!isArabic)
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: context.deviceWidth * 0.04),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text('Our Team'.tr(),
-                        style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.bold,
-                            color: appMode
-                                ? DarkColors.textColor
-                                : LightColors.textColor)),
+                if (!isArabic)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.deviceWidth * 0.04),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Our Team'.tr(),
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              color: appMode
+                                  ? DarkColors.textColor
+                                  : LightColors.textColor)),
+                    ),
                   ),
-                ),
-                if(isArabic)
+                if (isArabic)
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: context.deviceWidth * 0.04),
@@ -94,9 +89,7 @@ class AboutUsScreen extends StatelessWidget {
                     ),
                   ),
 
-
-
-                  SizedBox(
+                SizedBox(
                   height: context.deviceHeight * 0.03,
                 ),
                 Row(
@@ -123,7 +116,7 @@ class AboutUsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-               // _buildDivider(context),
+                // _buildDivider(context),
                 _buildDivider(context),
 
                 Row(
@@ -156,19 +149,19 @@ class AboutUsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                      TeamMemberWidget(
+                    TeamMemberWidget(
                       name: 'Shahd Allam'.tr(),
                       imagePath: 'assets/images/woman.png',
                       job: 'System analyst &\n Documentation\n Writer'.tr(),
                     ),
                     _buildDivider(context),
-                      TeamMemberWidget(
+                    TeamMemberWidget(
                       name: 'Mohamed Saeed'.tr(),
                       imagePath: 'assets/images/saeed.jpg',
                       job: 'React Developer'.tr(),
                     ),
                     _buildDivider(context),
-                      TeamMemberWidget(
+                    TeamMemberWidget(
                       name: 'Ziad Ahmed'.tr(),
                       imagePath: 'assets/images/ziad.jpg',
                       job: 'React Developer'.tr(),
@@ -177,42 +170,117 @@ class AboutUsScreen extends StatelessWidget {
                 ),
                 _buildDivider(context),
 
-                if(!isArabic)
+
+
+                if (!isArabic)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.deviceWidth * 0.03),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Website'.tr(),
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              color: appMode
+                                  ? DarkColors.textColor
+                                  : LightColors.textColor)),
+                    ),
+                  ),
+
+                if (isArabic)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.deviceWidth * 0.03),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text('Website'.tr(),
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              color: appMode
+                                  ? DarkColors.textColor
+                                  : LightColors.textColor)),
+                    ),
+                  ),
+                SizedBox(
+                  height: context.deviceHeight * 0.02,
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: context.deviceWidth * 0.03),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('About App'.tr(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('To visit our website'.tr(),
+                            style: TextStyle(
+                                fontSize: 18.sp,
+                                color: appMode
+                                    ? DarkColors.textColor
+                                    : LightColors.textColor)),
 
-                        style: TextStyle(
-                            fontSize: 20.sp,
-
-                            fontWeight: FontWeight.bold,
-                            color: appMode
-                                ? DarkColors.textColor
-                                : LightColors.textColor)),
+                          SizedBox(width: context.deviceWidth*0.01,),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: _onTapWebsite,
+                          child: Text(
+                            'press here'.tr(),
+                            style: TextStyle(
+                                fontSize: 18.sp,
+                                color: appMode
+                                    ? DarkColors.primary
+                                    : LightColors.primary),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
 
 
-     if(isArabic)
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: context.deviceWidth * 0.03),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text('About App'.tr(),
 
-                        style: TextStyle(
-                            fontSize: 20.sp,
 
-                            fontWeight: FontWeight.bold,
-                            color: appMode
-                                ? DarkColors.textColor
-                                : LightColors.textColor)),
+
+
+                _buildDivider(context),
+                //-------------------------------------------
+                if (!isArabic)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.deviceWidth * 0.03),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('About App'.tr(),
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              color: appMode
+                                  ? DarkColors.textColor
+                                  : LightColors.textColor)),
+                    ),
                   ),
-                ),
+
+                if (isArabic)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.deviceWidth * 0.03),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text('About App'.tr(),
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              color: appMode
+                                  ? DarkColors.textColor
+                                  : LightColors.textColor)),
+                    ),
+                  ),
                 SizedBox(
                   height: context.deviceHeight * 0.02,
                 ),
@@ -222,7 +290,8 @@ class AboutUsScreen extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                        'In this application, we help psychiatrists monitor the condition of their patients remotely and show them detailed statistics about their patients’ psychological condition at every moment.'.tr(),
+                        'In this application, we help psychiatrists monitor the condition of their patients remotely and show them detailed statistics about their patients’ psychological condition at every moment.'
+                            .tr(),
                         style: TextStyle(
                             fontSize: 20.sp,
                             color: appMode
@@ -230,6 +299,10 @@ class AboutUsScreen extends StatelessWidget {
                                 : LightColors.textColor)),
                   ),
                 ),
+
+                //-------------------------------------------------
+
+
               ],
             ),
           ),
@@ -238,10 +311,19 @@ class AboutUsScreen extends StatelessWidget {
     );
   }
 
+  void _onTapWebsite()  {
+
+    final Uri _url = Uri.parse('https://speech-emotion-roan.vercel.app/',
+
+    );
+      launchUrl(_url,mode:LaunchMode.inAppBrowserView );
+
+  }
+
   SizedBox _buildDivider(BuildContext context) {
     return SizedBox(
       height: context.deviceHeight * 0.04,
-     // width: context.deviceWidth * 0.02,
+      // width: context.deviceWidth * 0.02,
     );
   }
 }

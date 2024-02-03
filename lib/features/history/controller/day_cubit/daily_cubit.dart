@@ -16,12 +16,10 @@ class DailyCubit extends Cubit<DayState> {
 
   ];
  Map testMap ={
-
    'happy': 6,
    'angery': 10,
    'normal': 15,
    'sad': 7,
-
  };
 getDailyData(){
   chartData.add(PieChartData('happy',testMap['happy'],Colors.yellow));

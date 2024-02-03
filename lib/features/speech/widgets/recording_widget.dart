@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/features/speech/widgets/speech_custom_btn.dart';
 
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../controller/speech_cubit.dart';

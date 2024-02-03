@@ -6,7 +6,7 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
 import 'package:speech_emotion_recognition_project/features/history/screens/history_screen.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/suggestion_screen.dart';
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../../about_us/screens/about_us_screen.dart';
@@ -23,11 +23,9 @@ class DrawerSpeechScreen extends StatelessWidget {
     return BlocBuilder<AppModeCubit, AppModeState>(
       builder: (context, state) {
          bool appMode = AppModeCubit.get(context).isDark;
-        // Color drawerItemsColor = const Color(0xff303030);
-        // Color drawerItemsColor = const Color(0xff7180b7);
+
         Color drawerItemsColor =
             appMode ? DarkColors.textColor : LightColors.textColor;
-        //  Color drawerItemsColor = Color(0xffcbe9e9);
 
         return Container(
           decoration: drawerDecoration(context),
@@ -42,31 +40,42 @@ class DrawerSpeechScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsetsDirectional.only(
                       start: context.deviceWidth * 0.05),
-                  child: Row(
-                    children: [
-                      BuildDrawerImage(
-                        color: drawerItemsColor,
-                        url:
-                            "https://firebasestorage.googleapis.com/v0/b/social-app-c6d04.appspot.com/o/%D9%A2%D9%A0%D9%A2%D9%A1%D9%A0%D9%A2%D9%A2%D9%A2_%D9%A1%D9%A4%D9%A2%D9%A1%D9%A4%D9%A8.jpg?alt=media&token=91863248-968c-4abe-934f-da04f3cce306",
-                      ),
-                      SizedBox(
-                        width: context.deviceWidth * 0.03,
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'Mohamed Tawfek',
-                            style: TextStyle(
-                                fontSize: 12.sp, color: drawerItemsColor),
-                          ),
-                          Text(
-                            'mohamed@gmail.com',
-                            style: TextStyle(
-                                fontSize: 10.sp, color: drawerItemsColor),
-                          ),
-                        ],
-                      ),
-                    ],
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: (){
+                     context.pop();
+                      context.push(const AccountScreen());
+
+                    },
+                    child: Row(
+                      children: [
+                        BuildDrawerImage(
+                          color: drawerItemsColor,
+                          url:
+                              "https://firebasestorage.googleapis.com/v0/b/social-app-c6d04.appspot.com/o/%D9%A2%D9%A0%D9%A2%D9%A1%D9%A0%D9%A2%D9%A2%D9%A2_%D9%A1%D9%A4%D9%A2%D9%A1%D9%A4%D9%A8.jpg?alt=media&token=91863248-968c-4abe-934f-da04f3cce306",
+                        ),
+                        SizedBox(
+                          width: context.deviceWidth * 0.03,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              'Mohamed Tawfek',
+                              style: TextStyle(
+                                  fontSize: 12.sp, color: drawerItemsColor),
+                            ),
+                            Text(
+                              'mohamed@gmail.com',
+                              style: TextStyle(
+                                  fontSize: 10.sp, color: drawerItemsColor),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(

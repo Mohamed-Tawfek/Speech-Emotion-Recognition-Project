@@ -46,7 +46,8 @@ class DrawerOption extends StatelessWidget {
 
 class BuildDrawerImage extends StatelessWidget {
   const BuildDrawerImage(
-      {super.key, required this.url, this.radius,this.color = Colors.white});
+      {super.key, required this.url, this.radius
+        ,this.color = Colors.white});
   final String url;
   final color;
 final double?radius;
@@ -81,3 +82,27 @@ final double?radius;
     // );
   }
 }
+
+
+
+class NotFoundImageUser extends StatelessWidget {
+  const NotFoundImageUser({super.key, this.radius,this.color = Colors.white});
+  final double?radius;
+  final color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsetsDirectional.all(2),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: CircleAvatar(
+        backgroundImage: const AssetImage(
+          'assets/icons/user.png',
+        ),
+        radius:radius?? context.deviceWidth * 0.12,
+      ),
+    );
+  }
+}
+

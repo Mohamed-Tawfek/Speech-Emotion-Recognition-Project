@@ -1,4 +1,4 @@
-part of 'mode_scubit_cubit.dart';
+part of 'modes_cubit.dart';
 
 @immutable
 abstract class AppModeState {}

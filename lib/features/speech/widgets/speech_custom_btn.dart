@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 

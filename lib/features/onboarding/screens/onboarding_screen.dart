@@ -6,71 +6,78 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
+import 'package:speech_emotion_recognition_project/core/helpers/cash_helper.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
+import 'package:speech_emotion_recognition_project/features/onboarding/screens/onboarding_first_screen.dart';
+import 'package:speech_emotion_recognition_project/features/onboarding/screens/onboarding_second_screen.dart';
+import 'package:speech_emotion_recognition_project/features/onboarding/screens/onboarding_third_screen.dart';
 
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
+import '../../../core/components/change_mode_widget.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/components/custom_btn.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   OnBoardingScreen({super.key});
-  List<OnBoardingModel> onBoardingItems = [
-    OnBoardingModel(
-        title: 'Emotions Recognition'.tr(),
-        body:
-            'It takes speech and analyzes it and extracts the current emotion'.tr(),
-        lottiePath: 'assets/lotties/emotions.json'),
-    OnBoardingModel(
-        title: 'History'.tr(),
-        body:
-            'It creates a history of your own that contains all your feelings over time'.tr(),
-        lottiePath: 'assets/lotties/saving.json'),
-    OnBoardingModel(
-        title: 'Analysis'.tr(),
-        body:
-            'It analyzes your history and shows it to you in a simplified way'.tr(),
-        lottiePath: 'assets/lotties/barchart.json'),
-    OnBoardingModel(
-        title: 'Security'.tr(),
-        body: 'Don\'t worry, all your data is Protected'.tr(),
-        lottiePath: 'assets/lotties/security.json'),
+  List<Widget>screens=[
+
+    OnBoardingFirstScreen(),
+    OnBoardingSecondScreen(),
+    OnBoardingThirdScreen()
+
   ];
+
   final PageController _pageController = PageController();
+
   bool isLast = false;
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     bool appMode=AppModeCubit.get(context).isDark;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: const [
+          ChangeModeWidget(),
+        ],
+      ),
       body: SizedBox(
         width: context.deviceWidth,
         height: context.deviceHeight,
         child: Padding(
-          padding: EdgeInsetsDirectional.only(top: context.deviceHeight * 0.1),
+          padding: EdgeInsetsDirectional.only(top: context.deviceHeight * 0.0),
           child: Column(
             children: [
               Expanded(
                 child: PageView.builder(
                   onPageChanged: (int index) {
-                    if (index == onBoardingItems.length -1) {
-                      isLast = true;
+                    if (index == widget.screens.length -1) {
+
+                      setState(() {
+                        widget.isLast = true;
+                      });
                      } else {
-                      isLast = false;
+                      setState(() {
+                        widget. isLast = false;
+                      });
+
                     }
                   },
-                  controller: _pageController,
+                  controller:widget. _pageController,
                   physics: const BouncingScrollPhysics(),
-                  itemCount: onBoardingItems.length,
-                  itemBuilder: (_, i) => BuildOnBoardingItems(
-                      lottiePath: onBoardingItems[i].lottiePath,
-                      body: onBoardingItems[i].body,
-                      title: onBoardingItems[i].title),
+                  itemCount: widget.screens.length,
+                  itemBuilder: (_, i) => widget.screens[i],
                 ),
               ),
 
               SmoothPageIndicator(
-                controller: _pageController,
-                count: onBoardingItems.length,
+                controller: widget._pageController,
+                count: widget.screens.length,
                 effect: ExpandingDotsEffect(
                     dotColor: Colors.grey.withOpacity(0.7),
                     dotHeight: 10,
@@ -88,21 +95,21 @@ class OnBoardingScreen extends StatelessWidget {
                     CustomBtn(
                       textChild: 'Back'.tr(),
                       onPressed: () {
-                        _pageController.previousPage(
+                        widget. _pageController.previousPage(
                             duration: const Duration(milliseconds: 750),
                             curve: Curves.fastLinearToSlowEaseIn);
                       },
                       hasBackground: false,
                     ),
                     CustomBtn(
-                      textChild: 'Next'.tr(),
+                      textChild:widget. isLast?'Get Started':'Next'.tr(),
                       onPressed: () {
-                        if(isLast){
+                        if(widget.isLast){
                           context.push(LoginScreen());
-
+ CashHelper.setData(key: 'OnBoardingShown', value: true);
 
                         }else{
-                          _pageController.nextPage(
+                          widget. _pageController.nextPage(
                               duration: const Duration(milliseconds: 750),
                               curve: Curves.fastLinearToSlowEaseIn);
                         }
@@ -117,72 +124,6 @@ class OnBoardingScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class OnBoardingModel {
-  String lottiePath;
-  String title;
-  String body;
-  OnBoardingModel(
-      {required this.title, required this.body, required this.lottiePath});
-}
-
-
-class BuildOnBoardingItems extends StatelessWidget {
-  const BuildOnBoardingItems(
-      {super.key,
-      required this.lottiePath,
-      required this.body,
-      required this.title});
-  final String lottiePath;
-  final String title;
-  final String body;
-  @override
-  Widget build(BuildContext context) {
-    bool appMode=AppModeCubit.get(context).isDark;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          height: context.deviceHeight * 0.4,
-          width: context.deviceWidth * 0.8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(250),
-            color: appMode?DarkColors.primary:LightColors.primary,
-          ),
-          child: Lottie.asset(
-            lottiePath,
-            fit: BoxFit.cover,
-          ),
-        ),
-        SizedBox(
-          height: context.deviceHeight * 0.03,
-        ),
-        Text(
-          textAlign: TextAlign.center,
-          title,
-          style: TextStyle(
-              fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
-              color: appMode?DarkColors.onBoardingTitleColor:LightColors.onBoardingTitleColor),
-        ),
-        SizedBox(
-          height: context.deviceHeight * 0.03,
-        ),
-        Padding(
-          padding: EdgeInsetsDirectional.symmetric(
-              horizontal: context.deviceWidth * 0.1),
-          child: Text(
-            body,
-            style: TextStyle(fontSize: 15.sp, color:
-            appMode?DarkColors.onBoardingBodyColor:LightColors.onBoardingBodyColor
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
-import '../../../core/constants/dark_theme_colors.dart';
+ import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
 
 class InfoItem extends StatelessWidget {
   const InfoItem({super.key, required this.value, required this.attribute});

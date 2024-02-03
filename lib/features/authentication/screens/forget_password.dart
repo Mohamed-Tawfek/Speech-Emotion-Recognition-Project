@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/email_send_screen.dart';
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../widgets/custom_text_field.dart';
@@ -36,8 +36,17 @@ class ForgetPassword extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Forgot Your Password?'.tr(),
+                if(context.locale.languageCode=='ar')
+
+                  Text(
+                    "نسيت كلمة مرورك؟".tr(),
+                    style: TextStyle(fontSize: 30.sp,
+                        color: appMode?DarkColors.textColor: LightColors.textColor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                if(context.locale.languageCode!='ar')
+                  Text(
+                  "Forgot Your Password?".tr(),
                   style: TextStyle(fontSize: 30.sp,
                       color: appMode?DarkColors.textColor: LightColors.textColor,
                       fontWeight: FontWeight.bold),

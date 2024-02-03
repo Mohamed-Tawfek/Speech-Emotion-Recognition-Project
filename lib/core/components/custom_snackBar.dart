@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
 
-import '../../Languages_and_modes_controller/mode_scubit_cubit.dart';
+import '../../modes_controller/modes_cubit.dart';
+
 
 void showCustomSnackBar(BuildContext context,String message){
   bool appMode=AppModeCubit.get(context).isDark;

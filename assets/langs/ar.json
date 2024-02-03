@@ -112,7 +112,28 @@
   "Send": "ارسال",
   "Setup App Settings": "ضبط اعادات التطبيق",
   "System analyst &\n Documentation\n Writer": "محلل النظام و\n كاتب الوثائق\n",
-  "this field is required!": "هذا الحقل مطلوب!"
+  "this field is required!": "هذا الحقل مطلوب!",
+  "Website": "موقع إلكتروني",
+  "press here": "اضغط هنا",
+  "To visit our website": "لزيارة موقعنا الالكترونى",
+  "Gender is required": "يلزم تحديد الجنس",
+  "Enter your BirthDate:": "أدخل تاريخ ميلادك:",
+  "Enter a valid email": "ادخل ايميل صحيح",
+  "Confirm": "تأكيد",
+  "No": "لا",
+  "Yes": "نعم",
+  "BirthDate": "تاريخ الميلاد",
+  "male": "ذكر",
+  "Information has been updated": "تم تحديث المعلومات بنجاح",
+  "There is an error": "هناك خطأ",
+  "No internet connection": "لا يوجد اتصال بالإنترنت",
+
+  "female": "أنثى",
+  "New first name": "الاسم الاول الجديد",
+  "New last name": "الاسم الثانى الجديد",
+  "Are you sure you want to\n remove your account?!": "هل أنت متأكد أنك تريد\nحذف حسابك؟!",
+  "You have been logged in successfully": "تم تسجيل الدخول بنجاح",
+  "The password must not be less than 6 characters": "يجب الا تقل كلمة المرور عن ٦ احرف"
 
 
 }

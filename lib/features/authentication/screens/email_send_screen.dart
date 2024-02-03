@@ -5,9 +5,9 @@ import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
 
-import '../../../Languages_and_modes_controller/mode_scubit_cubit.dart';
-import '../../../core/constants/dark_theme_colors.dart';
+ import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
 
 class SendEmailScreen extends StatelessWidget {
   SendEmailScreen({super.key, this.forConfirm = true});
@@ -26,7 +26,7 @@ class SendEmailScreen extends StatelessWidget {
           child: Padding(
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: context.deviceWidth * 0.07,
-              //vertical: context.deviceHeight*0.01
+               vertical: context.deviceHeight*0.03
             ),
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -63,7 +63,7 @@ class SendEmailScreen extends StatelessWidget {
                     ),
                   ),
                   Lottie.asset(
-                      width: context.deviceWidth * 0.5,
+                    //  width: context.deviceWidth * 0.5,
                       height: context.deviceHeight * 0.45,
                       fit: BoxFit.cover,
                       'assets/lotties/send.json'),
