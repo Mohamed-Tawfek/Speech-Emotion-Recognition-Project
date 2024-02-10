@@ -14,6 +14,8 @@ class LightColors {
   static const appBarItems = Colors.black;
 
   static const scaffoldColor = Colors.white;
+  static const toastTextColor = Colors.white;
+
   static Color hintColor = Colors.black54;
   static  Color dividerColor = Colors.black;
 

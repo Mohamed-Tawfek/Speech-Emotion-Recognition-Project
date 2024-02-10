@@ -110,6 +110,6 @@ class ForgetPassword extends StatelessWidget {
   }
 
   void _sendLink(BuildContext context) {
-    context.pushAndRemoveUntil(SendEmailScreen(forConfirm: false,));
+    context.pushAndRemoveUntil(const SendEmailScreen(forConfirm: false, email: '',));
   }
 }

@@ -6,7 +6,7 @@ class UserModel {
   late String birthday;
   late String email;
 
-  late int phone;
+  late String phone;
   late int day;
   late int month;
   late int year;
@@ -21,9 +21,9 @@ class UserModel {
     birthday = json['user']['birthday'];
 
     email = json['user']['email'];
-    phone = json['user']['phone'];
+    phone = json['user']['phone'].toString();
     imgCover = json['user']['imgCover'];
-    if (imgCover == 'https://speech-sapm.onrender.com/user/null') {
+    if (imgCover == 'https://speech-sapm.onrender.com/null') {
       imgCover = null;
     }
       date = DateTime.parse(birthday);

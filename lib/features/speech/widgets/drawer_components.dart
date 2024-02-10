@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
+import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
 
 class DrawerOption extends StatelessWidget {
   const DrawerOption(
@@ -56,7 +57,7 @@ final double?radius;
 
     return Container(
       padding: const EdgeInsetsDirectional.all(2),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+      decoration: const BoxDecoration(shape: BoxShape.circle, color: LightColors.primary),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: CircleAvatar(
         backgroundImage: NetworkImage(
@@ -94,7 +95,7 @@ class NotFoundImageUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsetsDirectional.all(2),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+      decoration: const BoxDecoration(shape: BoxShape.circle, color: LightColors.primary),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: CircleAvatar(
         backgroundImage: const AssetImage(

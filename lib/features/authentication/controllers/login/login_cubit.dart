@@ -27,24 +27,23 @@ class LoginCubit extends Cubit<LoginState> {
     showLoadingDialog(context);
     DioHelper.post(
         url: ApiConstants.loginEndPoint,
-        data: {"email": email, "password": password}).then((response) {
-      loginModel = LoginModel.fromJson(response.data);
+        data: {"email": email, "password": password}).then((response) async {
+      loginModel = LoginModel.fromJson(response.data, response.statusCode);
+
+      print(response.data);
       if (response.statusCode == 200) {
         context.pop();
 
         context.pushAndRemoveUntil(const SpeechScreen());
         showToast(context, 'You have been logged in successfully'.tr());
-        CashHelper.setData(key: 'token', value: loginModel!.token);
+        await CashHelper.setData(key: 'token', value: loginModel!.token);
+        await CashHelper.setData(key: 'userEmail', value: loginModel!.email);
+        await CashHelper.setData(key: 'userImage', value: loginModel!.image);
+        await CashHelper.setData(key: 'userName', value: loginModel!.userName);
       } else {
         context.pop();
-        showToast(context, loginModel!.message!);
+        showToast(context, loginModel!.message);
       }
-    }).catchError((e){
-      context.pop();
-
-      showToast(context, loginModel!.message!);
-
-
     });
   }
 }

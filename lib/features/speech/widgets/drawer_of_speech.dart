@@ -6,10 +6,12 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
 import 'package:speech_emotion_recognition_project/features/history/screens/history_screen.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/suggestion_screen.dart';
+import '../../../core/helpers/cash_helper.dart';
 import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../../about_us/screens/about_us_screen.dart';
+import '../../account/controller/account/account_cubit.dart';
 import '../../account/screens/account_screen.dart';
 import 'drawer_components.dart';
 import 'modes_radios.dart';
@@ -20,6 +22,9 @@ class DrawerSpeechScreen extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+   String? userEmail=    CashHelper.getData(key: 'userEmail');
+   String? userImage=      CashHelper.getData(key: 'userImage');
+   String? userName=     CashHelper.getData(key: 'userName');
     return BlocBuilder<AppModeCubit, AppModeState>(
       builder: (context, state) {
          bool appMode = AppModeCubit.get(context).isDark;
@@ -32,7 +37,7 @@ class DrawerSpeechScreen extends StatelessWidget {
           padding: EdgeInsetsDirectional.only(
             top: context.deviceHeight * 0.05,
           ),
-          width: context.deviceWidth * 0.7,
+          width: context.deviceWidth * 0.75,
           height: context.deviceHeight,
           child: SingleChildScrollView(
             child: Column(
@@ -51,26 +56,31 @@ class DrawerSpeechScreen extends StatelessWidget {
 
                     },
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        userImage!='https://speech-sapm.onrender.com/null'?
                         BuildDrawerImage(
                           color: drawerItemsColor,
                           url:
-                              "https://firebasestorage.googleapis.com/v0/b/social-app-c6d04.appspot.com/o/%D9%A2%D9%A0%D9%A2%D9%A1%D9%A0%D9%A2%D9%A2%D9%A2_%D9%A1%D9%A4%D9%A2%D9%A1%D9%A4%D9%A8.jpg?alt=media&token=91863248-968c-4abe-934f-da04f3cce306",
-                        ),
+                          userImage!,
+                        ):const NotFoundImageUser(),
                         SizedBox(
                           width: context.deviceWidth * 0.03,
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Mohamed Tawfek',
+                              userName??'',
                               style: TextStyle(
-                                  fontSize: 12.sp, color: drawerItemsColor),
+                                  fontSize: 12.sp, color: drawerItemsColor,overflow:TextOverflow.ellipsis ),
                             ),
                             Text(
-                              'mohamed@gmail.com',
+                              userEmail??'',
                               style: TextStyle(
-                                  fontSize: 10.sp, color: drawerItemsColor),
+                                  fontSize: 9.sp, color: drawerItemsColor,overflow:TextOverflow.ellipsis,
+
+                              ),
                             ),
                           ],
                         ),
@@ -132,7 +142,7 @@ class DrawerSpeechScreen extends StatelessWidget {
                     icon: Icons.logout,
                     name: 'Logout'.tr(),
                     onTap: () {
-                      context.pushAndRemoveUntil(LoginScreen());
+                      AccountCubit.logout(context);
                     }),
                 BuildDrawerDivider(drawerItemsColor: drawerItemsColor),
               ],

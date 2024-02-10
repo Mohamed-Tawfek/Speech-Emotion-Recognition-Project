@@ -7,35 +7,33 @@ import 'package:speech_emotion_recognition_project/core/components/extensions.da
 import 'package:speech_emotion_recognition_project/core/components/toast.dart';
 import 'package:speech_emotion_recognition_project/core/constants/api_constants.dart';
 import 'package:speech_emotion_recognition_project/core/helpers/dio_helper.dart';
-import 'package:speech_emotion_recognition_project/features/suggestion/screens/thanks_screen.dart';
 
-import '../screens/suggestion_screen.dart';
+import '../../models/send_email_model.dart';
 
-part 'suggestion_state.dart';
+part 'send_email_state.dart';
 
-class SuggestionCubit extends Cubit<SuggestionState> {
-  SuggestionCubit() : super(SuggestionInitial());
-static  SuggestionCubit get(context)=>BlocProvider.of(context);
-  sendSuggestion({required String message, required BuildContext context}) {
+class SendEmailCubit extends Cubit<SendEmailState> {
+  SendEmailCubit() : super(SendEmailInitial());
+static  SendEmailCubit get(context)=>BlocProvider.of(context);
+  SendEmailModel? sendEmailModel;
+Future  sendVerificationLink({required String email, required BuildContext context})async {
     showLoadingDialog(context);
     var headers = {'Content-Type': 'application/json'};
-
-    DioHelper.post(
-            url: ApiConstants.suggestionEndPoint,
-            data: {"message": message},
+  await  DioHelper.post(
+            url: ApiConstants.verifyEmailEndPoint,
+            data: {"email": email},
             headers: headers)
         .then((response) {
-      if (response.statusCode == 200) {
-        context.pop;
+      context.pop;
+      sendEmailModel = SendEmailModel.fromJson(response.data);
 
-
-        Navigator.pop(context);
-         showThanksBottomSheet(context);
-      }
-
-    }).catchError((error){
+      showToast(context, sendEmailModel!.message);
+    }).catchError((error) {
       context.pop;
       showToast(context, error.toString());
     });
   }
+
+sendResetPasswordLink(){}
+
 }

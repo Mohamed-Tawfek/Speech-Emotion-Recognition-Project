@@ -51,17 +51,28 @@ class SignUpCubit extends Cubit<SignUpState> {
       required BuildContext context}) async {
     showLoadingDialog(context);
     signUpModel = null;
-    FormData formData = FormData.fromMap({
-      "image": photo != null ? base64Encode(photo!.readAsBytesSync()) : null,
-      "firstname": firstName,
-      "lastname": lastName,
-      "gender": gender,
-      "birthday": birthDate,
-      "email": email,
-      "phone": phone,
-      "password": password,
-    });
 
+    var formData =photo!=null? FormData.fromMap({
+      'image': [
+        await MultipartFile.fromFile(photo!.path, filename:photo!.path)
+      ],
+      'firstname':firstName,
+      'lastname': lastName,
+      'gender': gender,
+      'birthday': birthDate,
+      'email': email,
+      'phone': phone,
+      'password': password
+    }):FormData.fromMap({
+
+      'firstname':firstName,
+      'lastname': lastName,
+      'gender': gender,
+      'birthday': birthDate,
+      'email': email,
+      'phone': phone,
+      'password': password
+    });
     DioHelper.post(url: ApiConstants.signupEndPoint, data: formData)
         .then((Response response) {
       Navigator.pop(context);
@@ -70,11 +81,23 @@ class SignUpCubit extends Cubit<SignUpState> {
       if (response.statusCode == 200) {
         context.pushAndRemoveUntil(SendEmailScreen(
           forConfirm: true,
+          email: email,
         ));
       } else {
         showToast(context, signUpModel!.message!);
+        context.pop();
       }
+    }).catchError((error){
+      print('-'*20);
+       print(signUpModel!.message);
+      print('-'*20);
+
     });
+
+
+
+
+
   }
 }
 

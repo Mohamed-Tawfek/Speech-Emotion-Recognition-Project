@@ -10,10 +10,10 @@ void showToast(context, String message) {
   Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
+      gravity: ToastGravity.SNACKBAR,
       timeInSecForIosWeb: 1,
       backgroundColor: appMode ? DarkColors.primary : LightColors.primary,
-      textColor: appMode ? DarkColors.textColor : LightColors.textColor,
+      textColor: appMode ? DarkColors.toastTextColor : LightColors.toastTextColor,
       fontSize: 16.0);
 
 

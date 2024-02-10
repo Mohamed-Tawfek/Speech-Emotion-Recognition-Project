@@ -10,6 +10,7 @@ class DarkColors {
   static const appBarItems = Color(0xffe9e9e9);
 
   static const scaffoldColor = Color(0xff0e1621);
+  static const toastTextColor = Color(0xff0e1621);
 
   static const drawerColor = Color(0xff17212b);
 

@@ -133,7 +133,9 @@
   "New last name": "الاسم الثانى الجديد",
   "Are you sure you want to\n remove your account?!": "هل أنت متأكد أنك تريد\nحذف حسابك؟!",
   "You have been logged in successfully": "تم تسجيل الدخول بنجاح",
-  "The password must not be less than 6 characters": "يجب الا تقل كلمة المرور عن ٦ احرف"
+  "The password must not be less than 6 characters": "يجب الا تقل كلمة المرور عن ٦ احرف",
+  "The account does not exist or has not been verified": "الحساب غير موجود أو لم يتم التحقق منه"
+
 
 
 }

@@ -12,6 +12,8 @@ class DioHelper {
         validateStatus: (s) {
           return true;
         }));
+
+
   }
 
   static Future<Response> get({
@@ -30,6 +32,7 @@ class DioHelper {
       required data}) async {
     return await dio!.post(url,
         queryParameters: queryParameters,
+
         data: data,
         options: Options(headers: headers));
   }
@@ -37,10 +40,32 @@ class DioHelper {
       {required String url,
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? headers,
+
       required data}) async {
     return await dio!.put(url,
         queryParameters: queryParameters,
         data: data,
+        options: Options(headers: headers));
+  }
+
+  static Future<Response> patch(
+      {required String url,
+      Map<String, dynamic>? queryParameters,
+      Map<String, dynamic>? headers,
+      data}) async {
+    return await dio!.patch(url,
+        queryParameters: queryParameters,
+        data: data,
+        options: Options(headers: headers));
+  }
+  static Future<Response> delete(
+      {required String url,
+      Map<String, dynamic>? queryParameters,
+      Map<String, dynamic>? headers,
+  }) async {
+    return await dio!.delete(url,
+        queryParameters: queryParameters,
+
         options: Options(headers: headers));
   }
 }

@@ -16,11 +16,11 @@ import '../widgets/gender_drop_down_btn_field.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController(text: 'g@gmail.com');
-  final TextEditingController passwordController = TextEditingController(text: '123456789');
-  final TextEditingController firstNameController = TextEditingController(text: 'kfgd');
-  final TextEditingController lastNameController = TextEditingController(text: 'ktjh');
-  final TextEditingController phoneController = TextEditingController(text: '0125251515');
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
    bool _obsecurePassword = true;
 
   int selectedDay = DateTime.now().day;

@@ -188,7 +188,7 @@ class SettingsOptions extends StatelessWidget {
 
   _deleteAccountBtn(BuildContext context) {
     showConfirmDialog(context, () {
-      context.pushAndRemoveUntil(LoginScreen());
+      AccountCubit.removeAccount(context);
     }, 'Are you sure you want to\n remove your account?!'.tr());
   }
 
