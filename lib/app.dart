@@ -6,23 +6,23 @@ import 'package:flutter_offline/flutter_offline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/helpers/cash_helper.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
-import 'package:speech_emotion_recognition_project/features/authentication/screens/signup_screen.dart';
 import 'package:speech_emotion_recognition_project/features/onboarding/screens/onboarding_screen.dart';
 import 'package:speech_emotion_recognition_project/features/speech/screens/speech_screen.dart';
 import 'package:speech_emotion_recognition_project/themes/dark_theme.dart';
 import 'package:speech_emotion_recognition_project/themes/light_theme.dart';
+
 import '../../../modes_controller/modes_cubit.dart';
-import 'features/account/screens/account_screen.dart';
 import 'features/offline_screen.dart';
-import 'features/onboarding/screens/onboarding_first_screen.dart';
-import 'features/onboarding/screens/onboarding_second_screen.dart';
-import 'features/onboarding/screens/onboarding_third_screen.dart';
+
+late String appLang;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    //OnBoardingShown
+
+    appLang=context.locale.languageCode;
+
     bool onBoardingShown = CashHelper.getData(key: 'OnBoardingShown') ?? false;
     bool isLogged = CashHelper.getData(key: 'token') != null;
 

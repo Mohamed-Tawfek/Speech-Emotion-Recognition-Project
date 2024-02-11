@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:speech_emotion_recognition_project/core/constants/api_constants.dart';
 
+import '../../app.dart';
+
 class DioHelper {
   static Dio? dio;
 
@@ -8,21 +10,20 @@ class DioHelper {
     dio = Dio(BaseOptions(
         baseUrl: ApiConstants.baseUrl,
         receiveDataWhenStatusError: true,
-         connectTimeout:Duration(days: 1) ,
+        connectTimeout: Duration(days: 1),
         validateStatus: (s) {
           return true;
         }));
-
-
   }
 
   static Future<Response> get({
     required String url,
-      Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
   }) async {
     return await dio!.get(url,
-        queryParameters: queryParameters, options: Options(headers: headers));
+        queryParameters: queryParameters ?? {'lang': appLang},
+        options: Options(headers: headers));
   }
 
   static Future<Response> post(
@@ -31,19 +32,18 @@ class DioHelper {
       Map<String, dynamic>? headers,
       required data}) async {
     return await dio!.post(url,
-        queryParameters: queryParameters,
-
+        queryParameters: queryParameters ?? {'lang': appLang},
         data: data,
         options: Options(headers: headers));
   }
+
   static Future<Response> put(
       {required String url,
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? headers,
-
       required data}) async {
     return await dio!.put(url,
-        queryParameters: queryParameters,
+        queryParameters: queryParameters ?? {'lang': appLang},
         data: data,
         options: Options(headers: headers));
   }
@@ -54,18 +54,18 @@ class DioHelper {
       Map<String, dynamic>? headers,
       data}) async {
     return await dio!.patch(url,
-        queryParameters: queryParameters,
+        queryParameters: queryParameters ?? {'lang': appLang},
         data: data,
         options: Options(headers: headers));
   }
-  static Future<Response> delete(
-      {required String url,
-      Map<String, dynamic>? queryParameters,
-      Map<String, dynamic>? headers,
+
+  static Future<Response> delete({
+    required String url,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
   }) async {
     return await dio!.delete(url,
-        queryParameters: queryParameters,
-
+        queryParameters: queryParameters ?? {'lang': appLang},
         options: Options(headers: headers));
   }
 }
