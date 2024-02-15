@@ -14,14 +14,12 @@ import 'package:speech_emotion_recognition_project/themes/light_theme.dart';
 import '../../../modes_controller/modes_cubit.dart';
 import 'features/offline_screen.dart';
 
-late String appLang;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
 
-    appLang=context.locale.languageCode;
 
     bool onBoardingShown = CashHelper.getData(key: 'OnBoardingShown') ?? false;
     bool isLogged = CashHelper.getData(key: 'token') != null;

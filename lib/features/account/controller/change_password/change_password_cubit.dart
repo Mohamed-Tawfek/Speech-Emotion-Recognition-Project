@@ -16,14 +16,14 @@ part 'change_password_state.dart';
 
 class ChangePasswordCubit extends Cubit<ChangePasswordState> {
   ChangePasswordCubit() : super(ChangePasswordInitial());
-static  ChangePasswordCubit get(context)=>BlocProvider.of(context);
+  static ChangePasswordCubit get(context) => BlocProvider.of(context);
   ChangePasswordModel? changePasswordModel;
- Future changePassword({
+  Future changePassword({
     required String oldPassword,
     required String newPassword,
     required BuildContext context,
   }) async {
-   emit(ChangePasswordLoadingState());
+    emit(ChangePasswordLoadingState());
     showLoadingDialog(context);
     String token = CashHelper.getData(key: 'token');
     var headers = {'token': token, 'Content-Type': 'application/json'};
@@ -33,20 +33,14 @@ static  ChangePasswordCubit get(context)=>BlocProvider.of(context);
             url: ApiConstants.changePasswordEndPoint,
             headers: headers)
         .then((value) {
-
       emit(ChangePasswordSuccessState());
-      changePasswordModel=ChangePasswordModel.fromJson(value.data);
+      changePasswordModel = ChangePasswordModel.fromJson(value.data);
       showToast(context, changePasswordModel!.message);
       context.pop;
 
       if (value.statusCode == 200) {
-
-
         context.pushAndRemoveUntil(const SpeechScreen());
-
       }
-
-
     }).catchError((error) {
       context.pop;
       emit(ChangePasswordErrorState());
@@ -54,9 +48,6 @@ static  ChangePasswordCubit get(context)=>BlocProvider.of(context);
       showToast(context, error.toString());
 
       debugPrint('there is an error in change password: ${error.toString()}');
-
     });
-
-
   }
 }

@@ -22,8 +22,7 @@ class DioHelper {
     Map<String, dynamic>? headers,
   }) async {
     return await dio!.get(url,
-        queryParameters: queryParameters ?? {'lang': appLang},
-        options: Options(headers: headers));
+         options: Options(headers: headers));
   }
 
   static Future<Response> post(
@@ -32,8 +31,7 @@ class DioHelper {
       Map<String, dynamic>? headers,
       required data}) async {
     return await dio!.post(url,
-        queryParameters: queryParameters ?? {'lang': appLang},
-        data: data,
+         data: data,
         options: Options(headers: headers));
   }
 
@@ -43,8 +41,7 @@ class DioHelper {
       Map<String, dynamic>? headers,
       required data}) async {
     return await dio!.put(url,
-        queryParameters: queryParameters ?? {'lang': appLang},
-        data: data,
+         data: data,
         options: Options(headers: headers));
   }
 
@@ -54,8 +51,7 @@ class DioHelper {
       Map<String, dynamic>? headers,
       data}) async {
     return await dio!.patch(url,
-        queryParameters: queryParameters ?? {'lang': appLang},
-        data: data,
+         data: data,
         options: Options(headers: headers));
   }
 
@@ -65,7 +61,6 @@ class DioHelper {
     Map<String, dynamic>? headers,
   }) async {
     return await dio!.delete(url,
-        queryParameters: queryParameters ?? {'lang': appLang},
-        options: Options(headers: headers));
+         options: Options(headers: headers));
   }
 }

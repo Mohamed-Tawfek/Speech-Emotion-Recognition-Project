@@ -100,8 +100,8 @@ class DrawerSpeechScreen extends StatelessWidget {
                  BuildDrawerDivider(drawerItemsColor: drawerItemsColor),
                 DrawerOption(
                     color: drawerItemsColor,
-                    name: 'History'.tr(),
-                    icon: Icons.history,
+                    name: 'Statistics'.tr(),
+                    icon: Icons.bar_chart,
                     onTap: () {
                       Scaffold.of(context).closeDrawer();
                       context.push(const HistoryScreen());

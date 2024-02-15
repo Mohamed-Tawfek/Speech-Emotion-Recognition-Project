@@ -142,7 +142,7 @@ var _formKey=GlobalKey<FormState>();
               oldPassword: oldPasswordController.text,
               newPassword: newPasswordController.text,
               context: context)
-          .then((value) => context.pop());
+          ;
     }
   }
 }
