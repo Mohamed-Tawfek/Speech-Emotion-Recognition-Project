@@ -8,7 +8,7 @@ class ApiConstants {
   static const String removeAccountEndPoint = 'users/delete';
   static const String changeAccountInfoEndPoint = 'users';
   static const String changePasswordEndPoint = 'users';
-  static const String forgetPasswordEndPoint = 'forgetPassword';
+  static const String forgetPasswordEndPoint = '/users/forgot-password';
   static const String verifyEmailEndPoint = 'users/sendagain';
   static const String suggestionEndPoint = 'message';
 }

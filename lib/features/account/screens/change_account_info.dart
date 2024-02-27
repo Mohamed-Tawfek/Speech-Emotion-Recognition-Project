@@ -174,8 +174,7 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
                           height: context.deviceHeight * 0.03,
                         ),
                         Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
+                            alignment: context.locale.languageCode=='en'?Alignment.topLeft:Alignment.topRight,                            child: Text(
                               'Enter new BirthDate:'.tr(),
                               style: TextStyle(
                                   color: appMode

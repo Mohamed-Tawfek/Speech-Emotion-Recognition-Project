@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class BarChartData {
-  BarChartData(this.barTitle, this.happy, this.angery, this.normal, this.sad);
+  BarChartData(this.barTitle, this.happy, this.angry, this.surprised,);
 
   String barTitle;
   int happy;
-  int angery;
-  int normal;
-  int sad;
+  int angry;
+  int surprised;
+
 }
 
 

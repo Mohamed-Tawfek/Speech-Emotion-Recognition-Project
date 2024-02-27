@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -38,6 +39,37 @@ class AboutUsScreen extends StatelessWidget {
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Lottie.asset(
+                      'assets/lotties/palestine.json',
+                      height: 130,
+                      width: 130,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(
+                      height: context.deviceHeight * 0.01,
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.symmetric(
+                          horizontal: context.deviceHeight * 0.04),
+                      child: Text(
+                        'This application supports the Palestinian cause'.tr(),
+                        style: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w900,
+                            color: appMode
+                                ? DarkColors.textColor
+                                : LightColors.textColor),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: context.deviceHeight * 0.04,
+                ),
                 Image.asset(
                   'assets/icons/app_icon.png',
                   height: 130,
@@ -170,8 +202,6 @@ class AboutUsScreen extends StatelessWidget {
                 ),
                 _buildDivider(context),
 
-
-
                 if (!isArabic)
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -213,7 +243,7 @@ class AboutUsScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('To visit our website'.tr(),
                             style: TextStyle(
@@ -221,8 +251,9 @@ class AboutUsScreen extends StatelessWidget {
                                 color: appMode
                                     ? DarkColors.textColor
                                     : LightColors.textColor)),
-
-                          SizedBox(width: context.deviceWidth*0.01,),
+                        SizedBox(
+                          width: context.deviceWidth * 0.01,
+                        ),
                         InkWell(
                           splashColor: Colors.transparent,
                           hoverColor: Colors.transparent,
@@ -242,11 +273,6 @@ class AboutUsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
-
-
-
-
 
                 _buildDivider(context),
                 //-------------------------------------------
@@ -301,8 +327,6 @@ class AboutUsScreen extends StatelessWidget {
                 ),
 
                 //-------------------------------------------------
-
-
               ],
             ),
           ),
@@ -311,13 +335,11 @@ class AboutUsScreen extends StatelessWidget {
     );
   }
 
-  void _onTapWebsite()  {
-
-    final Uri _url = Uri.parse('https://speech-emotion-roan.vercel.app/',
-
+  void _onTapWebsite() {
+    final Uri _url = Uri.parse(
+      'https://speech-emotion-roan.vercel.app/',
     );
-      launchUrl(_url,mode:LaunchMode.inAppBrowserView );
-
+    launchUrl(_url, mode: LaunchMode.inAppBrowserView);
   }
 
   SizedBox _buildDivider(BuildContext context) {

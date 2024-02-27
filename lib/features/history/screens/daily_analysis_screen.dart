@@ -9,7 +9,6 @@ class DailyAnalysisScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Expanded(
       child: BlocProvider(
         create: (context) => DailyCubit()..getDailyData(),
@@ -17,10 +16,7 @@ class DailyAnalysisScreen extends StatelessWidget {
           builder: (context, state) {
             DailyCubit cubit = DailyCubit.get(context);
 
-
-
-
-             return Center(
+            return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,

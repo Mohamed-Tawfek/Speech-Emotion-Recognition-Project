@@ -35,8 +35,7 @@
   "Forgot your password?": "نسيت كلمة مرورك؟",
   "Gallery": "المعرض",
   "Gender": "النوع",
-  "Happy": "سعيد",
-  "Statistics": "إحصائيات",
+   "Statistics": "إحصائيات",
   "In this application, we help psychiatrists monitor the condition of their patients remotely and show them detailed statistics about their patients’ psychological condition at every moment": "في هذا التطبيق نساعد الأطباء النفسيين على مراقبة حالة مرضاهم عن بعد ونعرض لهم إحصائيات تفصيلية عن الحالة النفسية لمرضاهم في كل لحظة",
   "It analyzes your history and shows it to you in a simplified way": "يحلل تاريخك ويظهره لك بطريقة مبسطة",
   "It creates a history of your own that contains all your feelings over time": "يصنع تاريخًا خاصًا بك يحتوي على كل مشاعرك مع مرور الوقت",
@@ -89,8 +88,7 @@
   "Ziad Ahmed": "زياد احمد",
   "Light":"منير",
   "Dark":"مظلم",
-  "Angery": "غاضب",
-  "Normal": "طبيعى",
+   "Normal": "طبيعى",
   "Sad": "حزين",
   "Dec":"ديسمبر",
   "Nov":"نوفمبر",
@@ -134,7 +132,20 @@
   "Are you sure you want to\n remove your account?!": "هل أنت متأكد أنك تريد\nحذف حسابك؟!",
   "You have been logged in successfully": "تم تسجيل الدخول بنجاح",
   "The password must not be less than 6 characters": "يجب الا تقل كلمة المرور عن ٦ احرف",
-  "The account does not exist or has not been verified": "الحساب غير موجود أو لم يتم التحقق منه"
+  "The account does not exist or has not been verified": "الحساب غير موجود أو لم يتم التحقق منه",
+
+  "Enter First Name": "أدخل الاسم الأول",
+  "Enter Last Name": "إدخل الاسم الاخير",
+  "Loading": "جارى التحميل",
+  "Enter new BirthDate:": "أدخل تاريخ ميلاد جديد:",
+  "This application supports the Palestinian cause": "هذا التطبيق يدعم القضية الفلسطينية",
+  "Angry": "غاضب",
+  "Happy": "سعيد",
+  "Surprised": "متفاجئ",
+  "Congratulations, based on your statistics, your highest emotion last week was angry, and now your highest emotion is happy, and we hope that you will be happy forever": "تهانينا، بناءً على إحصائياتك، أعلى مشاعرك الأسبوع الماضي كانت غاضب، والآن أعلى مشاعرك هي سعيد، ونأمل أن تظل سعيدًا إلى الأبد"
+
+
+
 
 
 

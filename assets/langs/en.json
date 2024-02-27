@@ -73,7 +73,6 @@
 
 "Month":"Month",
 
-"Happy":"Happy",
 
 "Daily Emotions Analysis":"Daily Emotions Analysis",
 
@@ -146,5 +145,14 @@
    "Are you sure you want to\n remove your account!?": "Are you sure you want to\n remove your account!?" ,
    "You have been logged in successfully": "You have been logged in successfully",
    "The password must not be less than 6 characters": "The password must not be less than 6 characters",
-  "The account does not exist or has not been verified": "The account does not exist or has not been verified"
+  "The account does not exist or has not been verified": "The account does not exist or has not been verified",
+  "Enter First Name": "Enter First Name",
+  "Enter Last Name": "Enter Last Name",
+  "Loading": "Loading",
+        "Enter new BirthDate:": "Enter new BirthDate:",
+  "This application supports the Palestinian cause": "This application supports the Palestinian cause",
+  "Angry": "Angry",
+  "Happy": "Happy",
+  "Surprised": "Surprised",
+  "Congratulations, based on your statistics, your highest emotion last week was angry, and now your highest emotion is happy, and we hope that you will be happy forever": "Congratulations, based on your statistics, your highest emotion last week was angry, and now your highest emotion is happy, and we hope that you will be happy forever"
  }

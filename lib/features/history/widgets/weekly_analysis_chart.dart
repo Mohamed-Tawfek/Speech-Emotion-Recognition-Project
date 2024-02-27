@@ -10,12 +10,27 @@ import '../controller/week_cubit/week_cubit.dart';
 import '../models/bar_chart_data.dart';
 import 'chart_map.dart';
 
-class WeeklyAnalysisChart extends StatelessWidget {
+class WeeklyAnalysisChart extends StatefulWidget {
   const WeeklyAnalysisChart({super.key,required this.cubit});
   final WeekCubit cubit;
+
+  @override
+  State<WeeklyAnalysisChart> createState() => _WeeklyAnalysisChartState();
+}
+
+class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
+  @override
+  void initState() {
+    Future.delayed(Duration(milliseconds: 1500)).then((value) {
+      widget.cubit.showCongMessage(context);
+
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     bool appMode=AppModeCubit.get(context).isDark;
+
     return Column(
       children: [
         SizedBox(
@@ -48,32 +63,27 @@ class WeeklyAnalysisChart extends StatelessWidget {
               ),
               series: <CartesianSeries>[
                 ColumnSeries<BarChartData, String>(
-                    color: Colors.yellow,
-                    dataSource: cubit.chartData,
+                    color: Colors.amber,
+                    dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString().tr(),
                     yValueMapper: (BarChartData data, _) => data.happy),
                 ColumnSeries<BarChartData, String>(
 
                     color: Colors.red,
-                    dataSource: cubit.chartData,
+                    dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString().tr(),
                     yValueMapper: (BarChartData data, _) =>
-                    data.angery),
+                    data.angry),
                 ColumnSeries<BarChartData, String>(
-                    color: Colors.green,
-                    dataSource: cubit.chartData,
+                    color: Colors.blue,
+                    dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString().tr(),
                     yValueMapper: (BarChartData data, _) =>
-                    data.normal),
-                ColumnSeries<BarChartData, String>(
-                    color: Colors.purpleAccent,
-                    dataSource: cubit.chartData,
-                    xValueMapper: (BarChartData data, _) =>
-                        data.barTitle.toString().tr(),
-                    yValueMapper: (BarChartData data, _) => data.sad),
+                    data.surprised),
+
               ]),
         ),
 

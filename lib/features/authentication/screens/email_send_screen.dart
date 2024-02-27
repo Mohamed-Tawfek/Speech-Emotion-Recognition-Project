@@ -148,6 +148,6 @@ class SendEmailScreen extends StatelessWidget {
     forConfirm
         ? cubit.sendVerificationLink(
             email: email, context: context).then((value) =>context.pop())
-        : cubit.sendResetPasswordLink();
+        : cubit.sendResetPasswordLink(email:email ,context:context );
   }
 }

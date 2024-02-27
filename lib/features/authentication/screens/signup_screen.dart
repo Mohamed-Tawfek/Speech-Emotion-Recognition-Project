@@ -165,7 +165,7 @@ class SignUpScreen extends StatelessWidget {
                       height: context.deviceHeight * 0.05,
                     ),
                     Align(
-                        alignment: Alignment.topLeft,
+                        alignment: context.locale.languageCode=='en'?Alignment.topLeft:Alignment.topRight,
                         child: Text(
                           'Enter your BirthDate:'.tr(),
                           style: TextStyle(

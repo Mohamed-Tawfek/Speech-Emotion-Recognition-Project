@@ -16,22 +16,23 @@ class BuildChartMap extends StatelessWidget {
       child:   Center(
         child: Wrap(
           children: [
-            MapItem(text: 'Angery'.tr(), color: Colors.red),
+            MapItem(text: 'Happy'.tr(), color: Colors.amber),
+
             const SizedBox(
               width: 10,
               height: 20,
             ),
-            MapItem(text: 'Happy'.tr(), color: Colors.yellow),
+            MapItem(text: 'Angry'.tr(), color: Colors.red),
+
             const SizedBox(
               width: 10,
               height: 20,
             ),
-            MapItem(text: 'Normal'.tr(), color: Colors.green),
+            MapItem(text: 'Surprised'.tr(), color: Colors.blue),
             const SizedBox(
               width: 10,
               height: 20,
             ),
-            MapItem(text: 'Sad'.tr(), color: Colors.purple),
           ],
         ),
       ),

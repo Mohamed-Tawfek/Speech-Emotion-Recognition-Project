@@ -1,5 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:custom_timer/custom_timer.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +12,7 @@ import 'package:speech_emotion_recognition_project/features/speech/screens/analy
 import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../model/emotion_model.dart';
 import '../widgets/drawer_of_speech.dart';
 import '../widgets/not_recording_widget.dart';
 import '../widgets/recording_widget.dart';
@@ -18,11 +21,13 @@ class SpeechScreen extends StatelessWidget {
   const SpeechScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context1) {
     return BlocBuilder<AppModeCubit, AppModeState>(
       builder: (context, state) {
         return BlocProvider(
-          create: (context) => SpeechCubit()..initRecorder(),
+          create: (context) => SpeechCubit()
+            ..initRecorder()
+            ..initEmotions(context1),
           child: BlocBuilder<SpeechCubit, SpeechState>(
             builder: (context, state) {
               SpeechCubit cubit = SpeechCubit.get(context);
@@ -67,7 +72,7 @@ class SpeechScreen extends StatelessWidget {
                         cubit.recording
                             ? const RecordingWidget()
                             : const NotRecordingWidget(),
-                      ],
+                       ],
                     ),
                   ),
                 ),
@@ -168,13 +173,15 @@ class TopRecordingWidget extends StatelessWidget {
   }
 }
 
-showResultBottomSheet(context) {
+showResultBottomSheet(context, EmotionModel model) {
   bool appMode = AppModeCubit.get(context).isDark;
 
   showModalBottomSheet(
       context: context,
       builder: (_) {
-        return const AnalysisResultScreen();
+        return AnalysisResultScreen(
+          emotion: model,
+        );
       },
       isScrollControlled: true,
       barrierColor: appMode ? DarkColors.primary : LightColors.primary,

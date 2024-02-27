@@ -24,7 +24,7 @@ Future showLoadingDialog(context) {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Loading',
+                  'Loading'.tr(),
                   style: TextStyle(
                       fontSize: 15.sp,
                       color: appMode

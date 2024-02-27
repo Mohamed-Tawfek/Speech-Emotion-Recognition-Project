@@ -46,7 +46,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
           ),
           series: <CartesianSeries>[
             ColumnSeries<BarChartData, String>(
-                color: Colors.yellow,
+                color: Colors.amber,
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString().tr(),
@@ -56,19 +56,14 @@ class MonthlyAnalysisChart extends StatelessWidget {
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString().tr(),
-                yValueMapper: (BarChartData data, _) => data.angery),
+                yValueMapper: (BarChartData data, _) => data.angry),
             ColumnSeries<BarChartData, String>(
-                color: Colors.green,
+                color: Colors.blue,
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString().tr(),
-                yValueMapper: (BarChartData data, _) => data.normal),
-            ColumnSeries<BarChartData, String>(
-                color: Colors.purpleAccent,
-                dataSource: dataSource,
-                xValueMapper: (BarChartData data, _) =>
-                    data.barTitle.toString().tr(),
-                yValueMapper: (BarChartData data, _) => data.sad),
+                yValueMapper: (BarChartData data, _) => data.surprised),
+
           ]),
     );
   }

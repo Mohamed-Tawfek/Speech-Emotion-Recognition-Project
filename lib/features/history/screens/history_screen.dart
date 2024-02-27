@@ -32,7 +32,7 @@ class HistoryScreen extends StatelessWidget {
                   context.pop();
                 },
               ),
-              title:   Text('History'.tr()),
+              title:   Text('Statistics'.tr()),
               centerTitle: true,
             ),
             body: SafeArea(

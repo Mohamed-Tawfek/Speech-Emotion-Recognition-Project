@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/helpers/cash_helper.dart';
+import 'package:speech_emotion_recognition_project/features/about_us/screens/about_us_screen.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
 import 'package:speech_emotion_recognition_project/features/onboarding/screens/onboarding_screen.dart';
 import 'package:speech_emotion_recognition_project/features/speech/screens/speech_screen.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
                   child: onBoardingShown
                       ? isLogged
                           ? const SpeechScreen()
-                          : LoginScreen()
+                          : AboutUsScreen()
                       : OnBoardingScreen(),
                 );
               } else {
