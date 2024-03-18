@@ -8,6 +8,7 @@ class DarkColors {
   static const buttonNavBackgroundColor = Color(0xff0e1621);
   static const buttonNavColor = Color(0xff1f2936);
   static const appBarItems = Color(0xffe9e9e9);
+  static const qrCodeColor = Colors.white;
 
   static const scaffoldColor = Color(0xff0e1621);
   static const toastTextColor = Color(0xff0e1621);

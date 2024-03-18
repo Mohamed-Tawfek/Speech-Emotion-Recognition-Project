@@ -8,6 +8,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../../../modes_controller/modes_cubit.dart';
+import '../widgets/support_palastine_widget.dart';
+import '../widgets/team_info_widget.dart';
+import '../widgets/team_member_widget.dart';
 
 class AboutUsScreen extends StatelessWidget {
   const AboutUsScreen({super.key});
@@ -39,34 +42,7 @@ class AboutUsScreen extends StatelessWidget {
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Lottie.asset(
-                      'assets/lotties/palestine.json',
-                      height: 130,
-                      width: 130,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height: context.deviceHeight * 0.01,
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.symmetric(
-                          horizontal: context.deviceHeight * 0.04),
-                      child: Text(
-                        'This application supports the Palestinian cause'.tr(),
-                        style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w900,
-                            color: appMode
-                                ? DarkColors.textColor
-                                : LightColors.textColor),
-                      ),
-                    ),
-                  ],
-                ),
+                const SupportPalastineWidget(),
                 SizedBox(
                   height: context.deviceHeight * 0.04,
                 ),
@@ -124,84 +100,8 @@ class AboutUsScreen extends StatelessWidget {
                 SizedBox(
                   height: context.deviceHeight * 0.03,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TeamMemberWidget(
-                      name: 'Mohamed Tawfek'.tr(),
-                      imagePath: 'assets/images/tawfek.jpg',
-                      job: 'Flutter Developer'.tr(),
-                    ),
-                    _buildDivider(context),
-                    TeamMemberWidget(
-                      name: 'Nourhan Gamal'.tr(),
-                      imagePath: 'assets/images/woman.png',
-                      job: 'Machine Learning\n Engineer'.tr(),
-                    ),
-                    _buildDivider(context),
-                    TeamMemberWidget(
-                      name: 'Nourhan Hassan'.tr(),
-                      imagePath: 'assets/images/woman.png',
-                      job: 'Machine Learning\n Engineer'.tr(),
-                    ),
-                  ],
-                ),
-                // _buildDivider(context),
-                _buildDivider(context),
 
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TeamMemberWidget(
-                      name: 'Mohamed Ahmed'.tr(),
-                      imagePath: 'assets/images/mashoour.jpg',
-                      job: 'Node js Developer'.tr(),
-                    ),
-                    _buildDivider(context),
-                    TeamMemberWidget(
-                      name: 'Somia saad'.tr(),
-                      imagePath: 'assets/images/woman.png',
-                      job: 'Node js Developer'.tr(),
-                    ),
-                    _buildDivider(context),
-                    TeamMemberWidget(
-                      name: 'Shahd Bahgat'.tr(),
-                      imagePath: 'assets/images/woman.png',
-                      job: 'UI Designer'.tr(),
-                    ),
-                  ],
-                ),
-                _buildDivider(context),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TeamMemberWidget(
-                      name: 'Shahd Allam'.tr(),
-                      imagePath: 'assets/images/woman.png',
-                      job: 'System analyst &\n Documentation\n Writer'.tr(),
-                    ),
-                    _buildDivider(context),
-                    TeamMemberWidget(
-                      name: 'Mohamed Saeed'.tr(),
-                      imagePath: 'assets/images/saeed.jpg',
-                      job: 'React Developer'.tr(),
-                    ),
-                    _buildDivider(context),
-                    TeamMemberWidget(
-                      name: 'Ziad Ahmed'.tr(),
-                      imagePath: 'assets/images/ziad.jpg',
-                      job: 'React Developer'.tr(),
-                    ),
-                  ],
-                ),
-                _buildDivider(context),
-
+                const TeamInfoWidget(),
                 if (!isArabic)
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -342,60 +242,11 @@ class AboutUsScreen extends StatelessWidget {
     launchUrl(_url, mode: LaunchMode.inAppBrowserView);
   }
 
-  SizedBox _buildDivider(BuildContext context) {
-    return SizedBox(
-      height: context.deviceHeight * 0.04,
-      // width: context.deviceWidth * 0.02,
-    );
-  }
+}
+SizedBox _buildDivider(BuildContext context) {
+  return SizedBox(
+    height: context.deviceHeight * 0.04,
+    // width: context.deviceWidth * 0.02,
+  );
 }
 
-class TeamMemberWidget extends StatelessWidget {
-  const TeamMemberWidget(
-      {super.key,
-      required this.name,
-      required this.imagePath,
-      required this.job});
-
-  final String imagePath;
-  final String name;
-  final String job;
-  @override
-  Widget build(BuildContext context) {
-    bool appMode = AppModeCubit.get(context).isDark;
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          padding: const EdgeInsetsDirectional.all(5),
-          decoration: const BoxDecoration(
-              shape: BoxShape.circle, color: Color(0xffCA4B7F)),
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: CircleAvatar(
-            backgroundImage: AssetImage(
-              imagePath,
-            ),
-            radius: context.deviceWidth * 0.10,
-          ),
-        ),
-        SizedBox(
-          height: context.deviceHeight * 0.010,
-        ),
-        Text(
-          name,
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: appMode ? DarkColors.textColor : LightColors.textColor),
-        ),
-        Text(
-          job,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: appMode
-                  ? DarkColors.subtitleColor
-                  : LightColors.subtitleColor),
-        ),
-      ],
-    );
-  }
-}

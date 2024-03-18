@@ -15,6 +15,7 @@ class LightColors {
 
   static const scaffoldColor = Colors.white;
   static const toastTextColor = Colors.white;
+  static const qrCodeColor = Colors.white;
 
   static Color hintColor = Colors.black54;
   static  Color dividerColor = Colors.black;
@@ -34,6 +35,9 @@ class LightColors {
   static const textInFieldColor = Colors.black54;
   static const onBoardingTitleColor = Color(0xff404677);
   static const onBoardingBodyColor =   Color(0xff7180b7);
+
+
+
 
 
 

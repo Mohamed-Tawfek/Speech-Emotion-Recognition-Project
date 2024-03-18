@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/history/controller/history_cubit/history_state.dart';
+import 'package:speech_emotion_recognition_project/features/share/model/followed_model.dart';
 
 import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
@@ -12,8 +13,9 @@ import '../../../core/constants/light_theme_colors.dart';
 import '../controller/history_cubit/history_cubit.dart';
 
 class HistoryScreen extends StatelessWidget {
-  const HistoryScreen({super.key});
-
+  const HistoryScreen({super.key,this.model,this.forDisplaySharing=false});
+final FollowedModel? model;
+final bool forDisplaySharing;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -25,7 +27,33 @@ class HistoryScreen extends StatelessWidget {
 
           bool appMode=AppModeCubit.get(context).isDark;
           return Scaffold(
-            appBar: AppBar(
+            appBar:forDisplaySharing? AppBar(
+              leading:   IconButton(
+                icon: const Icon(Icons.arrow_back_ios),
+                onPressed: (){
+                  context.pop();
+                },
+              ),
+              title:   Row(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(model!.userImage),
+                    radius: 20,
+                  ),
+                  SizedBox(
+                    width: context.deviceWidth*0.05,
+                  ),
+                  Text(model!.userName,
+
+                  style: TextStyle(
+                    fontSize: 18.sp,
+
+                  ),
+                  ),
+                ],
+              ),
+              centerTitle: true,
+            ): AppBar(
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back_ios),
                 onPressed: (){

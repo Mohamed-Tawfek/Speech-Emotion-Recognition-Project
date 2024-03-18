@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:custom_timer/custom_timer.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,23 +55,32 @@ class SpeechScreen extends StatelessWidget {
                       children: [
                         cubit.recording
                             ? const TopRecordingWidget()
-                            : Padding(
-                                padding: EdgeInsetsDirectional.only(
-                                    top: context.deviceHeight * 0.15),
-                                child: Text(
-                                  'Press on mic or import file to start'.tr(),
-                                  style: TextStyle(
-                                      fontSize: 18.sp,
-                                      color: appMode
-                                          ? DarkColors.textColor
-                                          : LightColors.textColor),
-                                ),
-                              ),
-                        const Spacer(),
+                            :
+                        Padding(
+                        padding: EdgeInsetsDirectional.only(
+                      top: context.deviceHeight * 0.15),
+                          child: AnimatedTextKit(
+                            isRepeatingAnimation: false,
+                            animatedTexts: [
+                              TypewriterAnimatedText('Press on mic or import file to start'.tr(),
+                                  textStyle:   TextStyle(
+                                              fontSize: 18.sp,
+                                              color: appMode
+                          ? DarkColors.textColor
+                          : LightColors.textColor),
+                                  speed: Duration(milliseconds: 100)),
+                            ],
+
+                          ),
+                        ),
+
+
+
+                         const Spacer(),
                         cubit.recording
                             ? const RecordingWidget()
                             : const NotRecordingWidget(),
-                       ],
+                      ],
                     ),
                   ),
                 ),

@@ -24,7 +24,7 @@ class _ChangeAccountScreenState extends State<ChangeAccountScreen> {
   final TextEditingController newPasswordController = TextEditingController();
 
   bool _obsecurePassword = true;
-var _formKey=GlobalKey<FormState>();
+final _formKey=GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     bool appMode = AppModeCubit.get(context).isDark;

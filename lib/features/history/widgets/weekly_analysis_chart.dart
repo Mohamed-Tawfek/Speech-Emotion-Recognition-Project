@@ -21,10 +21,10 @@ class WeeklyAnalysisChart extends StatefulWidget {
 class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
   @override
   void initState() {
-    Future.delayed(Duration(milliseconds: 1500)).then((value) {
-      widget.cubit.showCongMessage(context);
-
-    });
+    // Future.delayed(Duration(milliseconds: 1500)).then((value) {
+    //   widget.cubit.showCongMessage(context);
+    //
+    // });
     super.initState();
   }
   @override

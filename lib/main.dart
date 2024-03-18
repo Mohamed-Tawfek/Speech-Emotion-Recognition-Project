@@ -9,7 +9,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   DioHelper.init();
-  CashHelper.init();
+  await  CashHelper.init();
+ await CashHelper.setData(key: 'userName', value: 'Ali Mohamed');
+  await CashHelper.setData(key: 'userImage', value: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  await  CashHelper.setData(key: 'userEmail', value: 'ali@gmail.com');
+  await  CashHelper.setData(key: 'token', value: 'tokentokentoken');
   refreshServer();
   runApp(_app());
 }

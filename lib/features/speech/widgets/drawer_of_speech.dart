@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
 import 'package:speech_emotion_recognition_project/features/history/screens/history_screen.dart';
+import 'package:speech_emotion_recognition_project/features/statistics_map/screens/map_screen.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/suggestion_screen.dart';
 import '../../../core/helpers/cash_helper.dart';
 import '../../../modes_controller/modes_cubit.dart';
@@ -13,6 +14,7 @@ import '../../../core/constants/light_theme_colors.dart';
 import '../../about_us/screens/about_us_screen.dart';
 import '../../account/controller/account/account_cubit.dart';
 import '../../account/screens/account_screen.dart';
+import '../../share/screens/main_screen.dart';
 import 'drawer_components.dart';
 import 'modes_radios.dart';
 
@@ -98,6 +100,16 @@ class DrawerSpeechScreen extends StatelessWidget {
                 //   color: drawerItemsColor,
                 // ),
                  BuildDrawerDivider(drawerItemsColor: drawerItemsColor),
+                DrawerOption(
+                    color: drawerItemsColor,
+                    name: 'Sharing'.tr(),
+                    icon: Icons.share_outlined,
+                    onTap: () {
+                      Scaffold.of(context).closeDrawer();
+                      context.push(  const ShareMainScreen());
+                    }),
+                BuildDrawerDivider(drawerItemsColor: drawerItemsColor),
+
                 DrawerOption(
                     color: drawerItemsColor,
                     name: 'Statistics'.tr(),

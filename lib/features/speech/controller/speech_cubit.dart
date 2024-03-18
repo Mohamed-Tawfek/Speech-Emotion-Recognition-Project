@@ -27,19 +27,22 @@ class SpeechCubit extends Cubit<SpeechState> {
           name: 'Angry'.tr(),
           voiceOverPath: isEn
               ? 'assets/voice_over/en/angry.wav'
-              : 'assets/voice_over/ar/angry.mp3'),
+              : 'assets/voice_over/ar/angry.mp3',
+          message: 'Calm yourself down, life is not worth getting angry about. Your problem will be solved, but it is only a matter of time.'.tr()),
       EmotionModel(
           lottiePath: 'assets/lotties/emotions/Happy.json',
           name: 'Happy'.tr(),
           voiceOverPath: isEn
               ? 'assets/voice_over/en/happy.wav'
-              : 'assets/voice_over/ar/happy.mp3'),
+              : 'assets/voice_over/ar/happy.mp3',
+          message: 'Your positive energy is like a ray of sunshine It\'s impossible not to feel happier around you and You radiate happiness, and it\'s truly inspiring'.tr()),
       EmotionModel(
           lottiePath: 'assets/lotties/emotions/Surprised.json',
           name: 'Surprised'.tr(),
           voiceOverPath: isEn
               ? 'assets/voice_over/en/surprised.wav'
-              : 'assets/voice_over/ar/surprised.mp3'),
+              : 'assets/voice_over/ar/surprised.mp3',
+          message: ''),
     ];
   }
 
@@ -89,7 +92,6 @@ class SpeechCubit extends Cubit<SpeechState> {
   }
 
   play({required String voicePath}) async {
-
     //await player.play(DeviceFileSource(path!));
 
     // await player.play(AssetSource('assets/voices/surprised.mp3'));

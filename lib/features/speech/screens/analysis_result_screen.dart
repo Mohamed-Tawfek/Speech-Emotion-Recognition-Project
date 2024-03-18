@@ -11,8 +11,8 @@ import '../../../modes_controller/modes_cubit.dart';
 import '../model/emotion_model.dart';
 
 class AnalysisResultScreen extends StatelessWidget {
-  const AnalysisResultScreen({super.key,required this.emotion});
- final EmotionModel emotion;
+  const AnalysisResultScreen({super.key, required this.emotion});
+  final EmotionModel emotion;
   @override
   Widget build(BuildContext context) {
     bool appMode = AppModeCubit.get(context).isDark;
@@ -29,6 +29,7 @@ class AnalysisResultScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsetsDirectional.only(top: context.deviceHeight * 0.05),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Lottie.asset(emotion.lottiePath,
@@ -36,18 +37,65 @@ class AnalysisResultScreen extends StatelessWidget {
                   width: context.deviceWidth * 0.8,
                   fit: BoxFit.cover),
             ),
-            AnimatedTextKit(
-               isRepeatingAnimation: false,
-              animatedTexts: [
-                TypewriterAnimatedText(emotion.name,
-                    textStyle: TextStyle(
-                        fontSize: 25.sp,
-                        fontWeight: FontWeight.bold,
-                        color:
-                            appMode ? DarkColors.primary : LightColors.primary),
-                    speed: Duration(milliseconds: 200)),
-              ],
+            Center(
+              child: AnimatedTextKit(
+                isRepeatingAnimation: false,
+                animatedTexts: [
+                  TypewriterAnimatedText(emotion.name,
+                      cursor: '',
+                      textStyle: TextStyle(
+                          fontSize: 25.sp,
+                          fontWeight: FontWeight.bold,
+                          color: appMode
+                              ? DarkColors.primary
+                              : LightColors.primary),
+                      speed: Duration(milliseconds: 200)),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: context.deviceHeight * 0.06,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.symmetric(
+                  horizontal: context.deviceWidth * 0.03),
+              child: AnimatedTextKit(
+                isRepeatingAnimation: false,
 
+                animatedTexts: [
+                  TypewriterAnimatedText('Status improvement message:'.tr(),
+                      textStyle: TextStyle(
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.bold,
+                          color: appMode
+                              ? DarkColors.textColor
+                              : LightColors.textColor),
+                      cursor: '',
+                      speed: Duration(milliseconds: 50)),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: context.deviceHeight * 0.015,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.symmetric(
+                  horizontal: context.deviceWidth * 0.07),
+              child: AnimatedTextKit(
+                isRepeatingAnimation: false,
+
+                animatedTexts: [
+                  TypewriterAnimatedText(emotion.message,
+                      cursor: '',
+                      textStyle: TextStyle(
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.bold,
+                          color: appMode
+                              ? DarkColors.textColor
+                              : LightColors.textColor),
+                      speed: Duration(milliseconds: 50)),
+                ],
+              ),
             ),
             const Spacer(),
             Container(

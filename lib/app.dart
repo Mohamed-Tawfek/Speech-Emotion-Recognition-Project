@@ -14,6 +14,8 @@ import 'package:speech_emotion_recognition_project/themes/light_theme.dart';
 
 import '../../../modes_controller/modes_cubit.dart';
 import 'features/offline_screen.dart';
+import 'features/share/screens/main_screen.dart';
+import 'features/statistics_map/screens/map_screen.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -58,12 +60,12 @@ class MyApp extends StatelessWidget {
                       home: child,
                     );
                   },
-                  //child:   OfflineScreen(),
-                  child: onBoardingShown
-                      ? isLogged
-                          ? const SpeechScreen()
-                          : AboutUsScreen()
-                      : OnBoardingScreen(),
+                  child:   SpeechScreen(),
+                 //  child: onBoardingShown
+                 //      ? isLogged
+                 //          ? const SpeechScreen()
+                 //          : LoginScreen()
+                 //      : OnBoardingScreen(),
                 );
               } else {
                 return ScreenUtilInit(
