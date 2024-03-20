@@ -59,19 +59,13 @@ class SpeechScreen extends StatelessWidget {
                         Padding(
                         padding: EdgeInsetsDirectional.only(
                       top: context.deviceHeight * 0.15),
-                          child: AnimatedTextKit(
-                            isRepeatingAnimation: false,
-                            animatedTexts: [
-                              TypewriterAnimatedText('Press on mic or import file to start'.tr(),
-                                  textStyle:   TextStyle(
-                                              fontSize: 18.sp,
-                                              color: appMode
-                          ? DarkColors.textColor
-                          : LightColors.textColor),
-                                  speed: Duration(milliseconds: 100)),
-                            ],
-
-                          ),
+                          child: Text('Press on mic or import file to start'.tr(),
+                              style:   TextStyle(
+                                  fontSize: 18.sp,
+                                  color: appMode
+                                      ? DarkColors.textColor
+                                      : LightColors.textColor),
+                            ),
                         ),
 
 

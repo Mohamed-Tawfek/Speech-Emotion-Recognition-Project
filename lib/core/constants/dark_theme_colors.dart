@@ -8,7 +8,7 @@ class DarkColors {
   static const buttonNavBackgroundColor = Color(0xff0e1621);
   static const buttonNavColor = Color(0xff1f2936);
   static const appBarItems = Color(0xffe9e9e9);
-  static const qrCodeColor = Colors.white;
+  static const qrCodeBackgroundColor = Colors.white;
 
   static const scaffoldColor = Color(0xff0e1621);
   static const toastTextColor = Color(0xff0e1621);
@@ -32,4 +32,7 @@ class DarkColors {
 
   static const onBoardingTitleColor = Color(0xffe9e9e9);
   static const onBoardingBodyColor =   Color(0xff708499);
+  static const scaffoldSharingFeatureColor =   Color(0xff1f2936);
+  static const qRCodeColor =   Color(0xff6e7c85);
+
 }

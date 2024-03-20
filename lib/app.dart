@@ -5,17 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/helpers/cash_helper.dart';
-import 'package:speech_emotion_recognition_project/features/about_us/screens/about_us_screen.dart';
-import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
-import 'package:speech_emotion_recognition_project/features/onboarding/screens/onboarding_screen.dart';
 import 'package:speech_emotion_recognition_project/features/speech/screens/speech_screen.dart';
 import 'package:speech_emotion_recognition_project/themes/dark_theme.dart';
 import 'package:speech_emotion_recognition_project/themes/light_theme.dart';
 
 import '../../../modes_controller/modes_cubit.dart';
 import 'features/offline_screen.dart';
-import 'features/share/screens/main_screen.dart';
-import 'features/statistics_map/screens/map_screen.dart';
 
 
 class MyApp extends StatelessWidget {

@@ -28,9 +28,14 @@ class ShareMainScreen extends StatelessWidget {
           bottom: TabBar(
             indicatorColor: appMode ? DarkColors.primary : LightColors.primary,
             labelColor: appMode ? DarkColors.primary : LightColors.primary,
-            tabs: <Widget>[
+            unselectedLabelColor: appMode ? DarkColors.textColor : LightColors.textColor,
+
+         dividerColor:Colors.transparent ,
+
+            tabs: const <Widget>[
               Tab(
                 text: 'Followed',
+
               ),
               Tab(
                 text: 'My Code',

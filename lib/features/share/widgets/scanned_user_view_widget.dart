@@ -25,6 +25,9 @@ class ScannedUserViewWidget extends StatelessWidget {
     bool appMode = AppModeCubit.get(context).isDark;
 
     return AlertDialog(
+    backgroundColor: appMode
+        ? DarkColors.scaffoldColor
+        : LightColors.scaffoldColor,
       title: CircleAvatar(
         radius: 100,
         backgroundImage: NetworkImage(image),

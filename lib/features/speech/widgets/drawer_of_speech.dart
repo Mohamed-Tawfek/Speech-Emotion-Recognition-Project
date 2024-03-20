@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
-import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
 import 'package:speech_emotion_recognition_project/features/history/screens/history_screen.dart';
-import 'package:speech_emotion_recognition_project/features/statistics_map/screens/map_screen.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/screens/suggestion_screen.dart';
-import '../../../core/helpers/cash_helper.dart';
-import '../../../modes_controller/modes_cubit.dart';
+
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../core/helpers/cash_helper.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../../about_us/screens/about_us_screen.dart';
 import '../../account/controller/account/account_cubit.dart';
 import '../../account/screens/account_screen.dart';
