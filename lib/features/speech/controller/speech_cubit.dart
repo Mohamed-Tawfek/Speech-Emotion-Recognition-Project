@@ -7,7 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
+import 'package:speech_emotion_recognition_project/core/constants/api_constants.dart';
+import 'package:speech_emotion_recognition_project/core/helpers/dio_helper.dart';
 
+import '../../../core/helpers/cash_helper.dart';
 import '../model/emotion_model.dart';
 import '../screens/speech_screen.dart';
 part 'speech_state.dart';
@@ -20,28 +23,25 @@ class SpeechCubit extends Cubit<SpeechState> {
   bool recording = false;
   List<EmotionModel> emotions = [];
   void initEmotions(BuildContext context) {
-    bool isEn = context.locale.languageCode == 'en';
     emotions = [
       EmotionModel(
           lottiePath: 'assets/lotties/emotions/Angery.json',
-          name: 'Angry'.tr(),
-          voiceOverPath: isEn
-              ? 'assets/voice_over/en/angry.wav'
-              : 'assets/voice_over/ar/angry.mp3',
-          message: 'Calm yourself down, life is not worth getting angry about. Your problem will be solved, but it is only a matter of time.'.tr()),
+          name: 'angry'.tr(),
+          voiceOverPath: 'assets/voice_over/en/angry.wav',
+          message:
+              'Calm yourself down, life is not worth getting angry about. Your problem will be solved, but it is only a matter of time.'
+                  .tr()),
       EmotionModel(
           lottiePath: 'assets/lotties/emotions/Happy.json',
-          name: 'Happy'.tr(),
-          voiceOverPath: isEn
-              ? 'assets/voice_over/en/happy.wav'
-              : 'assets/voice_over/ar/happy.mp3',
-          message: 'Your positive energy is like a ray of sunshine It\'s impossible not to feel happier around you and You radiate happiness, and it\'s truly inspiring'.tr()),
+          name: 'happy'.tr(),
+          voiceOverPath: 'assets/voice_over/en/happy.wav',
+          message:
+              'Your positive energy is like a ray of sunshine It\'s impossible not to feel happier around you and You radiate happiness, and it\'s truly inspiring'
+                  .tr()),
       EmotionModel(
           lottiePath: 'assets/lotties/emotions/Surprised.json',
-          name: 'Surprised'.tr(),
-          voiceOverPath: isEn
-              ? 'assets/voice_over/en/surprised.wav'
-              : 'assets/voice_over/ar/surprised.mp3',
+          name: 'surprised'.tr(),
+          voiceOverPath: 'assets/voice_over/en/surprised.wav',
           message: ''),
     ];
   }
@@ -68,6 +68,8 @@ class SpeechCubit extends Cubit<SpeechState> {
   }
 
   doneRecording(context) async {
+    String userID = CashHelper.getData(key: 'userID');
+    String token = CashHelper.getData(key: 'token');
     recording = false;
 
     await record.stop();
@@ -80,6 +82,12 @@ class SpeechCubit extends Cubit<SpeechState> {
 
     showResultBottomSheet(context, x[0]);
     play(voicePath: x[0].voiceOverPath);
+    DioHelper.post(url: ApiConstants.recordEmotionEndPoint, data: {
+      "emotion": x[0].name,
+      "userId": userID,
+    }, headers: {
+      'token': token
+    });
   }
 
   cancelRecording() async {

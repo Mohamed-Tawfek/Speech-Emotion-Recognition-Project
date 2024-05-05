@@ -4,5 +4,7 @@ part of 'daily_cubit.dart';
 abstract class DayState {}
 
 class DayInitial extends DayState {}
-class GetDailyState extends DayState {}
+class GetDailyStateLoading extends DayState {}
+class GetDailyStateSuccess extends DayState {}
+class GetDailyStateError extends DayState {}
 

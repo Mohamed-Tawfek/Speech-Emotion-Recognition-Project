@@ -8,10 +8,9 @@ import 'package:speech_emotion_recognition_project/core/constants/light_theme_co
 import 'package:speech_emotion_recognition_project/features/share/controller/followed_cubit.dart';
 
 import '../../../modes_controller/modes_cubit.dart';
-import '../../../test_qr.dart';
 import '../../history/screens/history_screen.dart';
 import '../model/followed_model.dart';
-import '../widgets/qr_view_widget.dart';
+import '../widgets/qr_scanner.dart';
 
 class FollowScreen extends StatelessWidget {
   const FollowScreen({super.key});
@@ -24,10 +23,9 @@ class FollowScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: appMode ? DarkColors.primary : LightColors.primary,
         onPressed: () {
-          // context.push(QRScreen(
-          //   cubit: followedCubit!,
-          //   ));
-          context.push(TestAIQrCode(cubit: followedCubit!,));
+          context.push(QRScanner(
+            cubit: followedCubit!,
+          ));
         },
         child: Icon(
           Icons.add,
@@ -47,12 +45,15 @@ class FollowScreen extends StatelessWidget {
                   itemBuilder: (_, index) {
                     FollowedModel currentFollowed = cubit.followed[index];
                     return Dismissible(
-
                       background: const Icon(Icons.delete),
                       onDismissed: (DismissDirection direction) {
                         showDialog(
+                            barrierDismissible: false,
                             context: context,
                             builder: (_) => AlertDialog(
+                                  backgroundColor: appMode
+                                      ? DarkColors.scaffoldColor
+                                      : LightColors.scaffoldColor,
                                   title: Text(
                                     'Are you sure to delete?'.tr(),
                                     style: TextStyle(
@@ -138,15 +139,17 @@ class ViewFollowedWidget extends StatelessWidget {
         backgroundImage: NetworkImage(model.userImage),
       ),
       titleAlignment: ListTileTitleAlignment.center,
-      title: Text(model.userName,
-      style: TextStyle(
-        color: appMode ? DarkColors.textColor : LightColors.textColor
+      title: Text(
+        model.userName,
+        style: TextStyle(
+            color: appMode ? DarkColors.textColor : LightColors.textColor),
       ),
-
+      subtitle: Text(
+        model.userEmail,
+        style: TextStyle(
+            color:
+                appMode ? DarkColors.subtitleColor : LightColors.subtitleColor),
       ),
-      subtitle: Text(model.userEmail,   style: TextStyle(
-          color: appMode ? DarkColors.subtitleColor : LightColors.subtitleColor
-      ),),
       onTap: () {
         context.push(HistoryScreen(
           forDisplaySharing: true,

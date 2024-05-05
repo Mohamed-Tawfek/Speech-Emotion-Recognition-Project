@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
@@ -25,18 +24,21 @@ class _CodeScreenState extends State<CodeScreen> {
   late String userImage;
   late String userEmail;
   late String token;
+  late String userID;
   @override
   void initState() {
     userName = CashHelper.getData(key: 'userName');
     userImage = CashHelper.getData(key: 'userImage');
     userEmail = CashHelper.getData(key: 'userEmail');
     token = CashHelper.getData(key: 'token');
+    userID = CashHelper.getData(key: 'userID');
 
     Map j = {
       'userName': userName,
       'userImage': userImage,
       'userEmail': userEmail,
       'token': token,
+      'userID':userID
     };
     qrData = jsonEncode(j);
 
@@ -75,7 +77,7 @@ class _CodeScreenState extends State<CodeScreen> {
                 SizedBox(
                   height: context.deviceHeight * 0.025,
                 ),
-                Container(
+                SizedBox(
 
                   width: context.deviceWidth * 0.45,
                   height: context.deviceWidth * 0.45,
@@ -84,28 +86,18 @@ class _CodeScreenState extends State<CodeScreen> {
                     data: qrData ?? '',
                     decoration:   PrettyQrDecoration(
 
-                      background:appMode?DarkColors.scaffoldColor :LightColors.textColor ,
+                    //  background:appMode?DarkColors.scaffoldColor :LightColors.textColor ,
 
                         image:const PrettyQrDecorationImage(
 
                           image: AssetImage('assets/icons/app_icon.png'),
                         ),
-                        shape: PrettyQrSmoothSymbol(color: appMode?DarkColors.qRCodeColor :LightColors.qRCodeColor)),
+                       shape: PrettyQrSmoothSymbol()
+
+                    ),
                   ),
                 ),
-                //  QrImageView(
-                //     data: qrData??'',
-                //     version: QrVersions.auto,
-                //     size: context.deviceWidth * 0.45,
-                //     backgroundColor: appMode
-                //         ? DarkColors.qrCodeColor
-                //         : LightColors.qrCodeColor,
-                //      embeddedImage: const AssetImage('assets/icons/app_icon.png'),
-                //     // embeddedImageStyle: QrEmbeddedImageStyle(
-                //     //   size: Size(
-                //     //       context.deviceWidth * 0.2, context.deviceWidth * 0.2),
-                //     // ),
-                //   ),
+
               ],
             ),
           ),

@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +9,9 @@ import 'package:speech_emotion_recognition_project/themes/dark_theme.dart';
 import 'package:speech_emotion_recognition_project/themes/light_theme.dart';
 
 import '../../../modes_controller/modes_cubit.dart';
+import 'features/authentication/screens/login_screen.dart';
 import 'features/offline_screen.dart';
+import 'features/onboarding/screens/onboarding_screen.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -46,8 +47,8 @@ class MyApp extends StatelessWidget {
                     final appMode = AppModeCubit.get(context).isDark;
                     return MaterialApp(
                       debugShowCheckedModeBanner: false,
-                      localizationsDelegates: context.localizationDelegates,
-                      supportedLocales: context.supportedLocales,
+                   //   localizationsDelegates: context.localizationDelegates,
+                     // supportedLocales: context.supportedLocales,
                       title: 'SER',
                       theme: getLightTheme(),
                       darkTheme: getDarkTheme(),
@@ -55,12 +56,12 @@ class MyApp extends StatelessWidget {
                       home: child,
                     );
                   },
-                  child:   SpeechScreen(),
-                 //  child: onBoardingShown
-                 //      ? isLogged
-                 //          ? const SpeechScreen()
-                 //          : LoginScreen()
-                 //      : OnBoardingScreen(),
+                  // child:   SpeechScreen(),
+                  child: onBoardingShown
+                      ? isLogged
+                          ? const SpeechScreen()
+                          : LoginScreen()
+                      : OnBoardingScreen(),
                 );
               } else {
                 return ScreenUtilInit(

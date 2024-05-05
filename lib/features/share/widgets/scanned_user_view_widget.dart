@@ -14,9 +14,10 @@ class ScannedUserViewWidget extends StatelessWidget {
       required this.userName,
       required this.token,
       required this.userEmail,
-      required this.cubit});
+      required this.cubit, required this.userID});
   final String image;
   final String userName;
+  final String userID;
   final String userEmail;
   final String token;
   final FollowedCubit cubit;
@@ -60,6 +61,8 @@ class ScannedUserViewWidget extends StatelessWidget {
                 token: token,
                 userEmail: userEmail,
                 userImage: image,
+              userID: userID,
+
                 userName: userName);
             context.pop;
           },

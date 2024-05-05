@@ -2,24 +2,24 @@ import 'dart:convert';
 
 import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
 import 'package:flutter/material.dart';
+import 'package:speech_emotion_recognition_project/features/share/widgets/scanned_user_view_widget.dart';
 
-import 'core/constants/dark_theme_colors.dart';
-import 'core/constants/light_theme_colors.dart';
-import 'features/share/controller/followed_cubit.dart';
-import 'features/share/widgets/scanned_user_view_widget.dart';
-import 'modes_controller/modes_cubit.dart';
+import '../../../core/constants/dark_theme_colors.dart';
+import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
+import '../controller/followed_cubit.dart';
 
 
 
-class TestAIQrCode extends StatefulWidget {
-  const TestAIQrCode({Key? key, required this.cubit}) : super(key: key);
+class QRScanner extends StatefulWidget {
+  const QRScanner({Key? key, required this.cubit}) : super(key: key);
   final FollowedCubit cubit;
 
   @override
-  State<TestAIQrCode> createState() => _TestAIQrCodeState();
+  State<QRScanner> createState() => _QRScannerState();
 }
 
-class _TestAIQrCodeState extends State<TestAIQrCode> {
+class _QRScannerState extends State<QRScanner> {
 
 
   @override
@@ -33,6 +33,7 @@ class _TestAIQrCodeState extends State<TestAIQrCode> {
         return  true;
       },
       canPop: false,
+
       onScan: (String value) {
 
         Map j = const JsonDecoder().convert(value);
@@ -44,10 +45,13 @@ class _TestAIQrCodeState extends State<TestAIQrCode> {
               userName: j['userName'],
               userEmail: j['userEmail'],
               token: j['token'],
+              userID: j['userID'],
               cubit: widget.cubit,
             ));
       },
-      onDetect: (p0) {},
+      onDetect: (BarcodeCapture p0) {
+  
+      },
       onDispose: () {
         debugPrint("Barcode scanner disposed!");
       },

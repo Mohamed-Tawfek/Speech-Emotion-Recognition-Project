@@ -37,6 +37,7 @@ class LoginCubit extends Cubit<LoginState> {
         context.pushAndRemoveUntil(const SpeechScreen());
         showToast(context, 'You have been logged in successfully'.tr());
         await CashHelper.setData(key: 'token', value: loginModel!.token);
+        await CashHelper.setData(key: 'userID', value: loginModel!.id);
         await CashHelper.setData(key: 'userEmail', value: loginModel!.email);
         await CashHelper.setData(key: 'userImage', value: loginModel!.image);
         await CashHelper.setData(key: 'userName', value: loginModel!.userName);

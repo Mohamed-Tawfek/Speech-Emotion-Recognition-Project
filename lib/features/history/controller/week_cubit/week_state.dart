@@ -4,4 +4,6 @@ part of 'week_cubit.dart';
 abstract class WeekState {}
 
 class WeekInitial extends WeekState {}
-class GetWeeklyBarDataState extends WeekState {}
+class GetWeeklyBarDataLoadingState extends WeekState {}
+class GetWeeklyBarDataSuccessState extends WeekState {}
+class GetWeeklyBarDataErrorState extends WeekState {}

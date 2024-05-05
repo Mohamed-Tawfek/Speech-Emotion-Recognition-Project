@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _obsecurePassword = true;
-final GlobalKey<FormState>_formKey=GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     bool appMode = AppModeCubit.get(context).isDark;
@@ -36,7 +36,6 @@ final GlobalKey<FormState>_formKey=GlobalKey<FormState>();
               child: Form(
                 key: _formKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-
                 child: SafeArea(
                   child: SizedBox(
                     width: context.deviceWidth,
@@ -80,13 +79,12 @@ final GlobalKey<FormState>_formKey=GlobalKey<FormState>();
                               hintText: 'Enter Email'.tr(),
                               prefixIcon: const Icon(Icons.email_outlined),
                               keyboardType: TextInputType.emailAddress,
-                              validator: (email){
-
+                              validator: (email) {
                                 if (email == null) {
                                   return 'this field is required!'.tr();
                                 }
                                 final bool emailValid = RegExp(
-                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                     .hasMatch(email);
                                 if (!emailValid) {
                                   return 'Enter a valid email'.tr();
@@ -100,14 +98,14 @@ final GlobalKey<FormState>_formKey=GlobalKey<FormState>();
                             ),
                             StatefulBuilder(builder: (c, setState) {
                               return CustomTextField(
-                                validator: (password){
-
+                                validator: (password) {
                                   if (password == null) {
                                     return 'this field is required!'.tr();
                                   }
 
-                                  if (password.length<6) {
-                                    return 'The password must not be less than 6 characters'.tr();
+                                  if (password.length < 6) {
+                                    return 'The password must not be less than 6 characters'
+                                        .tr();
                                   } else {
                                     return null;
                                   }
@@ -149,8 +147,10 @@ final GlobalKey<FormState>_formKey=GlobalKey<FormState>();
                             ),
                             CustomBtn(
                               hasBackground: true,
-                              onPressed: () => _login(context,
-                                  emailController.text, passwordController.text),
+                              onPressed: () => _login(
+                                  context,
+                                  emailController.text,
+                                  passwordController.text),
                               textChild: 'Login'.tr(),
                             ),
                             SizedBox(
@@ -201,14 +201,10 @@ final GlobalKey<FormState>_formKey=GlobalKey<FormState>();
     String email,
     String password,
   ) {
-    if(_formKey.currentState!.validate()){
+    if (_formKey.currentState!.validate()) {
       LoginCubit.get(context)
           .login(email: email, password: password, context: context);
-
-
     }
-
-
   }
 
   void _signup(BuildContext context) {

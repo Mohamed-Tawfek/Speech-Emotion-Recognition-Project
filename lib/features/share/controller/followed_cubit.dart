@@ -20,6 +20,7 @@ static  FollowedCubit get(context)=>BlocProvider.of(context);
        required token,
       required userEmail,
       required userImage,
+      required userID,
       required userName}) {
     String? result = CashHelper.getData(key: 'followed');
     if(result!=null) {
@@ -29,6 +30,7 @@ static  FollowedCubit get(context)=>BlocProvider.of(context);
         'userName': userName,
         'userEmail': userEmail,
         'token': token,
+        'userID': userID,
       });
       CashHelper.setData(
           key: 'followed', value: const JsonEncoder().convert(j));
@@ -40,6 +42,7 @@ static  FollowedCubit get(context)=>BlocProvider.of(context);
         'userName': userName,
         'userEmail': userEmail,
         'token': token,
+        'userID':userID
       });
       CashHelper.setData(
           key: 'followed', value: const JsonEncoder().convert(j));
@@ -61,7 +64,7 @@ static  FollowedCubit get(context)=>BlocProvider.of(context);
     followed = [];
     String? result = CashHelper.getData(key: 'followed');
 if(result!=null) {
-      List j = const JsonDecoder().convert(result!);
+      List j = const JsonDecoder().convert(result);
       j.forEach((followed) {
         this.followed.add(FollowedModel(followed));
       });
