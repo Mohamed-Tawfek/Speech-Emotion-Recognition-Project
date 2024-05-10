@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -8,7 +7,7 @@ import '../constants/dark_theme_colors.dart';
 import '../constants/light_theme_colors.dart';
 
 Future showLoadingDialog(context) {
-  bool appMode = AppModeCubit.get(context).isDark;
+   bool appMode = AppModeCubit.get(context).isDark;
 
   return showDialog(
       barrierDismissible: false,
@@ -24,7 +23,7 @@ Future showLoadingDialog(context) {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Loading'.tr(),
+                  'Loading',
                   style: TextStyle(
                       fontSize: 15.sp,
                       color: appMode
@@ -75,7 +74,7 @@ Future showConfirmDialog(BuildContext context,  void Function()? yesOnPressed,St
               child: Row(
                 children: [
                   Text(
-                    'Confirm'.tr(),
+                    'Confirm',
                     style: TextStyle(
                       color: appMode
                           ? DarkColors.scaffoldColor
@@ -104,7 +103,7 @@ Future showConfirmDialog(BuildContext context,  void Function()? yesOnPressed,St
                 hoverColor: Colors.transparent,
                 onPressed: ()=>context.pop(),
                 child: Text(
-                  'No'.tr(),
+                  'No',
                   style: TextStyle(
                       color: appMode
                           ? DarkColors.textColor
@@ -119,7 +118,7 @@ Future showConfirmDialog(BuildContext context,  void Function()? yesOnPressed,St
                 color: appMode ? DarkColors.primary : LightColors.primary,
                 onPressed: yesOnPressed,
                 child: Text(
-                  'Yes'.tr(),
+                  'Yes',
                   style: TextStyle(
                       color: appMode
                           ? DarkColors.scaffoldColor

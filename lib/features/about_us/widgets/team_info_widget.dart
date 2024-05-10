@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
+ import 'package:flutter/cupertino.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/about_us/widgets/team_member_widget.dart';
 
@@ -15,22 +14,22 @@ class TeamInfoWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TeamMemberWidget(
-              name: 'Mohamed Tawfek'.tr(),
+            const TeamMemberWidget(
+              name: 'Mohamed Tawfek',
               imagePath: 'assets/images/tawfek.jpg',
-              job: 'Flutter Developer'.tr(),
+              job: 'Flutter Developer',
             ),
             _buildDivider(context),
-            TeamMemberWidget(
-              name: 'Nourhan Gamal'.tr(),
+            const TeamMemberWidget(
+              name: 'Nourhan Gamal',
               imagePath: 'assets/images/woman.png',
-              job: 'Machine Learning\n Engineer'.tr(),
+              job: 'Machine Learning\n Engineer',
             ),
             _buildDivider(context),
-            TeamMemberWidget(
-              name: 'Nourhan Hassan'.tr(),
+            const TeamMemberWidget(
+              name: 'Nourhan Hassan',
               imagePath: 'assets/images/woman.png',
-              job: 'Machine Learning\n Engineer'.tr(),
+              job: 'Machine Learning\n Engineer',
             ),
           ],
         ),
@@ -42,22 +41,22 @@ class TeamInfoWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TeamMemberWidget(
-              name: 'Mohamed Ahmed'.tr(),
+            const TeamMemberWidget(
+              name: 'Mohamed Ahmed',
               imagePath: 'assets/images/mashoour.jpg',
-              job: 'Node js Developer'.tr(),
+              job: 'Node js Developer',
             ),
             _buildDivider(context),
-            TeamMemberWidget(
-              name: 'Somia saad'.tr(),
+            const TeamMemberWidget(
+              name: 'Somia saad',
               imagePath: 'assets/images/woman.png',
-              job: 'Node js Developer'.tr(),
+              job: 'Node js Developer',
             ),
             _buildDivider(context),
-            TeamMemberWidget(
-              name: 'Shahd Bahgat'.tr(),
+            const TeamMemberWidget(
+              name: 'Shahd Bahgat',
               imagePath: 'assets/images/woman.png',
-              job: 'UI Designer'.tr(),
+              job: 'UI Designer',
             ),
           ],
         ),
@@ -67,22 +66,22 @@ class TeamInfoWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TeamMemberWidget(
-              name: 'Shahd Allam'.tr(),
+            const TeamMemberWidget(
+              name: 'Shahd Allam',
               imagePath: 'assets/images/woman.png',
-              job: 'System analyst &\n Documentation\n Writer'.tr(),
+              job: 'System analyst &\n Documentation\n Writer',
             ),
             _buildDivider(context),
-            TeamMemberWidget(
-              name: 'Mohamed Saeed'.tr(),
+            const TeamMemberWidget(
+              name: 'Mohamed Saeed',
               imagePath: 'assets/images/saeed.jpg',
-              job: 'React Developer'.tr(),
+              job: 'React Developer',
             ),
             _buildDivider(context),
-            TeamMemberWidget(
-              name: 'Ziad Ahmed'.tr(),
+            const TeamMemberWidget(
+              name: 'Ziad Ahmed',
               imagePath: 'assets/images/ziad.jpg',
-              job: 'React Developer'.tr(),
+              job: 'React Developer',
             ),
           ],
         ),

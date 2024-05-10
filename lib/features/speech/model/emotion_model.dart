@@ -2,8 +2,9 @@ class EmotionModel{
 
   String name;
   String lottiePath;
-  String message;
+   List<String> messages;
+
   String voiceOverPath;
 
-  EmotionModel({required this.lottiePath,required this.message,required this.name,required this.voiceOverPath});
+  EmotionModel({required this.lottiePath ,required this.name,required this.voiceOverPath,required this.messages});
 }

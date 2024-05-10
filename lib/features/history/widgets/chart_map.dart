@@ -1,5 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
 import '../../../modes_controller/modes_cubit.dart';
@@ -13,26 +14,59 @@ class BuildChartMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: context.deviceWidth,
-      child:   Center(
-        child: Wrap(
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            MapItem(text: 'Happy'.tr(), color: Colors.amber),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                MapItem(text: 'Natural', color: Color(0xffCFD8DC)),
+                SizedBox(
+                  height: context.deviceHeight * 0.015,
+                ),
+                MapItem(text: 'Calm', color: Color(0xff00BEFF)),
 
-            const SizedBox(
-              width: 10,
-              height: 20,
+              ],
             ),
-            MapItem(text: 'Angry'.tr(), color: Colors.red),
 
-            const SizedBox(
-              width: 10,
-              height: 20,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                MapItem(text: 'Happy', color: Color(0xffFFEB00)),
+                SizedBox(
+                  height: context.deviceHeight * 0.015,
+                ),
+                MapItem(text: 'Sad', color: Color(0xff0057AE)),
+              ],
             ),
-            MapItem(text: 'Surprised'.tr(), color: Colors.blue),
-            const SizedBox(
-              width: 10,
-              height: 20,
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                MapItem(text: 'Angry', color: Color(0xffFF2414)),
+                SizedBox(
+                  height: context.deviceHeight * 0.015,
+                ),
+                MapItem(text: 'Fear', color: Color(0xffB7043C)),
+
+              ],
             ),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                MapItem(text: 'Disgust', color: Color(0xffA1E533)),
+                SizedBox(
+                  height: context.deviceHeight * 0.015,
+                ),
+                MapItem(text: 'Surprised', color: Color(0xffFF6900)),
+              ],
+            )
           ],
         ),
       ),

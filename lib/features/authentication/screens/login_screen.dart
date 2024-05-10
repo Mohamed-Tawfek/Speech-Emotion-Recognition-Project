@@ -1,16 +1,14 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../modes_controller/modes_cubit.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/forget_password.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/signup_screen.dart';
-import 'package:speech_emotion_recognition_project/features/speech/screens/speech_screen.dart';
 
 import '../../../core/components/custom_btn.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../controllers/login/login_cubit.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -53,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                             Text(
-                              'Welcome back!'.tr(),
+                              'Welcome back!' ,
                               style: TextStyle(
                                   fontSize: 25.sp,
                                   color: appMode
@@ -64,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                               height: context.deviceHeight * 0.008,
                             ),
                             Text(
-                              'Login to your account'.tr(),
+                              'Login to your account' ,
                               style: TextStyle(
                                   fontSize: 13.sp,
                                   color: appMode
@@ -76,18 +74,18 @@ class LoginScreen extends StatelessWidget {
                             ),
                             CustomTextField(
                               controller: emailController,
-                              hintText: 'Enter Email'.tr(),
+                              hintText: 'Enter Email' ,
                               prefixIcon: const Icon(Icons.email_outlined),
                               keyboardType: TextInputType.emailAddress,
                               validator: (email) {
                                 if (email == null) {
-                                  return 'this field is required!'.tr();
+                                  return 'this field is required!' ;
                                 }
                                 final bool emailValid = RegExp(
                                         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                     .hasMatch(email);
                                 if (!emailValid) {
-                                  return 'Enter a valid email'.tr();
+                                  return 'Enter a valid email' ;
                                 } else {
                                   return null;
                                 }
@@ -100,19 +98,19 @@ class LoginScreen extends StatelessWidget {
                               return CustomTextField(
                                 validator: (password) {
                                   if (password == null) {
-                                    return 'this field is required!'.tr();
+                                    return 'this field is required!' ;
                                   }
 
                                   if (password.length < 6) {
                                     return 'The password must not be less than 6 characters'
-                                        .tr();
+                                         ;
                                   } else {
                                     return null;
                                   }
                                 },
                                 controller: passwordController,
                                 prefixIcon: const Icon(Icons.lock_outlined),
-                                hintText: 'Enter Password'.tr(),
+                                hintText: 'Enter Password' ,
                                 obscureText: _obsecurePassword,
                                 onPressedSuffixIcon: () {
                                   setState(() {
@@ -133,7 +131,7 @@ class LoginScreen extends StatelessWidget {
                                   overlayColor: MaterialStateProperty.all(
                                       Colors.transparent)),
                               child: Text(
-                                'Forgot your password?'.tr(),
+                                'Forgot your password?' ,
                                 style: TextStyle(
                                   color: appMode
                                       ? DarkColors.primary
@@ -151,7 +149,7 @@ class LoginScreen extends StatelessWidget {
                                   context,
                                   emailController.text,
                                   passwordController.text),
-                              textChild: 'Login'.tr(),
+                              textChild: 'Login' ,
                             ),
                             SizedBox(
                               height: context.deviceHeight * 0.08,
@@ -160,7 +158,7 @@ class LoginScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Don\'t have an account?'.tr(),
+                                  'Don\'t have an account?' ,
                                   style: TextStyle(
                                       fontSize: 13.sp,
                                       color: appMode
@@ -173,7 +171,7 @@ class LoginScreen extends StatelessWidget {
                                             Colors.transparent)),
                                     onPressed: () => _signup(context),
                                     child: Text(
-                                      'Sign up'.tr(),
+                                      'Sign up' ,
                                       style: TextStyle(
                                           fontSize: 13.sp,
                                           color: appMode

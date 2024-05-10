@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -55,7 +54,7 @@ class FollowScreen extends StatelessWidget {
                                       ? DarkColors.scaffoldColor
                                       : LightColors.scaffoldColor,
                                   title: Text(
-                                    'Are you sure to delete?'.tr(),
+                                    'Are you sure to delete?',
                                     style: TextStyle(
                                         color: appMode
                                             ? DarkColors.textColor
@@ -72,7 +71,7 @@ class FollowScreen extends StatelessWidget {
                                             index: index, context: context);
                                       },
                                       child: Text(
-                                        'Yes'.tr(),
+                                        'Yes',
                                         style: TextStyle(
                                             color: appMode
                                                 ? DarkColors.scaffoldColor
@@ -85,7 +84,7 @@ class FollowScreen extends StatelessWidget {
                                         Navigator.pop(context);
                                         cubit.getFollowed();
                                       },
-                                      child: Text('No'.tr(),
+                                      child: Text('No',
                                           style: TextStyle(
                                               color: appMode
                                                   ? DarkColors.textColor
@@ -191,7 +190,7 @@ class _SynchronizingWidgetState extends State<SynchronizingWidget> {
   @override
   Widget build(BuildContext context) {
     increaseValue();
-    print(value);
+
     if (value >= 1.0) {
       //  Navigator.pop(context);
 

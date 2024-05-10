@@ -1,22 +1,15 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:speech_emotion_recognition_project/core/components/dialogs.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/account/controller/account/account_cubit.dart';
-import 'package:speech_emotion_recognition_project/features/account/models/user_model.dart';
-import 'package:speech_emotion_recognition_project/features/account/screens/change_account_info.dart';
-import 'package:speech_emotion_recognition_project/features/authentication/screens/login_screen.dart';
+
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
 import '../../../modes_controller/modes_cubit.dart';
 import '../../speech/widgets/drawer_components.dart';
-import '../widgets/info_widget.dart';
-import '../widgets/setting_action_btn.dart';
 import '../widgets/settings_options.dart';
-import 'change_password_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -39,7 +32,7 @@ class AccountScreen extends StatelessWidget {
                   appMode ? DarkColors.scaffoldColor : LightColors.primary),
           // backgroundColor: const Color(0xffd8135a),
           title: Text(
-            'Account'.tr(),
+            'Account',
             style:
                 TextStyle(color: appMode ? DarkColors.textColor : Colors.white),
           ),
@@ -110,7 +103,7 @@ class AccountScreen extends StatelessWidget {
                           model: cubit.userModel!,
                           birthdate:
                               '${cubit.userModel!.day}/${cubit.userModel!.month}/${cubit.userModel!.year}',
-                          gender: cubit.userModel!.gender.tr(),
+                          gender: cubit.userModel!.gender,
                           phone: cubit.userModel!.phone.toString(),
                         ),
                       ],

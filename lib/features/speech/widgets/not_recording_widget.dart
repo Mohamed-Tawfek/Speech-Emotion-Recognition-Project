@@ -20,7 +20,7 @@ class NotRecordingWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SpeechCustomBtn(
-              onTap: () => _micBtn(cubit),
+              onTap: () => _micBtn(cubit,context),
               child: Icon(
                 Icons.mic,
                 size: 60,
@@ -45,8 +45,8 @@ class NotRecordingWidget extends StatelessWidget {
     );
   }
 
-  void _micBtn(SpeechCubit cubit) async {
-    cubit.startRecording();
+  void _micBtn(SpeechCubit cubit,context) async {
+    cubit.startRecording(context);
   }
 
   void _importBtn(SpeechCubit cubit, BuildContext context) {

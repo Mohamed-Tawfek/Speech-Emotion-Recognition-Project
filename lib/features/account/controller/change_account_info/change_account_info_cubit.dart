@@ -1,13 +1,9 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meta/meta.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/speech/screens/speech_screen.dart';
 
@@ -23,11 +19,13 @@ part 'change_account_info_state.dart';
 
 class ChangeAccountInfoCubit extends Cubit<ChangeAccountInfoState> {
   ChangeAccountInfoCubit() : super(ChangeAccountInfoInitial());
+
   static ChangeAccountInfoCubit get(context) => BlocProvider.of(context);
   final ImagePicker _picker = ImagePicker();
   File? photo;
   UserModel? userModel;
   ChangeAccountModel? changeAccountModel;
+
   Future<void> getAccountInfo() async {
     userModel = null;
     emit(GetAccountLoadingState());
@@ -84,7 +82,6 @@ class ChangeAccountInfoCubit extends Cubit<ChangeAccountInfoState> {
             "phone": phone,
           })
         : FormData.fromMap({
-
             "firstname": firstName,
             "lastname": lastName,
             "gender": gender,
@@ -106,9 +103,9 @@ class ChangeAccountInfoCubit extends Cubit<ChangeAccountInfoState> {
       Navigator.of(context).pop();
       if (response.statusCode == 200) {
         context.pushAndRemoveUntil(const SpeechScreen());
-        showToast(context, 'Information has been updated'.tr());
+        showToast(context, 'Information has been updated');
       } else {
-        showToast(context, 'There is an error'.tr());
+        showToast(context, 'There is an error');
       }
     });
   }

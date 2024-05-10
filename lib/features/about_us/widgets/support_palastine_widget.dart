@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -32,7 +31,7 @@ class  SupportPalastineWidget extends StatelessWidget {
           padding: EdgeInsetsDirectional.symmetric(
               horizontal: context.deviceHeight * 0.04),
           child: Text(
-            'This application supports the Palestinian cause'.tr(),
+            'This application supports the Palestinian cause' ,
             style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w900,

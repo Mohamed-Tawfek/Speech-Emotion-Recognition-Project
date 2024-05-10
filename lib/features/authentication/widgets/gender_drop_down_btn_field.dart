@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
@@ -23,28 +22,28 @@ class _GenderDropDownBtnFieldState extends State<GenderDropDownBtnField> {
         value: chosenGenderValue,
         validator: (String? gender ){
           if(gender==null||gender.isEmpty){
-            return 'Gender is required'.tr();
+            return 'Gender is required' ;
           }
           else {
             return null;
           }
         },
-        decoration: InputDecoration(
-          hintText: 'Choose Gender'.tr(),
-          prefixIcon: const Icon(Icons.man),
+        decoration: const InputDecoration(
+          hintText: 'Choose Gender' ,
+          prefixIcon: Icon(Icons.man),
         ),
         dropdownColor:
             appMode ? DarkColors.textFieldColor : LightColors.textFieldColor,
         style: TextStyle(
             color: appMode ? DarkColors.textColor : LightColors.textColor),
-        items: [
+        items: const [
           DropdownMenuItem(
             value: 'male',
-            child: Text('Male'.tr()),
+            child: Text('Male' ),
           ),
           DropdownMenuItem(
             value: 'female',
-            child: Text('Female'.tr()),
+            child: Text('Female' ),
           ),
         ],
         onChanged: (v) {

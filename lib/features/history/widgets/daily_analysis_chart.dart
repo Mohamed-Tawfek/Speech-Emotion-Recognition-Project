@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../modes_controller/modes_cubit.dart';
@@ -16,7 +15,7 @@ class DailyAnalysisChart extends StatelessWidget {
 
     return SfCircularChart(
         title: ChartTitle(
-            text: 'Daily Emotions Analysis'.tr(),
+            text: 'Daily Emotions Analysis' ,
             textStyle: TextStyle(
                 color: appMode ? DarkColors.textColor : LightColors.textColor)),
         series: <CircularSeries>[

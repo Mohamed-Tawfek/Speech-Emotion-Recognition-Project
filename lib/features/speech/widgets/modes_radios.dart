@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
@@ -31,7 +30,7 @@ class SwitchModeWidget extends StatelessWidget {
             size: 18.sp,
           ),
           subtitle: Text(
-            appMode?'Dark'.tr():'Light'.tr(),
+            appMode?'Dark' :'Light' ,
             style: TextStyle(
                 color: appMode
                     ? DarkColors.subtitleColor
@@ -39,7 +38,7 @@ class SwitchModeWidget extends StatelessWidget {
                 fontSize: 10.sp),
           ),
           title: Text(
-            'Mode'.tr(),
+            'Mode' ,
             style: TextStyle(color: color, fontSize: 15.sp),
           ),
           children:   <Widget>[
@@ -76,7 +75,7 @@ class _ModesRadiosState extends State<ModesRadios> {
           child: RadioListTile<Modes>(
             activeColor: widget.color,
             title: Text(
-              'Light'.tr(),
+              'Light' ,
               style: TextStyle(
                   fontSize: textRadiosSize,
                   color:
@@ -96,7 +95,7 @@ class _ModesRadiosState extends State<ModesRadios> {
         RadioListTile<Modes>(
           activeColor: widget.color,
           title: Text(
-            'Dark'.tr(),
+            'Dark' ,
             style: TextStyle(
                 fontSize: textRadiosSize,
                 color: appMode ? DarkColors.textColor : LightColors.textColor),

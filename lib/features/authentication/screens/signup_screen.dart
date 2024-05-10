@@ -1,15 +1,13 @@
 import 'package:dateofbirth/dateofbirth.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/authentication/screens/set_user_image_screen.dart';
 
-import '../../../core/components/change_mode_widget.dart';
-import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/components/custom_btn.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/gender_drop_down_btn_field.dart';
 
@@ -35,7 +33,7 @@ class SignUpScreen extends StatelessWidget {
         surfaceTintColor:
             appMode ? DarkColors.scaffoldColor : LightColors.scaffoldColor,
         title: Text(
-          'Sign up'.tr(),
+          'Sign up',
         ),
       ),
       body: SingleChildScrollView(
@@ -61,7 +59,7 @@ class SignUpScreen extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     Text(
-                      'Welcome!'.tr(),
+                      'Welcome!',
                       style: TextStyle(
                           fontSize: 25.sp,
                           color: appMode
@@ -72,7 +70,7 @@ class SignUpScreen extends StatelessWidget {
                       height: context.deviceHeight * 0.008,
                     ),
                     Text(
-                      'Create your account'.tr(),
+                      'Create your account',
                       style: TextStyle(
                           fontSize: 13.sp,
                           color: appMode
@@ -85,19 +83,19 @@ class SignUpScreen extends StatelessWidget {
                     CustomTextField(
                       validator: (String? email) {
                         if (email == null) {
-                          return 'this field is required!'.tr();
+                          return 'this field is required!';
                         }
                         final bool emailValid = RegExp(
                                 r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(email);
                          if (!emailValid) {
-                          return 'Enter a valid email'.tr();
+                          return 'Enter a valid email';
                         } else {
                           return null;
                         }
                       },
                       controller: emailController,
-                      hintText: 'Enter Email'.tr(),
+                      hintText: 'Enter Email',
                       prefixIcon: const Icon(Icons.email_outlined),
                       keyboardType: TextInputType.emailAddress,
                     ),
@@ -109,18 +107,18 @@ class SignUpScreen extends StatelessWidget {
                         validator: (password){
 
                           if (password == null) {
-                            return 'this field is required!'.tr();
+                            return 'this field is required!';
                           }
 
                           if (password.length<6) {
-                            return 'The password must not be less than 6 characters'.tr();
+                            return 'The password must not be less than 6 characters';
                           } else {
                             return null;
                           }
                         },
                         controller: passwordController,
                         prefixIcon: const Icon(Icons.lock_outlined),
-                        hintText: 'Enter Password'.tr(),
+                        hintText: 'Enter Password',
                         obscureText: _obsecurePassword,
                         onPressedSuffixIcon: () {
                           setState(() {
@@ -138,7 +136,7 @@ class SignUpScreen extends StatelessWidget {
                     CustomTextField(
                       controller: firstNameController,
                       prefixIcon: const Icon(Icons.person),
-                      hintText: 'Enter First Name'.tr(),
+                      hintText: 'Enter First Name',
                     ),
                     SizedBox(
                       height: context.deviceHeight * 0.05,
@@ -146,7 +144,7 @@ class SignUpScreen extends StatelessWidget {
                     CustomTextField(
                       controller: lastNameController,
                       prefixIcon: const Icon(Icons.person),
-                      hintText: 'Enter Last Name'.tr(),
+                      hintText: 'Enter Last Name',
                     ),
                     SizedBox(
                       height: context.deviceHeight * 0.05,
@@ -154,7 +152,7 @@ class SignUpScreen extends StatelessWidget {
                     CustomTextField(
                       controller: phoneController,
                       prefixIcon: const Icon(Icons.phone),
-                      hintText: 'Enter Phone'.tr(),
+                      hintText: 'Enter Phone',
                       keyboardType: TextInputType.number,
                     ),
                     SizedBox(
@@ -168,7 +166,7 @@ class SignUpScreen extends StatelessWidget {
                      //   alignment: context.locale.languageCode=='en'?Alignment.topLeft:Alignment.topRight,
                       alignment:  Alignment.topLeft ,
                         child: Text(
-                          'Enter your BirthDate:'.tr(),
+                          'Enter your BirthDate:',
                           style: TextStyle(
                               color: appMode
                                   ? DarkColors.textColor
@@ -209,7 +207,7 @@ class SignUpScreen extends StatelessWidget {
                     CustomBtn(
                       hasBackground: true,
                       onPressed: () => _signup(context),
-                      textChild: 'Sign up'.tr(),
+                      textChild: 'Sign up',
                     ),
                   ],
                 ),

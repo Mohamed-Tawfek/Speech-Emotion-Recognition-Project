@@ -17,10 +17,25 @@ class WeeklyEmotionModel{
   late int angry;
   late int happy;
   late int surprised;
+  late int natural;
+  late int calm;
+  late int sad;
+  late int fear;
+  late int disgusted;
   WeeklyEmotionModel.fromJson(Map<String,dynamic>json){
     angry=json['angry'];
     happy=json['happy'];
-    surprised=json['surprised'];
+    surprised=json['surprise'];
+    natural=json['neutral'];
+    calm=json['calm'];
+    sad=json['sad'];
+    fear=json['fear'];
+    disgusted=json['disgust'];
+
+
+
+
+
   }
 
 

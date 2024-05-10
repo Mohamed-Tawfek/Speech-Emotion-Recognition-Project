@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -23,18 +25,29 @@ class MonthCubit extends Cubit<MonthState> {
   static MonthCubit get(context) => BlocProvider.of(context);
   getMonthlyData() {
     emit(GetMonthlyLoadingState());
+
     monthsChartData = test;
     String userID =
         forDisplaySharing ? model!.userID : CashHelper.getData(key: 'userID');
     String token =
         forDisplaySharing ? model!.token : CashHelper.getData(key: 'token');
-    DioHelper.get(
-        url: '${ApiConstants.monthlyHistoryEndPoint}$userID',
-        headers: {'token': token}).then((value) {
-      monthlyModel = MonthlyModel.fromJson(value.data);
-      setupChartData();
-      emit(GetMonthlySuccessState());
-    });
+    // DioHelper.get(
+    //     url: '${ApiConstants.monthlyHistoryEndPoint}$userID',
+    //     headers: {'token': token}).then((value) {
+    //
+    //   monthlyModel = MonthlyModel.fromJson(value.data);
+    //   setupChartData();
+    //   emit(GetMonthlySuccessState());
+    // });
+
+
+    ///////////////-------------------------------
+    monthlyModel = MonthlyModel.fromJson(test);
+    setupChartData();
+    emit(GetMonthlySuccessState());
+
+
+
   }
 
   changeSelectionInMonth(int index) {
@@ -54,24 +67,44 @@ class MonthCubit extends Cubit<MonthState> {
         monthlyModel!.january.happy,
         monthlyModel!.january.angry,
         monthlyModel!.january.surprised,
+        monthlyModel!.january.fear,
+        monthlyModel!.january.sad,
+        monthlyModel!.january.calm,
+        monthlyModel!.january.natural,
+        monthlyModel!.january.disgusted,
       ));
       chartData.add(BarChartData(
         'Feb',
         monthlyModel!.february.happy,
         monthlyModel!.february.angry,
         monthlyModel!.february.surprised,
+        monthlyModel!.february.fear,
+        monthlyModel!.february.sad,
+        monthlyModel!.february.calm,
+        monthlyModel!.february.natural,
+        monthlyModel!.february.disgusted,
       ));
       chartData.add(BarChartData(
         'Mar',
         monthlyModel!.march.happy,
         monthlyModel!.march.angry,
         monthlyModel!.march.surprised,
+        monthlyModel!.march.fear,
+        monthlyModel!.march.sad,
+        monthlyModel!.march.calm,
+        monthlyModel!.march.natural,
+        monthlyModel!.march.disgusted,
       ));
       chartData.add(BarChartData(
         'Apr',
         monthlyModel!.april.happy,
         monthlyModel!.april.angry,
         monthlyModel!.april.surprised,
+        monthlyModel!.april.fear,
+        monthlyModel!.april.sad,
+        monthlyModel!.april.calm,
+        monthlyModel!.april.natural,
+        monthlyModel!.april.disgusted,
       ));
     }
     if (selectionPart == 2) {
@@ -80,18 +113,33 @@ class MonthCubit extends Cubit<MonthState> {
         monthlyModel!.may.happy,
         monthlyModel!.may.angry,
         monthlyModel!.may.surprised,
+        monthlyModel!.may.fear,
+        monthlyModel!.may.sad,
+        monthlyModel!.may.calm,
+        monthlyModel!.may.natural,
+        monthlyModel!.may.disgusted,
       ));
       chartData.add(BarChartData(
         'Jun',
         monthlyModel!.june.happy,
         monthlyModel!.june.angry,
         monthlyModel!.june.surprised,
+        monthlyModel!.june.fear,
+        monthlyModel!.june.sad,
+        monthlyModel!.june.calm,
+        monthlyModel!.june.natural,
+        monthlyModel!.june.disgusted,
       ));
       chartData.add(BarChartData(
         'Jul',
         monthlyModel!.july.happy,
         monthlyModel!.july.angry,
         monthlyModel!.july.surprised,
+        monthlyModel!.july.fear,
+        monthlyModel!.july.sad,
+        monthlyModel!.july.calm,
+        monthlyModel!.july.natural,
+        monthlyModel!.july.disgusted,
       ));
 
       chartData.add(BarChartData(
@@ -99,6 +147,11 @@ class MonthCubit extends Cubit<MonthState> {
         monthlyModel!.august.happy,
         monthlyModel!.august.angry,
         monthlyModel!.august.surprised,
+        monthlyModel!.august.fear,
+        monthlyModel!.august.sad,
+        monthlyModel!.august.calm,
+        monthlyModel!.august.natural,
+        monthlyModel!.august.disgusted,
       ));
     }
     if (selectionPart == 3) {
@@ -107,88 +160,170 @@ class MonthCubit extends Cubit<MonthState> {
         monthlyModel!.september.happy,
         monthlyModel!.september.angry,
         monthlyModel!.september.surprised,
+        monthlyModel!.september.fear,
+        monthlyModel!.september.sad,
+        monthlyModel!.september.calm,
+        monthlyModel!.september.natural,
+        monthlyModel!.september.disgusted,
       ));
       chartData.add(BarChartData(
         'Oct',
         monthlyModel!.october.happy,
         monthlyModel!.october.angry,
         monthlyModel!.october.surprised,
+        monthlyModel!.october.fear,
+        monthlyModel!.october.sad,
+        monthlyModel!.october.calm,
+        monthlyModel!.october.natural,
+        monthlyModel!.october.disgusted,
       ));
       chartData.add(BarChartData(
         'Nov',
         monthlyModel!.november.happy,
         monthlyModel!.november.angry,
         monthlyModel!.november.surprised,
+        monthlyModel!.november.fear,
+        monthlyModel!.november.sad,
+        monthlyModel!.november.calm,
+        monthlyModel!.november.natural,
+        monthlyModel!.november.disgusted,
       ));
       chartData.add(BarChartData(
         'Dec',
         monthlyModel!.december.happy,
         monthlyModel!.december.angry,
         monthlyModel!.december.surprised,
+        monthlyModel!.december.fear,
+        monthlyModel!.december.sad,
+        monthlyModel!.december.calm,
+        monthlyModel!.december.natural,
+        monthlyModel!.december.disgusted,
       ));
     }
   }
 }
 
-const Map test = {
+ Map<String,dynamic>  test = {
+'Year':{
   'Jan': {
-    'happy': 5,
-    'angry': 10,
-    'surprised': 14,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Feb': {
-    'happy': 16,
-    'angry': 12,
-    'surprised': 7,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Mar': {
-    'happy': 14,
-    'angry': 10,
-    'surprised': 7,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Apr': {
-    'happy': 18,
-    'angry': 14,
-    'surprised': 10,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'May': {
-    'happy': 7,
-    'angry': 13,
-    'surprised': 11,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Jun': {
-    'happy': 6,
-    'angry': 10,
-    'surprised': 8,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Jul': {
-    'happy': 12,
-    'angry': 7,
-    'surprised': 18,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Aug': {
-    'happy': 15,
-    'angry': 9,
-    'surprised': 18,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Sep': {
-    'happy': 10,
-    'angry': 19,
-    'surprised': 12,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Oct': {
-    'happy': 18,
-    'angry': 11,
-    'surprised': 9,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Nov': {
-    'happy': 9,
-    'angry': 15,
-    'surprised': 18,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
   'Dec': {
-    'happy': 9,
-    'angry': 15,
-    'surprised': 12,
+    'happy': Random().nextInt(10),
+    'angry': Random().nextInt(10),
+    'surprise': Random().nextInt(10),
+    'calm': Random().nextInt(10),
+    'neutral': Random().nextInt(10),
+    'sad': Random().nextInt(10),
+    'fear': Random().nextInt(10),
+    'disgust': Random().nextInt(10),
   },
+}
 };

@@ -1,12 +1,9 @@
 import 'package:dateofbirth/dateofbirth.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
-import 'package:speech_emotion_recognition_project/features/account/controller/account/account_cubit.dart';
-import 'package:speech_emotion_recognition_project/features/account/models/user_model.dart';
 
 import '../../../core/components/custom_btn.dart';
 import '../../../core/constants/dark_theme_colors.dart';
@@ -48,7 +45,7 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
         systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor:
                 appMode ? DarkColors.scaffoldColor : LightColors.scaffoldColor),
-        title: Text('Sign up'.tr()),
+        title: Text('Sign up' ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -147,7 +144,7 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
                         CustomTextField(
                           controller: firstNameController,
                           prefixIcon: const Icon(Icons.person),
-                          hintText: 'New first name'.tr(),
+                          hintText: 'New first name',
                         ),
                         SizedBox(
                           height: context.deviceHeight * 0.05,
@@ -155,7 +152,7 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
                         CustomTextField(
                           controller: lastNameController,
                           prefixIcon: const Icon(Icons.person),
-                          hintText: 'New last name'.tr(),
+                          hintText: 'New last name',
                         ),
                         SizedBox(
                           height: context.deviceHeight * 0.05,
@@ -163,7 +160,7 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
                         CustomTextField(
                           controller: phoneController,
                           prefixIcon: const Icon(Icons.phone),
-                          hintText: 'New Phone'.tr(),
+                          hintText: 'New Phone',
                           keyboardType: TextInputType.number,
                         ),
                         SizedBox(
@@ -174,8 +171,11 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
                           height: context.deviceHeight * 0.03,
                         ),
                         Align(
-                            alignment: context.locale.languageCode=='en'?Alignment.topLeft:Alignment.topRight,                            child: Text(
-                              'Enter new BirthDate:'.tr(),
+                            alignment:
+                                  Alignment.topLeft
+                                 ,
+                            child: Text(
+                              'Enter new BirthDate:',
                               style: TextStyle(
                                   color: appMode
                                       ? DarkColors.textColor
@@ -216,14 +216,14 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
                         CustomBtn(
                           hasBackground: true,
                           onPressed: () => _change(context,
-                               widgetContext: widgetContext,
+                              widgetContext: widgetContext,
                               firstName: firstNameController.text,
                               lastName: lastNameController.text,
                               selectedDay: selectedDay,
                               selectedMonth: selectedMonth,
                               selectedYear: selectedYear,
                               phone: phoneController.text),
-                          textChild: 'Change'.tr(),
+                          textChild: 'Change',
                         ),
                       ],
                     );
@@ -263,7 +263,7 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
                             : LightColors.textColor,
                       ),
                       Text(
-                        'Gallery'.tr(),
+                        'Gallery',
                         style: TextStyle(
                             color: appMode
                                 ? DarkColors.textColor
@@ -284,7 +284,7 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
                             : LightColors.textColor,
                       ),
                       Text(
-                        'Camera'.tr(),
+                        'Camera',
                         style: TextStyle(
                             color: appMode
                                 ? DarkColors.textColor
@@ -312,7 +312,7 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
 
   void _change(
     BuildContext context, {
-      required widgetContext,
+    required widgetContext,
     required firstName,
     required lastName,
     required phone,
@@ -320,7 +320,6 @@ class _ChangeAccountInfoState extends State<ChangeAccountInfo> {
     required selectedMonth,
     required selectedYear,
   }) {
-
     ChangeAccountInfoCubit.get(context).changeData(
       birthDate: "$selectedMonth/$selectedDay/$selectedYear",
       firstName: firstName,

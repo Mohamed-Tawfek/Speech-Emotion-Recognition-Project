@@ -27,7 +27,6 @@ dependencies:
   custom_timer: ^0.2.3
   smooth_page_indicator: ^1.1.0
   image_picker: ^1.0.7
-  easy_localization: ^3.0.3
   url_launcher: ^6.2.4
   dateofbirth: ^0.0.5
   fluttertoast: ^8.2.4
@@ -38,6 +37,7 @@ dependencies:
   flutter_toggle_tab: ^1.4.1
   ai_barcode_scanner: ^3.4.3
   pretty_qr_code: ^3.3.0
+  audioplayers: ^6.0.0
 
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
@@ -55,7 +55,5 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/lotties/
-    - assets/langs/
     - assets/lotties/emotions/
     - assets/voice_over/en/
-    - assets/voice_over/ar/

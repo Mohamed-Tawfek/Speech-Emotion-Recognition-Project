@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -107,7 +106,7 @@ class _CodeScreenState extends State<CodeScreen> {
                 vertical: context.deviceHeight * 0.03),
             child: Text(
               'Your QR code is private. If you share it with someone,they can scan it with their SER camera to share your statistics'
-                  .tr(),
+                   ,
               style: TextStyle(fontSize: 13.sp, color: const Color(0xff6e7c85)),
             ),
           )

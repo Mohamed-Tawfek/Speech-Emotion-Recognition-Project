@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -40,19 +39,10 @@ var _formKey=GlobalKey<FormState>();
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (context.locale.languageCode == 'ar')
+
+
                   Text(
-                    "نسيت كلمة مرورك؟".tr(),
-                    style: TextStyle(
-                        fontSize: 30.sp,
-                        color: appMode
-                            ? DarkColors.textColor
-                            : LightColors.textColor,
-                        fontWeight: FontWeight.bold),
-                  ),
-                if (context.locale.languageCode != 'ar')
-                  Text(
-                    "Forgot Your Password?".tr(),
+                    'Forgot Your Password?' ,
                     style: TextStyle(
                         fontSize: 30.sp,
                         color: appMode
@@ -61,7 +51,7 @@ var _formKey=GlobalKey<FormState>();
                         fontWeight: FontWeight.bold),
                   ),
                 Text(
-                  'Enter your registered email'.tr(),
+                  'Enter your registered email' ,
                   style: TextStyle(
                     color:
                     appMode ? DarkColors.textColor : LightColors.textColor,
@@ -69,7 +59,7 @@ var _formKey=GlobalKey<FormState>();
                   ),
                 ),
                 Text(
-                  'below to receive password reset instruction'.tr(),
+                  'below to receive password reset instruction' ,
                   style: TextStyle(
                     fontSize: 18.sp,
                     color:
@@ -89,19 +79,19 @@ var _formKey=GlobalKey<FormState>();
                   child: CustomTextField(
                     validator: (String? email) {
                       if (email == null) {
-                        return 'this field is required!'.tr();
+                        return 'this field is required!' ;
                       }
                       final bool emailValid = RegExp(
                           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(email);
                       if (!emailValid) {
-                        return 'Enter a valid email'.tr();
+                        return 'Enter a valid email' ;
                       } else {
                         return null;
                       }
                     },
                     controller: emailController,
-                    hintText: 'Enter Email'.tr(),
+                    hintText: 'Enter Email' ,
                     prefixIcon: const Icon(Icons.email_outlined),
                     keyboardType: TextInputType.emailAddress,
                   ),
@@ -124,7 +114,7 @@ var _formKey=GlobalKey<FormState>();
                           highlightColor: Colors.transparent,
                           onPressed: () => _sendLink(context),
                           child: Text(
-                            'Send Reset Link'.tr(),
+                            'Send Reset Link' ,
                             style: TextStyle(
                                 color: appMode
                                     ? DarkColors.scaffoldColor

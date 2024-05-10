@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -89,7 +87,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       }
     }).catchError((error){
       print('-'*20);
-       print(signUpModel!.message);
+       print(error);
       print('-'*20);
 
     });

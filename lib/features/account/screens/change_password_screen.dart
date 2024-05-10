@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,7 +40,7 @@ final _formKey=GlobalKey<FormState>();
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Change Password'.tr(),
+                'Change Password',
                 style: TextStyle(
                     fontSize: 25.sp,
                     color:
@@ -55,11 +54,11 @@ final _formKey=GlobalKey<FormState>();
                   validator: (password){
 
                     if (password == null) {
-                      return 'this field is required!'.tr();
+                      return 'this field is required!';
                     }
 
                     if (password.length<6) {
-                      return 'The password must not be less than 6 characters'.tr();
+                      return 'The password must not be less than 6 characters';
                     } else {
                       return null;
                     }
@@ -68,7 +67,7 @@ final _formKey=GlobalKey<FormState>();
                   controller: oldPasswordController,
 
                   prefixIcon: const Icon(Icons.lock_outlined),
-                  hintText: 'Old Password'.tr(),
+                  hintText: 'Old Password',
                   obscureText: _obsecurePassword,
                   onPressedSuffixIcon: () {
                     setState(() {
@@ -88,18 +87,18 @@ final _formKey=GlobalKey<FormState>();
                   validator: (password){
 
                     if (password == null) {
-                      return 'this field is required!'.tr();
+                      return 'this field is required!';
                     }
 
                     if (password.length<6) {
-                      return 'The password must not be less than 6 characters'.tr();
+                      return 'The password must not be less than 6 characters';
                     } else {
                       return null;
                     }
                   },
                   controller: newPasswordController,
                   prefixIcon: const Icon(Icons.lock_outlined),
-                  hintText: 'New Password'.tr(),
+                  hintText: 'New Password',
                   obscureText: _obsecurePassword,
                   onPressedSuffixIcon: () {
                     setState(() {
@@ -122,7 +121,7 @@ final _formKey=GlobalKey<FormState>();
                       return CustomBtn(
                         hasBackground: true,
                         onPressed: () => _change(context),
-                        textChild: 'Change'.tr(),
+                        textChild: 'Change',
                       );
                     },
                   ),

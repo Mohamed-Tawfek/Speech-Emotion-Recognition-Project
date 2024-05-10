@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speech_emotion_recognition_project/core/components/custom_btn.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -40,7 +39,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                   controller: messageController,
                   validator: (val) {
                     if (val == null || val.isEmpty) {
-                      return 'this field is required!'.tr();
+                      return 'this field is required!';
                     }
                   },
                   maxLength: 100,
@@ -64,7 +63,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                     return CustomBtn(
                         hasBackground: true,
                         onPressed: () => _sendBtn(context),
-                        textChild: 'Send'.tr());
+                        textChild: 'Send' );
                   },
                 ),
               )

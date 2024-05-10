@@ -14,7 +14,8 @@ import '../../screens/daily_analysis_screen.dart';
 part 'day_state.dart';
 
 class DailyCubit extends Cubit<DayState> {
-  DailyCubit({required this.forDisplaySharing,this.model}) : super(DayInitial());
+  DailyCubit({required this.forDisplaySharing, this.model})
+      : super(DayInitial());
   static DailyCubit get(context) => BlocProvider.of(context);
   DailyModel? dailyModel;
   final List<PieChartData> chartData = [];
@@ -28,19 +29,81 @@ class DailyCubit extends Cubit<DayState> {
   // };
   getDailyData() {
     emit(GetDailyStateLoading());
-    String userID =forDisplaySharing?model!.userID: CashHelper.getData(key: 'userID');
-    String token =forDisplaySharing?model!.token: CashHelper.getData(key: 'token');
-    DioHelper.get(
-        url: '${ApiConstants.dailyHistoryEndPoint}$userID',
-        headers: {'token': token}).then((value) {
-      dailyModel = DailyModel.fromJson(value.data);
-      chartData.add(PieChartData('happy', dailyModel!.happy, Colors.amber));
-      chartData.add(PieChartData('angry', dailyModel!.angry, Colors.red));
-      chartData
-          .add(PieChartData('surprised', dailyModel!.surprised, Colors.blue));
-      emit(GetDailyStateSuccess());
-    }).catchError((e) {
-      emit(GetDailyStateError());
+    String userID =
+        forDisplaySharing ? model!.userID : CashHelper.getData(key: 'userID');
+    String token =
+        forDisplaySharing ? model!.token : CashHelper.getData(key: 'token');
+    // DioHelper.get(
+    //     url: '${ApiConstants.dailyHistoryEndPoint}$userID',
+    //     headers: {'token': token}).then((value) {
+    //   dailyModel = DailyModel.fromJson(value.data);
+    //
+    //   dailyModel = DailyModel.fromJson({
+    //     'Day':{
+    //       'Angry':2,
+    //       'Happy':1,
+    //       'Surprise':7,
+    //       'Neutral':7,
+    //       'Calm':4,
+    //       'Sad':4,
+    //       'Fear':6,
+    //       'Disgust':7
+    //
+    //     }
+    //   });
+    //   chartData.add(PieChartData(
+    //       'Natural', dailyModel!.natural, const Color(0xffCFD8DC)));
+    //   chartData.add(PieChartData('Calm', dailyModel!.calm, Color(0xff00BEFF)));
+    //   chartData
+    //       .add(PieChartData('Happy', dailyModel!.happy, Color(0xffFFEB00)));
+    //   chartData.add(PieChartData('Sad', dailyModel!.sad, Color(0xff0057AE)));
+    //   chartData
+    //       .add(PieChartData('Angry', dailyModel!.angry, Color(0xffFF2414)));
+    //   chartData.add(PieChartData('Fear', dailyModel!.fear, Color(0xffB7043C)));
+    //   chartData.add(
+    //       PieChartData('Disgusted', dailyModel!.disgusted, Color(0xffA1E533)));
+    //   chartData.add(
+    //       PieChartData('Surprised', dailyModel!.surprised, Color(0xffFF6900)));
+    //
+    //   emit(GetDailyStateSuccess());
+    // }).catchError((e) {
+    //   emit(GetDailyStateError());
+    // });
+
+
+    //-------------------------
+    dailyModel = DailyModel.fromJson({
+      'Day':{
+        'Angry':2,
+        'Happy':1,
+        'Surprise':2,
+        'Neutral':3,
+        'Calm':3,
+        'Sad':3,
+        'Fear':3,
+        'Disgust':3
+
+      }
     });
+    chartData.add(PieChartData(
+        'Natural', dailyModel!.natural, const Color(0xffCFD8DC)));
+    chartData.add(PieChartData('Calm', dailyModel!.calm, Color(0xff00BEFF)));
+    chartData
+        .add(PieChartData('Happy', dailyModel!.happy, Color(0xffFFEB00)));
+    chartData.add(PieChartData('Sad', dailyModel!.sad, Color(0xff0057AE)));
+    chartData
+        .add(PieChartData('Angry', dailyModel!.angry, Color(0xffFF2414)));
+    chartData.add(PieChartData('Fear', dailyModel!.fear, Color(0xffB7043C)));
+    chartData.add(
+        PieChartData('Disgusted', dailyModel!.disgusted, Color(0xffA1E533)));
+    chartData.add(
+        PieChartData('Surprised', dailyModel!.surprised, Color(0xffFF6900)));
+
+
+
+
+
+
+
   }
 }

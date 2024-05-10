@@ -1,6 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -60,7 +59,7 @@ class HistoryScreen extends StatelessWidget {
                         context.pop();
                       },
                     ),
-                    title: Text('Statistics'.tr(),
+                    title: Text('Statistics',
                     style: TextStyle(
                       fontSize: 20.sp
                     ),
@@ -84,7 +83,7 @@ class HistoryScreen extends StatelessWidget {
                           : LightColors.buttonNavBackgroundColor,
                       items: <Widget>[
                         Text(
-                          'Day'.tr(),
+                          'Day',
                           style: TextStyle(
                               fontSize: 10.sp,
                               color: appMode
@@ -92,7 +91,7 @@ class HistoryScreen extends StatelessWidget {
                                   : LightColors.textColor),
                         ),
                         Text(
-                          'Week'.tr(),
+                          'Week',
                           style: TextStyle(
                               fontSize: 10.sp,
                               color: appMode
@@ -100,7 +99,7 @@ class HistoryScreen extends StatelessWidget {
                                   : LightColors.textColor),
                         ),
                         Text(
-                          'Month'.tr(),
+                          'Month',
                           style: TextStyle(
                               fontSize: 10.sp,
                               color: appMode

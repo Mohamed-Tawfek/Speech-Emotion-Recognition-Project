@@ -4,16 +4,16 @@ import 'package:speech_emotion_recognition_project/core/constants/light_theme_co
 
 import '../../modes_controller/modes_cubit.dart';
 
+void showCustomSnackBar(BuildContext context, String message) {
+  bool appMode = AppModeCubit.get(context).isDark;
 
-void showCustomSnackBar(BuildContext context,String message){
-  bool appMode=AppModeCubit.get(context).isDark;
-
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message,
-    style:   TextStyle(
-        color: appMode?DarkColors.textColor:LightColors.textColor
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(
+      message,
+      style: TextStyle(
+          color:
+              appMode ? DarkColors.scaffoldColor : LightColors.scaffoldColor),
     ),
-  ),
-    backgroundColor:appMode?DarkColors.primary:LightColors.primary,
+    backgroundColor: appMode ? DarkColors.primary : LightColors.primary,
   ));
-
 }

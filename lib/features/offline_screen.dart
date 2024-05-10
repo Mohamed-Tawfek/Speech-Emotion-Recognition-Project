@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -31,7 +30,7 @@ class OfflineScreen extends StatelessWidget {
             Lottie.asset('assets/lotties/connection_error.json',
           //  width: context.deviceWidth*0.8
             ),
-            Text('No internet connection'.tr(),
+            Text('No internet connection' ,
             style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,

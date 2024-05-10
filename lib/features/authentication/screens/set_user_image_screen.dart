@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
@@ -32,7 +31,7 @@ class SetUserImageScreen extends StatelessWidget {
     bool appMode = AppModeCubit.get(context).isDark;
     return Scaffold(
       appBar: AppBar(
-        title: Text('User image setup'.tr()),
+        title: Text('User image setup'),
       ),
       body: SizedBox(
         width: context.deviceWidth,
@@ -70,7 +69,7 @@ class SetUserImageScreen extends StatelessWidget {
                                 MaterialStateProperty.all(Colors.transparent)),
                         onPressed: () => _uploadImage(cubit),
                         child: Text(
-                          'Upload a photo'.tr(),
+                          'Upload a photo',
                           style: TextStyle(
                               fontSize: 20.sp, color: const Color(0xffCA4B7F)),
                         )),
@@ -83,7 +82,7 @@ class SetUserImageScreen extends StatelessWidget {
                                 MaterialStateProperty.all(Colors.transparent)),
                         onPressed: () => _takePhoto(cubit),
                         child: Text(
-                          'Take a photo'.tr(),
+                          'Take a photo',
                           style: TextStyle(
                               fontSize: 20.sp, color: const Color(0xffCA4B7F)),
                         )),
@@ -99,7 +98,7 @@ class SetUserImageScreen extends StatelessWidget {
                         highlightColor: Colors.transparent,
                         onPressed: () => _finish(context),
                         child: Text(
-                          'Finish'.tr(),
+                          'Finish',
                           style: TextStyle(
                               color: appMode
                                   ? DarkColors.scaffoldColor

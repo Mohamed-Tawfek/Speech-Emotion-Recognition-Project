@@ -11,8 +11,14 @@ class ApiConstants {
   static const String forgetPasswordEndPoint = '/users/forgot-password';
   static const String verifyEmailEndPoint = 'users/sendagain';
   static const String suggestionEndPoint = 'message';
-  static const String dailyHistoryEndPoint = 'users/history/day/';
+  static const String dailyHistoryEndPoint = 'emotions/history/day/';
   static const String weeklyHistoryEndPoint = 'users//history/month/';
   static const String monthlyHistoryEndPoint = 'users/history/year/';
-  static const String recordEmotionEndPoint = 'users/record';
+  static const String enterRecordEndPoint = 'https://deployment-dl-model-production.up.railway.app/predict_route?audio_file?';
+
+
+  //static const String analysisAudioEndPoint = 'http://ec2-34-200-78-89.compute-1.amazonaws.com:8000/predict';
+
+
+
 }

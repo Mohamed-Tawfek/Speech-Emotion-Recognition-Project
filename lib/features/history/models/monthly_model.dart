@@ -35,10 +35,20 @@ class MonthlyEmotionModel{
   late int angry;
   late int happy;
   late int surprised;
+  late int natural;
+  late int calm;
+  late int sad;
+  late int fear;
+  late int disgusted;
   MonthlyEmotionModel.fromJson(Map<String,dynamic>json){
     angry=json['angry'];
     happy=json['happy'];
-    surprised=json['surprised'];
+    surprised=json['surprise'];
+    calm=json['calm'];
+    natural=json['neutral'];
+    sad=json['sad'];
+    fear=json['fear'];
+    disgusted=json['disgust'];
   }
 
 

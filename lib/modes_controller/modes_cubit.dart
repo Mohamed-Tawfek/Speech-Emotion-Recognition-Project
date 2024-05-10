@@ -1,5 +1,3 @@
-import 'package:bloc/bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -9,25 +7,21 @@ part 'modes_state.dart';
 
 class AppModeCubit extends Cubit<AppModeState> {
   AppModeCubit() : super(AppModeStateInitial());
- static AppModeCubit get(context)=>BlocProvider.of(context);
 
-bool isDark=false;
-init(){
+  static AppModeCubit get(context) => BlocProvider.of(context);
 
-  isDark= CashHelper.getData(key: 'isDark')??false;
+  bool isDark = false;
 
+  init() {
+    isDark = CashHelper.getData(key: 'isDark') ?? false;
+  }
 
+  changeAppMode() {
+    isDark = !isDark;
+    CashHelper.setData(key: 'isDark', value: isDark);
 
-}
-changeAppMode(){
-  isDark=!isDark;
-  CashHelper.setData(key: 'isDark', value: isDark);
-
-
-   emit(ChangeModeState());
-
-}
-
+    emit(ChangeModeState());
+  }
 
 // }
 // changeAppLanguage(BuildContext context){
@@ -48,10 +42,4 @@ changeAppMode(){
 // emit(ChangeLanguagesState());
 // }
 //
-
-
-
-
-
-
 }

@@ -1,6 +1,5 @@
 
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/account/widgets/setting_action_btn.dart';
 
@@ -54,21 +53,21 @@ class SettingsOptions extends StatelessWidget {
               height: context.deviceHeight * 0.03,
             ),
             SettingActionBtn(
-                text: 'Change account info'.tr(),
+                text: 'Change account info',
                 icon: Icons.change_circle,
                 onTap: () => _changeAccountInfo(context, model)),
             SizedBox(
               height: context.deviceHeight * 0.03,
             ),
             SettingActionBtn(
-                text: 'Change password'.tr(),
+                text: 'Change password',
                 icon: Icons.lock,
                 onTap: () => _changePasswordBtn(context)),
             SizedBox(
               height: context.deviceHeight * 0.03,
             ),
             SettingActionBtn(
-                text: 'Delete my account'.tr(),
+                text: 'Delete my account',
                 icon: Icons.delete,
                 color: Colors.red,
                 onTap: () => _deleteAccountBtn(context)),
@@ -81,7 +80,7 @@ class SettingsOptions extends StatelessWidget {
   _deleteAccountBtn(BuildContext context) {
     showConfirmDialog(context, () {
       AccountCubit.removeAccount(context);
-    }, 'Are you sure you want to\n remove your account?!'.tr());
+    }, 'Are you sure you want to\n remove your account?!');
   }
 
   _changePasswordBtn(context) {

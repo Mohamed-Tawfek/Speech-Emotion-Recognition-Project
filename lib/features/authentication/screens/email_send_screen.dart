@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -35,7 +34,7 @@ class SendEmailScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Email has been sent!'.tr(),
+                    'Email has been sent!',
                     style: TextStyle(
                         fontSize: 30.sp,
                         color: appMode
@@ -44,7 +43,7 @@ class SendEmailScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'Please check your inbox and '.tr(),
+                    'Please check your inbox and ',
                     style: TextStyle(
                         fontSize: 18.sp,
                         color: appMode
@@ -54,8 +53,8 @@ class SendEmailScreen extends StatelessWidget {
                   Text(
                     forConfirm
                         ? 'click in the received link to confirm your account'
-                            .tr()
-                        : 'click in the received link to reset a password'.tr(),
+
+                        : 'click in the received link to reset a password',
                     style: TextStyle(
                         fontSize: 18.sp,
                         color: appMode
@@ -85,7 +84,7 @@ class SendEmailScreen extends StatelessWidget {
                       highlightColor: Colors.transparent,
                       onPressed: () => _login(context),
                       child: Text(
-                        'Login'.tr(),
+                        'Login',
                         style: TextStyle(
                             color: appMode
                                 ? DarkColors.scaffoldColor
@@ -101,7 +100,7 @@ class SendEmailScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Didn\'t receive the link?'.tr(),
+                        'Didn\'t receive the link?',
                         style: TextStyle(
                             fontSize: 13.sp,
                             color: appMode
@@ -119,7 +118,7 @@ class SendEmailScreen extends StatelessWidget {
                                         Colors.transparent)),
                                 onPressed: () => _resendLink(cubit,context),
                                 child: Text(
-                                  'Resend'.tr(),
+                                  'Resend',
                                   style: TextStyle(
                                       fontSize: 13.sp,
                                       color: appMode

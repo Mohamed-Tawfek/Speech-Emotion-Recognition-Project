@@ -1,10 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
@@ -28,6 +26,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool obscureText;
   final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     bool appMode = AppModeCubit.get(context).isDark;
@@ -57,13 +56,11 @@ class CustomTextField extends StatelessWidget {
       ),
       validator: validator ??
           (String? value) {
-        if(value==null||value.isEmpty) {
-              return 'this field is required!'.tr();
+            if (value == null || value.isEmpty) {
+              return 'this field is required!' ;
             }
-        return null;
-
+            return null;
           },
-
     );
   }
 }

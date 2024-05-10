@@ -1,5 +1,4 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -16,13 +15,13 @@ class AnalysisResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool appMode = AppModeCubit.get(context).isDark;
-
+    emotion.messages.shuffle();
     return Scaffold(
       appBar: AppBar(
         leading: const Text(''),
         //backgroundColor: const Color(0xffCA4B7F),
-        title: Text(
-          'Result'.tr(),
+        title: const Text(
+          'Result',
         ),
         centerTitle: true,
       ),
@@ -61,9 +60,8 @@ class AnalysisResultScreen extends StatelessWidget {
                   horizontal: context.deviceWidth * 0.03),
               child: AnimatedTextKit(
                 isRepeatingAnimation: false,
-
                 animatedTexts: [
-                  TypewriterAnimatedText('Status improvement message:'.tr(),
+                  TypewriterAnimatedText('Status improvement messages:',
                       textStyle: TextStyle(
                           fontSize: 17.sp,
                           fontWeight: FontWeight.bold,
@@ -83,9 +81,9 @@ class AnalysisResultScreen extends StatelessWidget {
                   horizontal: context.deviceWidth * 0.07),
               child: AnimatedTextKit(
                 isRepeatingAnimation: false,
-
                 animatedTexts: [
-                  TypewriterAnimatedText(emotion.message,
+
+                  TypewriterAnimatedText(emotion.messages.first,
                       cursor: '',
                       textStyle: TextStyle(
                           fontSize: 13.sp,
@@ -93,11 +91,16 @@ class AnalysisResultScreen extends StatelessWidget {
                           color: appMode
                               ? DarkColors.textColor
                               : LightColors.textColor),
-                      speed: Duration(milliseconds: 50)),
+                      speed: const Duration(milliseconds: 50)),
+
+
                 ],
               ),
             ),
-            const Spacer(),
+            SizedBox(
+              height: context.deviceHeight * 0.04,
+            ),
+            Spacer(),
             Container(
               margin: EdgeInsetsDirectional.only(
                 bottom: context.deviceHeight * 0.03,
@@ -115,7 +118,7 @@ class AnalysisResultScreen extends StatelessWidget {
                     vertical: context.deviceHeight * 0.01,
                   ),
                   child: Text(
-                    'Done'.tr(),
+                    'Done',
                     style: TextStyle(
                         fontSize: 20.sp,
                         color: appMode

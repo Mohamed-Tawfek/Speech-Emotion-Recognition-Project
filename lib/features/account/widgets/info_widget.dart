@@ -1,5 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
  import '../../../core/constants/dark_theme_colors.dart';
 import '../../../modes_controller/modes_cubit.dart';
@@ -25,17 +24,17 @@ class InfoWidget extends StatelessWidget {
       child: Column(
         children: [
           InfoItem(
-            attribute: 'phone'.tr(),
+            attribute: 'phone',
             value: phone,
           ),
           _divider(context.deviceHeight),
           InfoItem(
-            attribute: 'BirthDate'.tr(),
+            attribute: 'BirthDate',
             value: birthdate,
           ),
           _divider(context.deviceHeight),
           InfoItem(
-            attribute: 'Gender'.tr(),
+            attribute: 'Gender',
             value: gender,
           ),
         ],

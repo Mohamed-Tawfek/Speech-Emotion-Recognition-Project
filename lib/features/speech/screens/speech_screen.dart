@@ -1,6 +1,4 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:custom_timer/custom_timer.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,9 +6,10 @@ import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/speech/controller/speech_cubit.dart';
 import 'package:speech_emotion_recognition_project/features/speech/screens/analysis_result_screen.dart';
-import '../../../modes_controller/modes_cubit.dart';
+
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../model/emotion_model.dart';
 import '../widgets/drawer_of_speech.dart';
 import '../widgets/not_recording_widget.dart';
@@ -55,24 +54,21 @@ class SpeechScreen extends StatelessWidget {
                       children: [
                         cubit.recording
                             ? const TopRecordingWidget()
-                            :
-                        Padding(
-                        padding: EdgeInsetsDirectional.only(
-                      top: context.deviceHeight * 0.15),
-                          child: Text('Press on mic or import file to start'.tr(),
-                              style:   TextStyle(
-                                  fontSize: 18.sp,
-                                  color: appMode
-                                      ? DarkColors.textColor
-                                      : LightColors.textColor),
-                            ),
-                        ),
-
-
-
-                         const Spacer(),
+                            : Padding(
+                                padding: EdgeInsetsDirectional.only(
+                                    top: context.deviceHeight * 0.15),
+                                child: Text(
+                                  'Press on mic or import file to start' ,
+                                  style: TextStyle(
+                                      fontSize: 18.sp,
+                                      color: appMode
+                                          ? DarkColors.textColor
+                                          : LightColors.textColor),
+                                ),
+                              ),
+                        const Spacer(),
                         cubit.recording
-                            ? const RecordingWidget()
+                            ?   RecordingWidget(cubitContext:context ,)
                             : const NotRecordingWidget(),
                       ],
                     ),
@@ -102,6 +98,7 @@ class _TimerState extends State<TimerWidget>
       end: const Duration(days: 1),
       initialState: CustomTimerState.reset,
       interval: CustomTimerInterval.milliseconds);
+
   @override
   void initState() {
     _controller.start();

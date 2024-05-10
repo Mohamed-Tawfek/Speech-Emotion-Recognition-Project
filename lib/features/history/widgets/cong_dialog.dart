@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 
@@ -40,7 +39,7 @@ showCongDialog(BuildContext context) {
                   animatedTexts: [
                     TypewriterAnimatedText(
                       'Congratulations, based on your statistics, your highest emotion last week was angry, and now your highest emotion is happy, and we hope that you will be happy forever'
-                          .tr(),
+                           ,
                       textStyle: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.bold,

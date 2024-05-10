@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
+ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:speech_emotion_recognition_project/core/components/dialogs.dart';
@@ -35,7 +34,7 @@ class LoginCubit extends Cubit<LoginState> {
         context.pop();
 
         context.pushAndRemoveUntil(const SpeechScreen());
-        showToast(context, 'You have been logged in successfully'.tr());
+        showToast(context, 'You have been logged in successfully' );
         await CashHelper.setData(key: 'token', value: loginModel!.token);
         await CashHelper.setData(key: 'userID', value: loginModel!.id);
         await CashHelper.setData(key: 'userEmail', value: loginModel!.email);

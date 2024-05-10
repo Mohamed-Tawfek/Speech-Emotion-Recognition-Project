@@ -7,8 +7,8 @@ import '../../../core/constants/light_theme_colors.dart';
 import '../controller/speech_cubit.dart';
 
 class RecordingWidget extends StatelessWidget {
-  const RecordingWidget({super.key});
-
+  const RecordingWidget({super.key,required this.cubitContext});
+ final BuildContext cubitContext;
   @override
   Widget build(BuildContext context) {
     final SpeechCubit cubit = SpeechCubit.get(context);
@@ -18,7 +18,7 @@ class RecordingWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         SpeechCustomBtn(
-          onTap: () => _doneBtn(cubit,context),
+          onTap: () => _doneBtn(cubit,cubitContext),
           child:   Icon(
             Icons.done,
             size: 60,
