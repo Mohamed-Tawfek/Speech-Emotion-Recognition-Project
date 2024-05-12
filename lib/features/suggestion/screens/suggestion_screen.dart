@@ -1,5 +1,6 @@
  import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_emotion_recognition_project/core/components/custom_btn.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/features/suggestion/controller/suggestion_cubit.dart';
@@ -45,10 +46,18 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                   maxLength: 100,
                   maxLines: 10,
                   style: TextStyle(
+
                       color: appMode
                           ? DarkColors.textInFieldColor
                           : LightColors.textInFieldColor),
                   decoration: InputDecoration(
+                    hintText:'Suggest how this app can be improved' ,
+                      helperStyle: TextStyle(
+                        fontSize: 13.sp,
+                        color: appMode
+                            ? DarkColors.textInFieldColor
+                            : LightColors.textInFieldColor
+                      ),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30))),
                 ),
