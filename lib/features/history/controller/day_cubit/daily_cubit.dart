@@ -19,6 +19,8 @@ class DailyCubit extends Cubit<DayState> {
   static DailyCubit get(context) => BlocProvider.of(context);
   DailyModel? dailyModel;
   final List<PieChartData> chartData = [];
+  int numberDailyEmotions = 0;
+
   bool forDisplaySharing;
   FollowedModel? model;
   // Map testMap ={
@@ -27,6 +29,19 @@ class DailyCubit extends Cubit<DayState> {
   //   'surprised': 10,
   //
   // };
+  calcNumberDailyEmotions() {
+    if (dailyModel != null) {
+      numberDailyEmotions = dailyModel!.surprised;
+      numberDailyEmotions = numberDailyEmotions + dailyModel!.disgusted;
+      numberDailyEmotions = numberDailyEmotions + dailyModel!.fear;
+      numberDailyEmotions = numberDailyEmotions + dailyModel!.sad;
+      numberDailyEmotions = numberDailyEmotions + dailyModel!.happy;
+      numberDailyEmotions = numberDailyEmotions + dailyModel!.calm;
+      numberDailyEmotions = numberDailyEmotions + dailyModel!.natural;
+      numberDailyEmotions = numberDailyEmotions + dailyModel!.angry;
+    }
+  }
+
   getDailyData() {
     emit(GetDailyStateLoading());
     String userID =
@@ -37,7 +52,11 @@ class DailyCubit extends Cubit<DayState> {
         url: '${ApiConstants.dailyHistoryEndPoint}$userID',
         headers: {'token': token}).then((value) {
       dailyModel = DailyModel.fromJson(value.data);
+      print(value.data);
+      print(dailyModel!.angry);
+      print(dailyModel!.sad);
 
+      calcNumberDailyEmotions();
       // dailyModel = DailyModel.fromJson({
       //   'Day':{
       //     'Angry':2,
@@ -70,7 +89,6 @@ class DailyCubit extends Cubit<DayState> {
       emit(GetDailyStateError());
     });
 
-
     // //-------------------------
     // // dailyModel = DailyModel.fromJson({
     // //   'Day':{
@@ -98,12 +116,5 @@ class DailyCubit extends Cubit<DayState> {
     //     PieChartData('Disgusted', dailyModel!.disgusted, Color(0xffA1E533)));
     // chartData.add(
     //     PieChartData('Surprised', dailyModel!.surprised, Color(0xffFF6900)));
-
-
-
-
-
-
-
   }
 }

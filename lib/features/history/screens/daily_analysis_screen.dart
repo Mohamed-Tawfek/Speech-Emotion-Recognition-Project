@@ -1,5 +1,8 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:speech_emotion_recognition_project/core/constants/dark_theme_colors.dart';
 import 'package:speech_emotion_recognition_project/core/constants/light_theme_colors.dart';
@@ -29,17 +32,6 @@ class DailyAnalysisScreen extends StatelessWidget {
             DailyCubit cubit = DailyCubit.get(context);
             bool appMode = AppModeCubit.get(context).isDark;
             DailyModel? dailyModel = cubit.dailyModel;
-            int? sumEmotions;
-            if (dailyModel != null) {
-              sumEmotions = dailyModel.surprised;
-              sumEmotions = sumEmotions + dailyModel.disgusted;
-              sumEmotions = sumEmotions + dailyModel.fear;
-              sumEmotions = sumEmotions + dailyModel.sad;
-              sumEmotions = sumEmotions + dailyModel.happy;
-              sumEmotions = sumEmotions + dailyModel.calm;
-              sumEmotions = sumEmotions + dailyModel.natural;
-              sumEmotions = sumEmotions + dailyModel.angry;
-            }
 
             return Center(
                 child: dailyModel == null
@@ -51,61 +43,49 @@ class DailyAnalysisScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          sumEmotions != 0
+                          cubit.numberDailyEmotions != 0
                               ? DailyAnalysisChart(
                                   dataSource: cubit.chartData,
+                                  totalEmotionsNumber:
+                                      cubit.numberDailyEmotions,
                                 )
-                              : SfCircularChart(
-                                  tooltipBehavior:
-                                      TooltipBehavior(enable: true),
-                                  title: ChartTitle(
-                                      text: 'Daily Emotions Analysis',
-                                      textStyle: TextStyle(
-                                          color: appMode
-                                              ? DarkColors.textColor
-                                              : LightColors.textColor)),
-                                  series: <CircularSeries>[
-                                      PieSeries<PieChartData, String>(
-                                        enableTooltip: true,
-                                        dataSource: [
-                                          PieChartData(
-                                            'Empty',
-                                            1,
-                                            Color(0xff7D7C84),
-                                          ),
-                                        ],
-                                        pointColorMapper:
-                                            (PieChartData data, _) =>
-                                                data.color,
-                                        xValueMapper: (PieChartData data, _) =>
-                                            data.title,
-                                        yValueMapper: (PieChartData data, _) =>
-                                            data.number,
-                                        dataLabelSettings:
-                                            const DataLabelSettings(
-                                          isVisible: false,
-                                          overflowMode: OverflowMode.trim,
-
-                                        ),
-                                      )
-                                    ]),
+                              : Center(
+                                child: Lottie.asset(
+                                    'assets/lotties/emotions/empty.json',
+                                                          height: context.deviceHeight*0.3,
+                                                            width: context.deviceWidth*0.7
 
 
-                          if(sumEmotions == 0   )
-                            Center(
-                              child: Text(
-                                'Daily statistics are empty',
-                                style: TextStyle(
-                                  color: appMode
-                                      ? DarkColors.textColor
-                                      : LightColors.textColor,
-                                ),
+                                                          ),
                               ),
+                          if (cubit.numberDailyEmotions == 0)
+                          SizedBox(
+                            height: context.deviceHeight * 0.04,
+                          ),
+                          if (cubit.numberDailyEmotions == 0)
+                            Center(
+                              child:
+                                AnimatedTextKit(
+                                  isRepeatingAnimation: false,
+                                  animatedTexts: [
+                                    TypewriterAnimatedText('Daily statistics are empty',
+                                        cursor: '',
+                                        textStyle: TextStyle(
+                                            fontSize: 15.sp,
+                                            fontWeight: FontWeight.bold,
+                                            color: appMode
+                                                ? DarkColors.textColor
+                                                : LightColors.textColor),
+                                        speed: Duration(milliseconds: 100)),
+                                  ],
+                                )
                             ),
-SizedBox(height: context.deviceHeight*0.04,),
+                          SizedBox(
+                            height: context.deviceHeight * 0.04,
+                          ),
 
-                                const BuildChartMap(),
-
+                          if (cubit.numberDailyEmotions != 0)
+                          const BuildChartMap(),
                         ],
                       ));
           },

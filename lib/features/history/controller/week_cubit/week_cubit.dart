@@ -23,18 +23,65 @@ class WeekCubit extends Cubit<WeekState> {
   FollowedModel? model;
   List<BarChartData> chartData = [];
   WeeklyModel? weeklyModel;
-  getWeeklyData() {
-  //  emit(GetWeeklyBarDataLoadingState());
+
+  getWeeklyData()  {
+    //  emit(GetWeeklyBarDataLoadingState());
     String userID =
         forDisplaySharing ? model!.userID : CashHelper.getData(key: 'userID');
     String token =
         forDisplaySharing ? model!.token : CashHelper.getData(key: 'token');
 
-    DioHelper.get(
+     DioHelper.get(
         url: '${ApiConstants.weeklyHistoryEndPoint}$userID',
         headers: {'token': token}).then((value) {
       weeklyModel = WeeklyModel.fromJson(value.data);
-
+   //    weeklyModel = WeeklyModel.fromJson({
+   //      'Month': {
+   //        'Week 1': {
+   //          'angry': Random().nextInt(10),
+   //          'happy': Random().nextInt(10),
+   //          'surprised': Random().nextInt(10),
+   //          'neutral': Random().nextInt(10),
+   //          'calm': Random().nextInt(10),
+   //          'sad': Random().nextInt(10),
+   //          'disgust': Random().nextInt(10),
+   //          'fear': Random().nextInt(10),
+   //
+   //        },
+   //        'Week 2': {
+   //          'angry': Random().nextInt(10),
+   //          'happy': Random().nextInt(10),
+   //          'surprised': Random().nextInt(10),
+   //          'neutral': Random().nextInt(10),
+   //          'calm': Random().nextInt(10),
+   //          'sad': Random().nextInt(10),
+   //          'disgust': Random().nextInt(10),
+   //          'fear': Random().nextInt(10),
+   //        },
+   //        'Week 3': {
+   //          'angry': Random().nextInt(10),
+   //          'happy': Random().nextInt(10),
+   //          'surprised': Random().nextInt(10),
+   //          'neutral': Random().nextInt(10),
+   //          'calm': Random().nextInt(10),
+   //          'sad': Random().nextInt(10),
+   //          'disgust': Random().nextInt(10),
+   //          'fear': Random().nextInt(10),
+   //
+   //        },
+   //        'Week 4': {
+   //          'angry': Random().nextInt(10),
+   //          'happy': Random().nextInt(10),
+   //          'surprised': Random().nextInt(10),
+   //          'neutral': Random().nextInt(10),
+   //          'calm': Random().nextInt(10),
+   //          'sad': Random().nextInt(10),
+   //          'disgust': Random().nextInt(10),
+   //          'fear': Random().nextInt(10),
+   //
+   //        },
+   //      }
+   //    });
       chartData.add(BarChartData(
         'First',
         weeklyModel!.first.happy,
@@ -88,56 +135,11 @@ class WeekCubit extends Cubit<WeekState> {
       emit(GetWeeklyBarDataErrorState());
     });
 //-----------------------------------------
-//     weeklyModel = WeeklyModel.fromJson({
-//       'Month': {
-//         'Week 1': {
-//           'angry': Random().nextInt(10),
-//           'happy': Random().nextInt(10),
-//           'surprise': Random().nextInt(10),
-//           'neutral': Random().nextInt(10),
-//           'calm': Random().nextInt(10),
-//           'sad': Random().nextInt(10),
-//           'disgust': Random().nextInt(10),
-//           'fear': Random().nextInt(10),
-//
-//         },
-//         'Week 2': {
-//           'angry': Random().nextInt(10),
-//           'happy': Random().nextInt(10),
-//           'surprise': Random().nextInt(10),
-//           'neutral': Random().nextInt(10),
-//           'calm': Random().nextInt(10),
-//           'sad': Random().nextInt(10),
-//           'disgust': Random().nextInt(10),
-//           'fear': Random().nextInt(10),
-//         },
-//         'Week 3': {
-//           'angry': Random().nextInt(10),
-//           'happy': Random().nextInt(10),
-//           'surprise': Random().nextInt(10),
-//           'neutral': Random().nextInt(10),
-//           'calm': Random().nextInt(10),
-//           'sad': Random().nextInt(10),
-//           'disgust': Random().nextInt(10),
-//           'fear': Random().nextInt(10),
-//
-//         },
-//         'Week 4': {
-//           'angry': Random().nextInt(10),
-//           'happy': Random().nextInt(10),
-//           'surprise': Random().nextInt(10),
-//           'neutral': Random().nextInt(10),
-//           'calm': Random().nextInt(10),
-//           'sad': Random().nextInt(10),
-//           'disgust': Random().nextInt(10),
-//           'fear': Random().nextInt(10),
-//
-//         },
-//       }
-//     });
-
 
   }
+
+
+
 
   void showCongMessage(BuildContext context) {
     showCongDialog(context);

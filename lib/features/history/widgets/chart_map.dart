@@ -27,10 +27,8 @@ class BuildChartMap extends StatelessWidget {
                   height: context.deviceHeight * 0.015,
                 ),
                 MapItem(text: 'Calm', color: Color(0xff00BEFF)),
-
               ],
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -42,7 +40,6 @@ class BuildChartMap extends StatelessWidget {
                 MapItem(text: 'Sad', color: Color(0xff0057AE)),
               ],
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -52,10 +49,8 @@ class BuildChartMap extends StatelessWidget {
                   height: context.deviceHeight * 0.015,
                 ),
                 MapItem(text: 'Fear', color: Color(0xffB7043C)),
-
               ],
             ),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,

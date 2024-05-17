@@ -61,7 +61,7 @@ class HistoryScreen extends StatelessWidget {
                     ),
                     title: Text('Statistics',
                     style: TextStyle(
-                      fontSize: 30
+                      fontSize: 20.sp
                     ),
                     ),
                     centerTitle: true,
@@ -85,7 +85,7 @@ class HistoryScreen extends StatelessWidget {
                         Text(
                           'Day',
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 10.sp,
                               color: appMode
                                   ? DarkColors.textColor
                                   : LightColors.textColor),
@@ -93,7 +93,7 @@ class HistoryScreen extends StatelessWidget {
                         Text(
                           'Week',
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 10.sp,
                               color: appMode
                                   ? DarkColors.textColor
                                   : LightColors.textColor),
@@ -101,7 +101,7 @@ class HistoryScreen extends StatelessWidget {
                         Text(
                           'Month',
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 10.sp,
                               color: appMode
                                   ? DarkColors.textColor
                                   : LightColors.textColor),

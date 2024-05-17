@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../../../core/components/toast.dart';
 import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
@@ -35,7 +36,6 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
     return Column(
       children: [
         Expanded(
-
           child: SfCartesianChart(
               enableAxisAnimation: true,
               primaryXAxis: CategoryAxis(
@@ -51,7 +51,7 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
               ),
               primaryYAxis: NumericAxis(
                 title: AxisTitle(
-                    text: 'The number of repetitions of the emotion',
+                    text: 'The percentage of repetitions of the emotion',
                     textStyle: TextStyle(
                         color: appMode
                             ? DarkColors.textColor
@@ -63,55 +63,198 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                       color: appMode
                           ? DarkColors.textColor
                           : LightColors.textColor)),
+              tooltipBehavior: TooltipBehavior(
+                  enable: true,
+                  duration: 1000,
+                  color: appMode ? DarkColors.primary : LightColors.primary,
+                  // Templating the tooltip
+                  builder: (data, ChartPoint point, dynamic series,
+                      int pointIndex, int seriesIndex) {
+                    int numbers = 0;
+                    String emotion='';
+
+                    if (seriesIndex == 0) {
+                      numbers = data.natural;
+                      emotion='Natural';
+                    }
+                    if (seriesIndex == 1) {
+                      numbers = data.calm;
+                      emotion='Calm';
+
+                    }
+                    if (seriesIndex == 2) {
+                      numbers = data.happy;
+                      emotion='Happy';
+
+                    }
+                    if (seriesIndex == 3) {
+                      numbers = data.sad;
+                      emotion='Sad';
+
+                    }
+                    if (seriesIndex == 4) {
+                      numbers = data.angry;
+                      emotion='Angry';
+
+                    }
+                    if (seriesIndex == 5) {
+                      numbers = data.fear;
+                      emotion='Fear';
+
+                    }
+                    if (seriesIndex == 6) {
+                      numbers = data.disgusted;
+                      emotion='Disgusted';
+
+                    }
+                    if (seriesIndex == 7) {
+                      numbers = data.surprised;
+                      emotion='Surprised';
+
+                    }
+
+                    return Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        'Frequency of $emotion is $numbers',
+                        style: TextStyle(
+                            color: appMode
+                                ? DarkColors.scaffoldColor
+                                : LightColors.scaffoldColor),
+                      ),
+                    );
+                  }),
+
               series: <CartesianSeries>[
                 ColumnSeries<BarChartData, String>(
+                    selectionBehavior: SelectionBehavior(
+                      enable: true,
+                    ),
                     color: Color(0xffCFD8DC),
                     dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
-                    yValueMapper: (BarChartData data, _) => data.natural),
+                    dataLabelMapper: (BarChartData data, _) =>
+                        "${((data.natural / data.total) * 100).round()}%",
+                    yValueMapper: (BarChartData data, _) {
+                      num number = data.total != 0
+                          ? ((data.natural / data.total) * 100).round().toInt()
+                          : 0;
+                      return number;
+                    }),
                 ColumnSeries<BarChartData, String>(
+                    selectionBehavior: SelectionBehavior(
+                      enable: true,
+                    ),
                     color: Color(0xff00BEFF),
                     dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
-                    yValueMapper: (BarChartData data, _) => data.calm),
+                    dataLabelMapper: (BarChartData data, _) =>
+                        "${((data.calm / data.total) * 100).round()}%",
+                    yValueMapper: (BarChartData data, _) {
+                      num number = data.total != 0
+                          ? ((data.calm / data.total) * 100).round().toInt()
+                          : 0;
+                      return number;
+                    }),
                 ColumnSeries<BarChartData, String>(
+                    selectionBehavior: SelectionBehavior(
+                      enable: true,
+                    ),
                     color: Color(0xffFFEB00),
                     dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
-                    yValueMapper: (BarChartData data, _) => data.happy),
+                    dataLabelMapper: (BarChartData data, _) =>
+                        "${((data.happy / data.total) * 100).round()}%",
+                    yValueMapper: (BarChartData data, _) {
+                      num number = data.total != 0
+                          ? ((data.happy / data.total) * 100).round().toInt()
+                          : 0;
+                      return number;
+                    }),
                 ColumnSeries<BarChartData, String>(
+                    selectionBehavior: SelectionBehavior(
+                      enable: true,
+                    ),
                     color: Color(0xff0057AE),
                     dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
-                    yValueMapper: (BarChartData data, _) => data.sad),
+                    dataLabelMapper: (BarChartData data, _) =>
+                        "${((data.sad / data.total) * 100).round()}%",
+                    yValueMapper: (BarChartData data, _) {
+                      num number = data.total != 0
+                          ? ((data.sad / data.total) * 100).round().toInt()
+                          : 0;
+                      return number;
+                    }),
                 ColumnSeries<BarChartData, String>(
+                    selectionBehavior: SelectionBehavior(
+                      enable: true,
+                    ),
                     color: Color(0xffFF2414),
                     dataSource: widget.cubit.chartData,
+                    dataLabelMapper: (BarChartData data, _) =>
+                        "${((data.angry / data.total) * 100).round()}%",
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
-                    yValueMapper: (BarChartData data, _) => data.angry),
+                    yValueMapper: (BarChartData data, _) {
+                      num number = data.total != 0
+                          ? ((data.angry / data.total) * 100).round().toInt()
+                          : 0;
+                      return number;
+                    }),
                 ColumnSeries<BarChartData, String>(
+                    selectionBehavior: SelectionBehavior(
+                      enable: true,
+                    ),
                     color: Color(0xffB7043C),
                     dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
-                    yValueMapper: (BarChartData data, _) => data.fear),
+                    yValueMapper: (BarChartData data, _) {
+                      num number = data.total != 0
+                          ? ((data.fear / data.total) * 100).round().toInt()
+                          : 0;
+                      return number;
+                    }),
                 ColumnSeries<BarChartData, String>(
+                    selectionBehavior: SelectionBehavior(
+                      enable: true,
+                    ),
                     color: Color(0xffA1E533),
                     dataSource: widget.cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
-                    yValueMapper: (BarChartData data, _) => data.disgusted),
+                    dataLabelMapper: (BarChartData data, _) =>
+                        "${((data.disgusted / data.total) * 100).round()}%",
+                    yValueMapper: (BarChartData data, _) {
+                      num number = data.total != 0
+                          ? ((data.disgusted / data.total) * 100)
+                              .round()
+                              .toInt()
+                          : 0;
+                      return number;
+                    }),
                 ColumnSeries<BarChartData, String>(
+                    selectionBehavior: SelectionBehavior(
+                      enable: true,
+                    ),
                     color: Color(0xffFF6900),
                     dataSource: widget.cubit.chartData,
-                    xValueMapper: (BarChartData data, _) =>
-                        data.barTitle.toString(),
-                    yValueMapper: (BarChartData data, _) => data.surprised),
+                    xValueMapper: (BarChartData data, _) {
+                      return data.barTitle.toString();
+                    },
+                    yValueMapper: (BarChartData data, _) {
+                      num number = data.total != 0
+                          ? ((data.surprised / data.total) * 100)
+                              .round()
+                              .toInt()
+                          : 0;
+                      return number;
+                    }),
               ]),
         ),
         const BuildChartMap(),

@@ -35,6 +35,7 @@ class MonthCubit extends Cubit<MonthState> {
         url: '${ApiConstants.monthlyHistoryEndPoint}$userID',
         headers: {'token': token}).then((value) {
       monthlyModel = MonthlyModel.fromJson(value.data);
+     // monthlyModel = MonthlyModel.fromJson(test);
       setupChartData();
       emit(GetMonthlySuccessState());
     });
@@ -203,7 +204,7 @@ Map<String, dynamic> test = {
     'Jan': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -213,7 +214,7 @@ Map<String, dynamic> test = {
     'Feb': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -223,7 +224,7 @@ Map<String, dynamic> test = {
     'Mar': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -233,7 +234,7 @@ Map<String, dynamic> test = {
     'Apr': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -243,7 +244,7 @@ Map<String, dynamic> test = {
     'May': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -253,7 +254,7 @@ Map<String, dynamic> test = {
     'Jun': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -263,7 +264,7 @@ Map<String, dynamic> test = {
     'Jul': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -273,7 +274,7 @@ Map<String, dynamic> test = {
     'Aug': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -283,7 +284,7 @@ Map<String, dynamic> test = {
     'Sep': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -293,7 +294,7 @@ Map<String, dynamic> test = {
     'Oct': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -303,7 +304,7 @@ Map<String, dynamic> test = {
     'Nov': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
@@ -313,7 +314,7 @@ Map<String, dynamic> test = {
     'Dec': {
       'happy': Random().nextInt(10),
       'angry': Random().nextInt(10),
-      'surprise': Random().nextInt(10),
+      'surprised': Random().nextInt(10),
       'calm': Random().nextInt(10),
       'neutral': Random().nextInt(10),
       'sad': Random().nextInt(10),
