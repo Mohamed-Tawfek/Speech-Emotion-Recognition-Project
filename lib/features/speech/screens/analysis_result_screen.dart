@@ -55,6 +55,7 @@ class AnalysisResultScreen extends StatelessWidget {
             SizedBox(
               height: context.deviceHeight * 0.06,
             ),
+            if(emotion.messages.isNotEmpty)
             Padding(
               padding: EdgeInsetsDirectional.symmetric(
                   horizontal: context.deviceWidth * 0.03),
@@ -73,10 +74,14 @@ class AnalysisResultScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            if(emotion.messages.isNotEmpty)
+
+              SizedBox(
               height: context.deviceHeight * 0.015,
             ),
-            Padding(
+            if(emotion.messages.isNotEmpty)
+
+              Padding(
               padding: EdgeInsetsDirectional.symmetric(
                   horizontal: context.deviceWidth * 0.07),
               child: AnimatedTextKit(
@@ -97,7 +102,9 @@ class AnalysisResultScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            if(emotion.messages.isNotEmpty)
+
+              SizedBox(
               height: context.deviceHeight * 0.04,
             ),
             Spacer(),

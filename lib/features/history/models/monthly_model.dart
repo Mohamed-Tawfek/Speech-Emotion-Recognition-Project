@@ -43,7 +43,7 @@ class MonthlyEmotionModel{
   MonthlyEmotionModel.fromJson(Map<String,dynamic>json){
     angry=json['angry'];
     happy=json['happy'];
-    surprised=json['surprise'];
+    surprised=json['surprised'];
     calm=json['calm'];
     natural=json['neutral'];
     sad=json['sad'];

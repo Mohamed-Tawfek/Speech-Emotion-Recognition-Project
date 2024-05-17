@@ -166,13 +166,19 @@ class SpeechCubit extends Cubit<SpeechState> {
     emit(StopRecordingState());
     await record.stop();
 
-    final player = AudioPlayer();
-    await player.play(DeviceFileSource(path!));
-
-    sendAudio(context: context, path: path!).then((value) {
+    await sendAudio(context: context, path: path!).then((value) {
       if (resultModel != null) {
         showResultBottomSheet(context, emotions[emotionIndex!]);
         play(voicePath: emotions[emotionIndex!].voiceOverPath);
+      } else {
+        showResultBottomSheet(
+            context,
+            EmotionModel(
+                messages: [],
+                name: 'Not Recognized!',
+                lottiePath: 'assets/lotties/emotions/unkown.json',
+                voiceOverPath: 'assets/voice_over/en/not recognized.wav'));
+        play(voicePath: 'assets/voice_over/en/not recognized.wav');
       }
     });
 
@@ -196,10 +202,19 @@ class SpeechCubit extends Cubit<SpeechState> {
     if (result != null) {
       File file = File(result.files.single.path!);
 
-      sendAudio(context: context, path: file.path).then((value) {
+      await sendAudio(context: context, path: file.path).then((value) {
         if (resultModel != null) {
           showResultBottomSheet(context, emotions[emotionIndex!]);
           play(voicePath: emotions[emotionIndex!].voiceOverPath);
+        } else {
+          showResultBottomSheet(
+              context,
+              EmotionModel(
+                  messages: [],
+                  name: 'Not Recognized!',
+                  lottiePath: 'assets/lotties/emotions/unkown.json',
+                  voiceOverPath: 'assets/voice_over/en/not recognized.wav'));
+          play(voicePath: 'assets/voice_over/en/not recognized.wav');
         }
       });
     } else {
@@ -215,33 +230,34 @@ class SpeechCubit extends Cubit<SpeechState> {
     emit(SendAudioLoadingState());
 
     var data = FormData.fromMap({
-      'audio_file': [await MultipartFile.fromFile(path, filename: path)],
+      'file': [await MultipartFile.fromFile(path, filename: path)],
     });
 
-
- await  Dio().post(ApiConstants.enterRecordEndPoint,
-   data: data,
-
-   ).then((value) {
-     if (value.statusCode == 200) {
-       emit(SendAudioSuccessState());
-       resultModel = AnalysisResultModel.fromJson(value.data);
-       emotionIndex = getEmotionIndex(emotion: resultModel!.result!);
-       print('-' * 40);
-       print(value.data);
-       print('-' * 40);
+    await Dio()
+        .post(
+      ApiConstants.enterRecordEndPoint,
+      data: data,
+    )
+        .then((value) {
+      if (value.statusCode == 200) {
+        emit(SendAudioSuccessState());
+        resultModel = AnalysisResultModel.fromJson(value.data);
+        emotionIndex = getEmotionIndex(emotion: resultModel!.result!);
+        Navigator.pop(context);
+        DioHelper.post(url: ApiConstants.enterEmotionEndPoint, headers: {
+          'token': CashHelper.getData(key: 'token')
+        }, data: {
+          "emotion": value.data['result'].toString().toLowerCase(),
+          "userId": CashHelper.getData(key: 'userID')
+        });
+      } else {
+        emit(SendAudioErrorState());
+        Navigator.pop(context);
+      }
+    }).catchError((error) {
+      emit(SendAudioErrorState());
       Navigator.pop(context);
-     } else {
-       emit(SendAudioErrorState());
-       Navigator.pop(context);
-       showCustomSnackBar(context, 'There is an error!, try again');
-     }
-   }).catchError((error) {
-     emit(SendAudioErrorState());
-     Navigator.pop(context);
-     showCustomSnackBar(context, 'There is an error!, try again');
-   });
-
+    });
   }
 
   getEmotionIndex({required String emotion}) {

@@ -13,13 +13,10 @@ import 'features/authentication/screens/login_screen.dart';
 import 'features/offline_screen.dart';
 import 'features/onboarding/screens/onboarding_screen.dart';
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-
-
     bool onBoardingShown = CashHelper.getData(key: 'OnBoardingShown') ?? false;
     bool isLogged = CashHelper.getData(key: 'token') != null;
 
@@ -47,8 +44,8 @@ class MyApp extends StatelessWidget {
                     final appMode = AppModeCubit.get(context).isDark;
                     return MaterialApp(
                       debugShowCheckedModeBanner: false,
-                   //   localizationsDelegates: context.localizationDelegates,
-                     // supportedLocales: context.supportedLocales,
+                      //   localizationsDelegates: context.localizationDelegates,
+                      // supportedLocales: context.supportedLocales,
                       title: 'SER',
                       theme: getLightTheme(),
                       darkTheme: getDarkTheme(),
@@ -73,9 +70,9 @@ class MyApp extends StatelessWidget {
                         DeviceOrientation.portraitUp,
                       ]);
 
-                       return MaterialApp(
+                      return MaterialApp(
                         home: child,
-                         debugShowCheckedModeBanner: false ,
+                        debugShowCheckedModeBanner: false,
                       );
                     },
                     child: const OfflineScreen());

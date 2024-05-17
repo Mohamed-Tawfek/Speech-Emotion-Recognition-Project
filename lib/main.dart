@@ -10,7 +10,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
    DioHelper.init();
   await  CashHelper.init();
-
+  // CashHelper.setData(key: 'token', value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbWlhc2FhZDAxMkBnbWFpbC5jb20iLCJ1c2VySWQiOiI2NjE3YzRlZjY0Y2UwNjRhMzQ2YTUxZjUiLCJmaXJzdG5hbWUiOiJzYXJhIiwibGFzdG5hbWUiOiJzYWFhZGQiLCJmdWxsbmFtZSI6InNhcmEgc2FhYWRkIiwiaWF0IjoxNzEyODM0MTg1fQ.HtvYH8HpHLkET5F84iiEsojXFpcV83qmPiuoedw96Bo');
+  // CashHelper.setData(key: 'userID', value:  '66475a36e1e901ecc386a88f');
+  // CashHelper.setData(key: 'userEmail', value: 'kokko@email.com');
+  // CashHelper.setData(key: 'userImage', value: 'https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  // CashHelper.setData(key: 'userName', value: 'Amr Tawfek');
 
   refreshServer();
   runApp(const MyApp());

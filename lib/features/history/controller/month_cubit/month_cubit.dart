@@ -26,28 +26,23 @@ class MonthCubit extends Cubit<MonthState> {
   getMonthlyData() {
     emit(GetMonthlyLoadingState());
 
-    monthsChartData = test;
+    //monthsChartData = test;
     String userID =
         forDisplaySharing ? model!.userID : CashHelper.getData(key: 'userID');
     String token =
         forDisplaySharing ? model!.token : CashHelper.getData(key: 'token');
-    // DioHelper.get(
-    //     url: '${ApiConstants.monthlyHistoryEndPoint}$userID',
-    //     headers: {'token': token}).then((value) {
-    //
-    //   monthlyModel = MonthlyModel.fromJson(value.data);
-    //   setupChartData();
-    //   emit(GetMonthlySuccessState());
-    // });
-
+    DioHelper.get(
+        url: '${ApiConstants.monthlyHistoryEndPoint}$userID',
+        headers: {'token': token}).then((value) {
+      monthlyModel = MonthlyModel.fromJson(value.data);
+      setupChartData();
+      emit(GetMonthlySuccessState());
+    });
 
     ///////////////-------------------------------
-    monthlyModel = MonthlyModel.fromJson(test);
-    setupChartData();
-    emit(GetMonthlySuccessState());
-
-
-
+    // monthlyModel = MonthlyModel.fromJson(test);
+    // setupChartData();
+    // emit(GetMonthlySuccessState());
   }
 
   changeSelectionInMonth(int index) {
@@ -203,127 +198,127 @@ class MonthCubit extends Cubit<MonthState> {
   }
 }
 
- Map<String,dynamic>  test = {
-'Year':{
-  'Jan': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Feb': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Mar': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Apr': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'May': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Jun': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Jul': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Aug': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Sep': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Oct': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Nov': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-  'Dec': {
-    'happy': Random().nextInt(10),
-    'angry': Random().nextInt(10),
-    'surprise': Random().nextInt(10),
-    'calm': Random().nextInt(10),
-    'neutral': Random().nextInt(10),
-    'sad': Random().nextInt(10),
-    'fear': Random().nextInt(10),
-    'disgust': Random().nextInt(10),
-  },
-}
+Map<String, dynamic> test = {
+  'Year': {
+    'Jan': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Feb': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Mar': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Apr': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'May': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Jun': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Jul': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Aug': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Sep': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Oct': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Nov': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+    'Dec': {
+      'happy': Random().nextInt(10),
+      'angry': Random().nextInt(10),
+      'surprise': Random().nextInt(10),
+      'calm': Random().nextInt(10),
+      'neutral': Random().nextInt(10),
+      'sad': Random().nextInt(10),
+      'fear': Random().nextInt(10),
+      'disgust': Random().nextInt(10),
+    },
+  }
 };
