@@ -48,7 +48,7 @@ class AnalysisResultScreen extends StatelessWidget {
                           color: appMode
                               ? DarkColors.primary
                               : LightColors.primary),
-                      speed: Duration(milliseconds: 200)),
+                      speed: const Duration(milliseconds: 200)),
                 ],
               ),
             ),
@@ -70,7 +70,7 @@ class AnalysisResultScreen extends StatelessWidget {
                               ? DarkColors.textColor
                               : LightColors.textColor),
                       cursor: '',
-                      speed: Duration(milliseconds: 50)),
+                      speed: const Duration(milliseconds: 50)),
                 ],
               ),
             ),
@@ -107,7 +107,7 @@ class AnalysisResultScreen extends StatelessWidget {
               SizedBox(
               height: context.deviceHeight * 0.04,
             ),
-            Spacer(),
+            const Spacer(),
             Container(
               margin: EdgeInsetsDirectional.only(
                 bottom: context.deviceHeight * 0.03,

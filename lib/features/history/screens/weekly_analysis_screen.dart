@@ -10,9 +10,9 @@ import '../widgets/cong_dialog.dart';
 import '../widgets/weekly_analysis_chart.dart';
 
 class WeeklyAnalysisScreen extends StatelessWidget {
-  WeeklyAnalysisScreen({super.key, required this.forDisplaySharing,this.model });
-  bool forDisplaySharing;
-  FollowedModel? model;
+ const WeeklyAnalysisScreen({super.key, required this.forDisplaySharing,this.model });
+ final bool forDisplaySharing;
+ final FollowedModel? model;
   @override
   Widget build(BuildContext context1) {
     return Expanded(

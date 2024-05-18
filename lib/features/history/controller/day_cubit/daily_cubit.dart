@@ -1,7 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:speech_emotion_recognition_project/core/constants/api_constants.dart';
 import 'package:speech_emotion_recognition_project/core/helpers/cash_helper.dart';
 import 'package:speech_emotion_recognition_project/core/helpers/dio_helper.dart';
@@ -9,7 +7,6 @@ import 'package:speech_emotion_recognition_project/core/helpers/dio_helper.dart'
 import '../../../share/model/followed_model.dart';
 import '../../models/bar_chart_data.dart';
 import '../../models/daily_model.dart';
-import '../../screens/daily_analysis_screen.dart';
 
 part 'day_state.dart';
 
@@ -52,9 +49,7 @@ class DailyCubit extends Cubit<DayState> {
         url: '${ApiConstants.dailyHistoryEndPoint}$userID',
         headers: {'token': token}).then((value) {
       dailyModel = DailyModel.fromJson(value.data);
-      print(value.data);
-      print(dailyModel!.angry);
-      print(dailyModel!.sad);
+
 
       calcNumberDailyEmotions();
       // dailyModel = DailyModel.fromJson({
@@ -72,17 +67,17 @@ class DailyCubit extends Cubit<DayState> {
       // });
       chartData.add(PieChartData(
           'Natural', dailyModel!.natural, const Color(0xffCFD8DC)));
-      chartData.add(PieChartData('Calm', dailyModel!.calm, Color(0xff00BEFF)));
+      chartData.add(PieChartData('Calm', dailyModel!.calm, const Color(0xff00BEFF)));
       chartData
-          .add(PieChartData('Happy', dailyModel!.happy, Color(0xffFFEB00)));
-      chartData.add(PieChartData('Sad', dailyModel!.sad, Color(0xff0057AE)));
+          .add(PieChartData('Happy', dailyModel!.happy, const Color(0xffFFEB00)));
+      chartData.add(PieChartData('Sad', dailyModel!.sad,const Color(0xff0057AE)));
       chartData
-          .add(PieChartData('Angry', dailyModel!.angry, Color(0xffFF2414)));
-      chartData.add(PieChartData('Fear', dailyModel!.fear, Color(0xffB7043C)));
+          .add(PieChartData('Angry', dailyModel!.angry,const Color(0xffFF2414)));
+      chartData.add(PieChartData('Fear', dailyModel!.fear,const Color(0xffB7043C)));
       chartData.add(
-          PieChartData('Disgusted', dailyModel!.disgusted, Color(0xffA1E533)));
+          PieChartData('Disgusted', dailyModel!.disgusted,const Color(0xffA1E533)));
       chartData.add(
-          PieChartData('Surprised', dailyModel!.surprised, Color(0xffFF6900)));
+          PieChartData('Surprised', dailyModel!.surprised,const Color(0xffFF6900)));
 
       emit(GetDailyStateSuccess());
     }).catchError((e) {

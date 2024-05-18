@@ -1,4 +1,3 @@
-import 'package:speech_emotion_recognition_project/features/history/models/daily_model.dart';
 
 class WeeklyModel {
   late WeeklyEmotionModel first;

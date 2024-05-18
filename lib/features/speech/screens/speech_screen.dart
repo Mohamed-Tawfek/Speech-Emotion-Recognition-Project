@@ -120,16 +120,6 @@ class _TimerState extends State<TimerWidget>
           horizontal: context.deviceWidth * 0.05,
           vertical: context.deviceHeight * 0.02),
       decoration: BoxDecoration(
-          // gradient: const LinearGradient(
-          //   begin: Alignment.topCenter,
-          //   end: Alignment.bottomCenter,
-          //   colors: [
-          //     Color(0xffef6171),
-          //     Color(0xffad3b89),
-          //     Color(0xff24a0d6),
-          //   ],
-          //   stops: [.1, 0.4, 1.5],
-          // ),
           color: appMode ? DarkColors.primary : LightColors.primary,
           borderRadius: BorderRadius.circular(20)),
       child: CustomTimer(

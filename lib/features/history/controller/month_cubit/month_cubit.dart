@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:speech_emotion_recognition_project/core/constants/api_constants.dart';

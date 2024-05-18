@@ -1,9 +1,5 @@
-import 'dart:math';
-
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:speech_emotion_recognition_project/core/constants/api_constants.dart';
 import 'package:speech_emotion_recognition_project/core/helpers/dio_helper.dart';
 import 'package:speech_emotion_recognition_project/features/history/models/weekly_model.dart';

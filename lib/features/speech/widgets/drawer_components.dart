@@ -66,21 +66,7 @@ final double?radius;
         radius:radius?? context.deviceWidth * 0.12,
       ),
     );
-    // return Container(
-    //   decoration: const BoxDecoration(shape: BoxShape.circle),
-    //   clipBehavior: Clip.antiAliasWithSaveLayer,
-    //   child: Center(
-    //     child: CachedNetworkImage(
-    //       height: context.deviceHeight * 0.15,
-    //       width: context.deviceWidth * 0.3,
-    //       fit: BoxFit.cover,
-    //       imageUrl: url,
-    //       placeholder: (context, url) =>
-    //           const Center(child: CircularProgressIndicator()),
-    //       errorWidget: (context, url, error) => const Icon(Icons.error),
-    //     ),
-    //   ),
-    // );
+
   }
 }
 

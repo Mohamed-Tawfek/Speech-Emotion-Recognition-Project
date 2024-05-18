@@ -109,7 +109,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
                 selectionBehavior: SelectionBehavior(
                   enable: true,
                 ),
-                color: Color(0xffCFD8DC),
+                color: const Color(0xffCFD8DC),
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString(),
@@ -126,7 +126,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
                 selectionBehavior: SelectionBehavior(
                   enable: true,
                 ),
-                color: Color(0xff00BEFF),
+                color:const Color(0xff00BEFF),
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString(),
@@ -140,7 +140,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
             ColumnSeries<BarChartData, String>( selectionBehavior: SelectionBehavior(
               enable: true,
             ),
-                color: Color(0xffFFEB00),
+                color: const Color(0xffFFEB00),
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString(),
@@ -154,7 +154,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
             ColumnSeries<BarChartData, String>( selectionBehavior: SelectionBehavior(
               enable: true,
             ),
-                color: Color(0xff0057AE),
+                color:const Color(0xff0057AE),
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString(),
@@ -168,7 +168,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
             ColumnSeries<BarChartData, String>( selectionBehavior: SelectionBehavior(
               enable: true,
             ),
-                color: Color(0xffFF2414),
+                color:const Color(0xffFF2414),
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString(),
@@ -182,7 +182,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
             ColumnSeries<BarChartData, String>( selectionBehavior: SelectionBehavior(
               enable: true,
             ),
-                color: Color(0xffB7043C),
+                color:const Color(0xffB7043C),
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString(),
@@ -196,7 +196,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
             ColumnSeries<BarChartData, String>( selectionBehavior: SelectionBehavior(
               enable: true,
             ),
-                color:Color(0xffA1E533),
+                color:const Color(0xffA1E533),
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString(),
@@ -210,7 +210,7 @@ class MonthlyAnalysisChart extends StatelessWidget {
             ColumnSeries<BarChartData, String>( selectionBehavior: SelectionBehavior(
               enable: true,
             ),
-                color: Color(0xffFF6900),
+                color:const Color(0xffFF6900),
                 dataSource: dataSource,
                 xValueMapper: (BarChartData data, _) =>
                     data.barTitle.toString(),

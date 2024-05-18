@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:speech_emotion_recognition_project/core/components/custom_snackBar.dart';
-import 'package:speech_emotion_recognition_project/core/components/toast.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../models/bar_chart_data.dart';
-import 'dart:async';
-import 'dart:ui' as ui;
 
 class DailyAnalysisChart extends StatelessWidget {
-  DailyAnalysisChart(
+ const DailyAnalysisChart(
       {super.key, required this.dataSource, required this.totalEmotionsNumber});
   final List<PieChartData>? dataSource;
-  int totalEmotionsNumber;
+  final int totalEmotionsNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +62,11 @@ class DailyAnalysisChart extends StatelessWidget {
             yValueMapper: (PieChartData data, _) => data.number,
             dataLabelMapper: (PieChartData data, _) =>
                 "${((data.number / totalEmotionsNumber) * 100).round()}%",
-            dataLabelSettings: const DataLabelSettings(
+
+            dataLabelSettings:   DataLabelSettings(
               isVisible: true,
               labelPosition: ChartDataLabelPosition.outside,
+              color:appMode?Colors.cyan: DarkColors.primary,
               overflowMode: OverflowMode.trim,
             ),
           )

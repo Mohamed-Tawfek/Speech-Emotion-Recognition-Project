@@ -1,34 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:speech_emotion_recognition_project/core/components/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../core/components/toast.dart';
-import '../../../modes_controller/modes_cubit.dart';
 import '../../../core/constants/dark_theme_colors.dart';
 import '../../../core/constants/light_theme_colors.dart';
+import '../../../modes_controller/modes_cubit.dart';
 import '../controller/week_cubit/week_cubit.dart';
 import '../models/bar_chart_data.dart';
 import 'chart_map.dart';
 
-class WeeklyAnalysisChart extends StatefulWidget {
+class WeeklyAnalysisChart extends StatelessWidget {
   const WeeklyAnalysisChart({super.key, required this.cubit});
   final WeekCubit cubit;
-
-  @override
-  State<WeeklyAnalysisChart> createState() => _WeeklyAnalysisChartState();
-}
-
-class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
-  @override
-  void initState() {
-    // Future.delayed(Duration(milliseconds: 1500)).then((value) {
-    //   widget.cubit.showCongMessage(context);
-    //
-    // });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     bool appMode = AppModeCubit.get(context).isDark;
@@ -71,46 +54,39 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                   builder: (data, ChartPoint point, dynamic series,
                       int pointIndex, int seriesIndex) {
                     int numbers = 0;
-                    String emotion='';
+                    String emotion = '';
 
                     if (seriesIndex == 0) {
                       numbers = data.natural;
-                      emotion='Natural';
+                      emotion = 'Natural';
                     }
                     if (seriesIndex == 1) {
                       numbers = data.calm;
-                      emotion='Calm';
-
+                      emotion = 'Calm';
                     }
                     if (seriesIndex == 2) {
                       numbers = data.happy;
-                      emotion='Happy';
-
+                      emotion = 'Happy';
                     }
                     if (seriesIndex == 3) {
                       numbers = data.sad;
-                      emotion='Sad';
-
+                      emotion = 'Sad';
                     }
                     if (seriesIndex == 4) {
                       numbers = data.angry;
-                      emotion='Angry';
-
+                      emotion = 'Angry';
                     }
                     if (seriesIndex == 5) {
                       numbers = data.fear;
-                      emotion='Fear';
-
+                      emotion = 'Fear';
                     }
                     if (seriesIndex == 6) {
                       numbers = data.disgusted;
-                      emotion='Disgusted';
-
+                      emotion = 'Disgusted';
                     }
                     if (seriesIndex == 7) {
                       numbers = data.surprised;
-                      emotion='Surprised';
-
+                      emotion = 'Surprised';
                     }
 
                     return Padding(
@@ -124,18 +100,17 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                       ),
                     );
                   }),
-
               series: <CartesianSeries>[
                 ColumnSeries<BarChartData, String>(
                     selectionBehavior: SelectionBehavior(
                       enable: true,
                     ),
-                    color: Color(0xffCFD8DC),
-                    dataSource: widget.cubit.chartData,
+                    color: const Color(0xffCFD8DC),
+                    dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
                     dataLabelMapper: (BarChartData data, _) =>
-                        "${((data.natural / data.total) * 100).round()}%",
+                    "${((data.natural / data.total) * 100).round()}%",
                     yValueMapper: (BarChartData data, _) {
                       num number = data.total != 0
                           ? ((data.natural / data.total) * 100).round().toInt()
@@ -146,12 +121,12 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                     selectionBehavior: SelectionBehavior(
                       enable: true,
                     ),
-                    color: Color(0xff00BEFF),
-                    dataSource: widget.cubit.chartData,
+                    color: const Color(0xff00BEFF),
+                    dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
                     dataLabelMapper: (BarChartData data, _) =>
-                        "${((data.calm / data.total) * 100).round()}%",
+                    "${((data.calm / data.total) * 100).round()}%",
                     yValueMapper: (BarChartData data, _) {
                       num number = data.total != 0
                           ? ((data.calm / data.total) * 100).round().toInt()
@@ -162,12 +137,12 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                     selectionBehavior: SelectionBehavior(
                       enable: true,
                     ),
-                    color: Color(0xffFFEB00),
-                    dataSource: widget.cubit.chartData,
+                    color:const Color(0xffFFEB00),
+                    dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
                     dataLabelMapper: (BarChartData data, _) =>
-                        "${((data.happy / data.total) * 100).round()}%",
+                    "${((data.happy / data.total) * 100).round()}%",
                     yValueMapper: (BarChartData data, _) {
                       num number = data.total != 0
                           ? ((data.happy / data.total) * 100).round().toInt()
@@ -178,12 +153,12 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                     selectionBehavior: SelectionBehavior(
                       enable: true,
                     ),
-                    color: Color(0xff0057AE),
-                    dataSource: widget.cubit.chartData,
+                    color:const Color(0xff0057AE),
+                    dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
                     dataLabelMapper: (BarChartData data, _) =>
-                        "${((data.sad / data.total) * 100).round()}%",
+                    "${((data.sad / data.total) * 100).round()}%",
                     yValueMapper: (BarChartData data, _) {
                       num number = data.total != 0
                           ? ((data.sad / data.total) * 100).round().toInt()
@@ -194,10 +169,10 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                     selectionBehavior: SelectionBehavior(
                       enable: true,
                     ),
-                    color: Color(0xffFF2414),
-                    dataSource: widget.cubit.chartData,
+                    color:const Color(0xffFF2414),
+                    dataSource: cubit.chartData,
                     dataLabelMapper: (BarChartData data, _) =>
-                        "${((data.angry / data.total) * 100).round()}%",
+                    "${((data.angry / data.total) * 100).round()}%",
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
                     yValueMapper: (BarChartData data, _) {
@@ -210,8 +185,8 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                     selectionBehavior: SelectionBehavior(
                       enable: true,
                     ),
-                    color: Color(0xffB7043C),
-                    dataSource: widget.cubit.chartData,
+                    color: const Color(0xffB7043C),
+                    dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
                     yValueMapper: (BarChartData data, _) {
@@ -224,17 +199,17 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                     selectionBehavior: SelectionBehavior(
                       enable: true,
                     ),
-                    color: Color(0xffA1E533),
-                    dataSource: widget.cubit.chartData,
+                    color:const Color(0xffA1E533),
+                    dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) =>
                         data.barTitle.toString(),
                     dataLabelMapper: (BarChartData data, _) =>
-                        "${((data.disgusted / data.total) * 100).round()}%",
+                    "${((data.disgusted / data.total) * 100).round()}%",
                     yValueMapper: (BarChartData data, _) {
                       num number = data.total != 0
                           ? ((data.disgusted / data.total) * 100)
-                              .round()
-                              .toInt()
+                          .round()
+                          .toInt()
                           : 0;
                       return number;
                     }),
@@ -242,16 +217,16 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
                     selectionBehavior: SelectionBehavior(
                       enable: true,
                     ),
-                    color: Color(0xffFF6900),
-                    dataSource: widget.cubit.chartData,
+                    color:const Color(0xffFF6900),
+                    dataSource: cubit.chartData,
                     xValueMapper: (BarChartData data, _) {
                       return data.barTitle.toString();
                     },
                     yValueMapper: (BarChartData data, _) {
                       num number = data.total != 0
                           ? ((data.surprised / data.total) * 100)
-                              .round()
-                              .toInt()
+                          .round()
+                          .toInt()
                           : 0;
                       return number;
                     }),
@@ -261,4 +236,5 @@ class _WeeklyAnalysisChartState extends State<WeeklyAnalysisChart> {
       ],
     );
   }
+
 }
